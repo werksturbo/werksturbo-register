@@ -15,7 +15,7 @@
 
 const CONFIG = {
 
-    csvFile: "register.csv",
+    csvFile: "data/register.csv",
 
     pageSize: 25,
 
