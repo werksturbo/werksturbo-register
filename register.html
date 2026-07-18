@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Werksturbo Register V4</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Tabulator -->
+<link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator_midnight.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="title">
+
+        <h1>Capri Register</h1>
+
+        <span class="version">Version 4.0</span>
+
+    </div>
+
+
+
+</header>
+
+<section class="toolbar">
+
+    <input
+        type="text"
+        id="globalSearch"
+        placeholder="🔍 Fahrzeuge durchsuchen...">
+
+    <select id="countryFilter">
+        <option value="">Land</option>
+    </select>
+
+    <select id="statusFilter">
+        <option value="">Status</option>
+    </select>
+
+    <select id="yearFilter">
+        <option value="">Baujahr</option>
+    </select>
+
+    <button id="resetFilters">
+        🔄 Filter zurücksetzen
+    </button>
+
+    <!-- Trefferzähler -->
+    <span id="resultCounter"></span>
+
+
+</section>
+
+<section class="statusbar">
+
+    <span id="csvStatus">
+
+        CSV wird geladen...
+
+    </span>
+
+</section>
+
+<main>
+
+    <!-- ==========================================================
+         Suchleiste
+    ========================================================== -->
+
+
+    <div id="registerTable"></div>
+
+</main>
+
+<!-- ==========================================================
+     Lightbox
+========================================================== -->
+
+<div id="lightbox">
+
+    <span id="closeLightbox">&times;</span>
+
+    <!-- Ladespinner -->
+    <div id="lightboxLoader"></div>
+
+    <button id="prevImage" class="lightboxNav">&#10094;</button>
+
+    <!-- Großes Bild -->
+    <img id="lightboxImage" alt="Fahrzeugfoto">
+
+
+    <button id="nextImage" class="lightboxNav">&#10095;</button>
+
+    <!-- Fahrzeuginformationen -->
+    <div id="lightboxInfo">
+
+        <div><strong>Lnr:</strong> <span id="lbLnr"></span></div>
+
+        <div><strong>Chassis:</strong> <span id="lbChassis"></span></div>
+
+        <div><strong>Land:</strong> <span id="lbLand"></span></div>
+
+        <div><strong>Status:</strong> <span id="lbStatus"></span></div>
+
+        <div><strong>Bild:</strong> <span id="lbCounter"></span></div>
+
+    </div>
+
+    <!-- Werkzeugleiste -->
+    <div class="lightboxToolbar">
+
+        <a
+            id="downloadImage"
+            target="_blank"
+            download>
+
+            Download
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Bibliotheken -->
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
+
+<script src="js/script_v4.js"></script>
+
+</body>
+
+</html>
