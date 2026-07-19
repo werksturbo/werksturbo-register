@@ -247,6 +247,14 @@ nav a.active{
    INFO KARTEN
 ========================== */
 
+.card-link{
+
+    text-decoration:none;
+    color:inherit;
+    display:block;
+
+}
+
 .cards{
 
     display:grid;
@@ -278,9 +286,21 @@ nav a.active{
 
 }
 
+.card{
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+    cursor:pointer;
+
+}
+
 .card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-10px);
+
+    box-shadow:0 14px 28px rgba(0,0,0,.18);
 
 }
 
