@@ -45,10 +45,12 @@ header{
 
 .logo img{
 
-    width:240px;
+    width:185px;
     height:auto;
+    display:block;
 
 }
+
 
 /* ==========================
    NAVIGATION
