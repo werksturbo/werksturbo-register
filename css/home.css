@@ -30,14 +30,16 @@ header{
     justify-content:space-between;
     align-items:center;
 
-    padding:15px 40px;
+    padding:10px 50px;
+
+    min-height:90px;
 
     position:sticky;
     top:0;
 
     z-index:1000;
 
-    box-shadow:0 3px 10px rgba(0,0,0,.25);
+    box-shadow:0 4px 12px rgba(0,0,0,.20);
 
 }
 
