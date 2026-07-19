@@ -69,7 +69,13 @@ nav a{
     color:white;
     text-decoration:none;
 
-    font-size:17px;
+    padding:12px 18px;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    font-weight:600;
 
     transition:.25s;
 
@@ -77,7 +83,7 @@ nav a{
 
 nav a:hover{
 
-    color:#9fd4ff;
+    background:rgba(255,255,255,.15);
 
 }
 
