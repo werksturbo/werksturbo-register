@@ -3,141 +3,204 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Werksturbo Register V4</title>
+    <title>Werksturbo Register | Offizielle Datenbank Ford Capri III Werksturbo</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <meta name="description"
+        content="Die offizielle Datenbank des Ford Capri III Werksturbo. Fahrzeugregister, Pressefotos, Dokumente, Presseberichte und Wissensdatenbank.">
 
-<!-- Tabulator -->
-<link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator_midnight.min.css" rel="stylesheet">
+    <meta name="keywords"
+        content="Ford Capri Werksturbo, Werksturbo Register, Capri Register, Ford Capri Turbo">
+
+    <link rel="stylesheet" href="css/home.css">
 
 </head>
 
 <body>
 
-<header class="topbar">
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
 
-    <div class="title">
+    <header>
 
-        <h1>Capri Register</h1>
+        <div class="logo">
 
-        <span class="version">Version 4.0</span>
+            <a href="index.html">
+                <img src="images/logo-werksturbo.png" alt="Werksturbo Register">
+            </a>
 
-    </div>
+        </div>
 
+        <nav>
 
+            <ul>
 
-</header>
+                <li><a class="active" href="index.html">Startseite</a></li>
 
-<section class="toolbar">
+                <li><a href="register.html">Register</a></li>
 
-    <input
-        type="text"
-        id="globalSearch"
-        placeholder="🔍 Fahrzeuge durchsuchen...">
+                <li><a href="pages/pressefotos.html">Pressefotos</a></li>
 
-    <select id="countryFilter">
-        <option value="">Land</option>
-    </select>
+                <li><a href="pages/dokumente.html">Dokumente</a></li>
 
-    <select id="statusFilter">
-        <option value="">Status</option>
-    </select>
+                <li><a href="pages/presseberichte.html">Presseberichte</a></li>
 
-    <select id="yearFilter">
-        <option value="">Baujahr</option>
-    </select>
+                <li><a href="pages/wissensdatenbank.html">Wissensdatenbank</a></li>
 
-    <button id="resetFilters">
-        🔄 Filter zurücksetzen
-    </button>
+                <li><a href="pages/kontakt.html">Kontakt</a></li>
 
-    <!-- Trefferzähler -->
-    <span id="resultCounter"></span>
+            </ul>
 
+        </nav>
 
-</section>
+    </header>
 
-<section class="statusbar">
+    <!-- ========================= -->
+    <!-- HERO -->
+    <!-- ========================= -->
 
-    <span id="csvStatus">
+    <section class="hero">
 
-        CSV wird geladen...
+        <div class="hero-overlay">
 
-    </span>
+            <h1>
 
-</section>
+                Ford Capri III Werksturbo
 
-<main>
+            </h1>
 
-    <!-- ==========================================================
-         Suchleiste
-    ========================================================== -->
+            <h2>
 
+                Selten • Original • Legendär
 
-    <div id="registerTable"></div>
+            </h2>
 
-</main>
+            <a class="button" href="register.html">
 
-<!-- ==========================================================
-     Lightbox
-========================================================== -->
+                Zum Fahrzeugregister
 
-<div id="lightbox">
+            </a>
 
-    <span id="closeLightbox">&times;</span>
+        </div>
 
-    <!-- Ladespinner -->
-    <div id="lightboxLoader"></div>
+    </section>
 
-    <button id="prevImage" class="lightboxNav">&#10094;</button>
+    <!-- ========================= -->
+    <!-- WILLKOMMEN -->
+    <!-- ========================= -->
 
-    <!-- Großes Bild -->
-    <img id="lightboxImage" alt="Fahrzeugfoto">
+    <section class="welcome">
 
+        <div class="container">
 
-    <button id="nextImage" class="lightboxNav">&#10095;</button>
+            <h2>Willkommen</h2>
 
-    <!-- Fahrzeuginformationen -->
-    <div id="lightboxInfo">
+            <p>
 
-        <div><strong>Lnr:</strong> <span id="lbLnr"></span></div>
+                Willkommen im offiziellen Werksturbo Register.
 
-        <div><strong>Chassis:</strong> <span id="lbChassis"></span></div>
+            </p>
 
-        <div><strong>Land:</strong> <span id="lbLand"></span></div>
+            <p>
 
-        <div><strong>Status:</strong> <span id="lbStatus"></span></div>
+                Der Ford Capri III Werksturbo wurde lediglich in den Jahren
+                1981 bis 1982 in geringer Stückzahl produziert und zählt heute
+                zu den seltensten Sondermodellen des Ford Capri.
 
-        <div><strong>Bild:</strong> <span id="lbCounter"></span></div>
+            </p>
 
-    </div>
+            <p>
 
-    <!-- Werkzeugleiste -->
-    <div class="lightboxToolbar">
+                Ziel dieses Registers ist es, möglichst alle bekannten Fahrzeuge,
+                historische Dokumente sowie zeitgenössische Informationen dauerhaft
+                zu dokumentieren und der Öffentlichkeit zugänglich zu machen.
 
-        <a
-            id="downloadImage"
-            target="_blank"
-            download>
+            </p>
 
-            Download
+            <p>
 
-        </a>
+                Sollten Sie Informationen, Bilder oder Dokumente besitzen,
+                freue ich mich über jede Kontaktaufnahme.
 
-    </div>
+            </p>
 
-</div>
+        </div>
 
-<!-- Bibliotheken -->
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <!-- ========================= -->
+    <!-- INFO-KARTEN -->
+    <!-- ========================= -->
 
-<script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
+    <section class="cards">
 
-<script src="js/script_v4.js"></script>
+        <div class="card">
+
+            <h3>🚗 Fahrzeugregister</h3>
+
+            <p>
+
+                Alle bekannten Werksturbo-Fahrzeuge mit Bildern,
+                Produktionsdaten und Historie.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>📷 Pressefotos</h3>
+
+            <p>
+
+                Originale Pressebilder sowie historische
+                Aufnahmen der Fahrzeuge.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>📚 Dokumente</h3>
+
+            <p>
+
+                Prospekte, Preislisten,
+                Gutachten und zeitgenössische Unterlagen.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <p>
+
+            © 2025 Werksturbo Register
+
+        </p>
+
+        <div>
+
+            <a href="pages/impressum.html">Impressum</a>
+
+            <a href="pages/datenschutz.html">Datenschutz</a>
+
+            <a href="pages/kontakt.html">Kontakt</a>
+
+        </div>
+
+    </footer>
 
 </body>
 
