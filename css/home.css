@@ -465,3 +465,68 @@ nav a{
 }
 
 }
+/* ==========================
+   DOKUMENTENTABELLE
+========================== */
+
+#dokumente-tabelle{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin:40px 0;
+
+    background:white;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+#dokumente-tabelle th{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:14px;
+
+    text-align:left;
+
+}
+
+#dokumente-tabelle td{
+
+    padding:14px;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+#dokumente-tabelle tr:nth-child(even){
+
+    background:#f7f9fb;
+
+}
+
+#dokumente-tabelle tr:hover{
+
+    background:#eef6fc;
+
+}
+
+#dokumente-tabelle a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+#dokumente-tabelle a:hover{
+
+    text-decoration:underline;
+
+}
