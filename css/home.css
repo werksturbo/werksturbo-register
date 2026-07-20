@@ -465,3 +465,113 @@ nav a{
 }
 
 }
+/* ==========================================================
+   DOKUMENTENTABELLE
+========================================================== */
+
+.table-container{
+
+    width:1100px;
+    max-width:95%;
+
+    margin:0 auto 80px auto;
+
+}
+#dokumente-tabelle{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.10);
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+#dokumente-tabelle thead{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+#dokumente-tabelle th{
+
+    padding:16px;
+
+    text-align:left;
+
+    font-size:17px;
+
+}
+#dokumente-tabelle td{
+
+    padding:14px 16px;
+
+    border-bottom:1px solid #e6e6e6;
+
+    vertical-align:top;
+
+}
+
+#dokumente-tabelle tbody tr:nth-child(even){
+
+    background:#f8fafc;
+
+}
+
+#dokumente-tabelle tbody tr:hover{
+
+    background:#eef6fc;
+
+}
+#dokumente-tabelle th:nth-child(1),
+#dokumente-tabelle td:nth-child(1){
+
+    width:22%;
+
+}
+
+#dokumente-tabelle th:nth-child(2),
+#dokumente-tabelle td:nth-child(2){
+
+    width:15%;
+
+}
+
+#dokumente-tabelle th:nth-child(3),
+#dokumente-tabelle td:nth-child(3){
+
+    width:48%;
+
+}
+
+#dokumente-tabelle th:nth-child(4),
+#dokumente-tabelle td:nth-child(4){
+
+    width:15%;
+
+    text-align:center;
+
+}
+
+#dokumente-tabelle a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+#dokumente-tabelle a:hover{
+
+    color:var(--primary-light);
+
+}
