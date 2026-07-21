@@ -155,3 +155,27 @@
     }
 
 }
+
+/* ---------- Thumbnails ---------- */
+
+.thumb{
+
+    width:55px;
+
+    height:auto;
+
+    border:1px solid #ccc;
+
+    border-radius:4px;
+
+    transition:.2s;
+
+}
+
+.thumb:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 4px 10px rgba(0,0,0,.25);
+
+}
