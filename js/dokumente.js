@@ -13,20 +13,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
             results.data.forEach(function (doc) {
 
+                if (!doc.Dokument) return;
+
                 const row = document.createElement("tr");
 
                 row.innerHTML = `
                     <td>${doc.Dokument}</td>
                     <td>${doc.Kategorie}</td>
                     <td>${doc.Beschreibung}</td>
-                    <td>
+                    <td style="text-align:center">
+
                         <a href="../documents/${doc.Datei}" target="_blank">
-                            <img src="../images/dokumente/${doc.Thumbnail}"
-                             class="thumb"
-                             alt="${doc.Dokument}">
+
+                            <img
+                                src="../images/dokumente/${doc.Thumbnail}"
+                                class="thumb"
+                                alt="${doc.Dokument}"
+                                loading="lazy">
+
                         </a>
-    </td>
-`;
+
+                    </td>
+                `;
 
                 tbody.appendChild(row);
 
