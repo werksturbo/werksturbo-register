@@ -340,6 +340,21 @@ nav a.active{
     font-size:16px;
 
 }
+
+.card img{
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+}
+
 /* ==========================
    FOOTER
 ========================== */
