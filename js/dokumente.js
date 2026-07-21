@@ -20,9 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${doc.Kategorie}</td>
                     <td>${doc.Beschreibung}</td>
                     <td>
-                        <a href="../documents/${doc.Datei}" target="_blank">
-                            📄 Anzeigen
-                        </a>
+                        <a href="../documents/prospekt_de.pdf" target="_blank">
+                        <img src="../images/dokumente/prospekt_de.jpg"
+                             class="thumb">
+                    </a>
                     </td>
                 `;
 
