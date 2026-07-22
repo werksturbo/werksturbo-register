@@ -311,13 +311,22 @@ nav a.active{
 
 .card h3{
 
-    color:var(--primary);
-
+    font-size:24px;
+    line-height:1.25;
+    min-height:72px;
     margin-bottom:18px;
 
-    font-size:30px;
+}
+
+.card h4{
+
+    font-size:18px;
+    font-weight:600;
+    color:#333;
+    margin-bottom:12px;
 
 }
+
 
 .card p{
 
