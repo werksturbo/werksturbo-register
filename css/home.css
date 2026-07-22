@@ -281,13 +281,14 @@ nav a.active{
 
     border-radius:14px;
 
-    padding:35px;
-
-    height:100%;
+    padding:28px;
 
     box-shadow:0 8px 22px rgba(0,0,0,.12);
 
-    transition:all .3s ease;
+    transition:.3s;
+
+    display:flex;
+    flex-direction:column;
 
 }
 
