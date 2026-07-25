@@ -662,3 +662,21 @@ nav a{
     color:var(--primary-light);
 
 }
+
+/* ==========================
+   HINWEISKARTE
+========================== */
+
+.card.highlight{
+
+    border-top:6px solid #d4a017;
+
+    background:#fffdf7;
+
+}
+
+.card.highlight h3{
+
+    color:#8a6a00;
+
+}
