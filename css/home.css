@@ -177,17 +177,20 @@ nav a.active{
 
 }
 
+
 /* ==========================
-   UNTERSEITEN
+   STANDARD SEITENKOPF
 ========================== */
 
 .page-header{
 
     max-width:1100px;
 
-    margin:60px auto 40px;
+    margin:60px auto 50px;
 
     padding:0 20px;
+
+    text-align:center;
 
 }
 
@@ -203,13 +206,15 @@ nav a.active{
 
 .page-header p{
 
+    max-width:850px;
+
+    margin:0 auto 15px;
+
     font-size:18px;
 
-    line-height:1.8;
+    line-height:1.7;
 
     color:#555;
-
-    max-width:900px;
 
 }
 
