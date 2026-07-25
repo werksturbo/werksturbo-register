@@ -668,3 +668,33 @@ nav a{
 
 }
 
+/* ==========================
+   KONTAKT
+========================== */
+
+.mail{
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin:30px 0;
+
+}
+
+.mail a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+}
+
+.mail a:hover{
+
+    text-decoration:underline;
+
+}
+
