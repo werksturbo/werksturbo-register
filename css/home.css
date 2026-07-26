@@ -394,6 +394,16 @@ nav a.active{
     font-size:16px;
 
 }
+.card ul{
+    margin:20px 0;
+    padding-left:40px;
+}
+
+.card li{
+    margin-bottom:10px;
+    line-height:1.6;
+}
+
 
 /* ==========================
    BILDKARTEN
