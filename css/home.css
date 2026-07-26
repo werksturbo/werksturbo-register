@@ -417,6 +417,44 @@ nav a.active{
 }
 
 /* ==========================
+   BREITE KARTE
+========================== */
+
+.card-wide{
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    padding:30px 40px;
+
+}
+
+.card-wide h3{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.card-wide p{
+
+    max-width:700px;
+
+    margin:0 auto 20px;
+
+    line-height:1.8;
+
+}
+
+.card-wide .mail{
+
+    margin:25px 0;
+
+}
+
+/* ==========================
    FOOTER
 ========================== */
 
