@@ -477,7 +477,7 @@ nav a.active{
 
 footer{
 
-    background:#243746;
+    background:var(--primary);
 
     color:#fff;
 
