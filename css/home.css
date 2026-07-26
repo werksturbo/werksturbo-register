@@ -426,7 +426,7 @@ nav a.active{
 
     margin:0 auto;
 
-    padding:30px 40px;
+    padding:25px 40px;
 
 }
 
@@ -434,7 +434,7 @@ nav a.active{
 
     text-align:center;
 
-    margin-bottom:25px;
+    margin-bottom:18px;
 
 }
 
@@ -442,15 +442,15 @@ nav a.active{
 
     max-width:700px;
 
-    margin:0 auto 20px;
+    margin:0 auto 12px;
 
-    line-height:1.8;
+    line-height:1.6;
 
 }
 
 .card-wide .mail{
 
-    margin:25px 0;
+    margin:18px 0;
 
 }
 
