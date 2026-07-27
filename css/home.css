@@ -481,6 +481,47 @@ nav a.active{
     text-decoration:underline;
 
 }
+
+.card-knowledge{
+
+    display:flex;
+    align-items:center;
+    gap:35px;
+
+}
+
+.card-knowledge img{
+
+    width:240px;
+    height:160px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    flex-shrink:0;
+
+}
+
+.knowledge-content{
+
+    flex:1;
+
+}
+
+.knowledge-content h3{
+
+    margin-top:0;
+
+}
+
+.knowledge-content p{
+
+    text-align:left;
+
+}
+
+
 /* ==========================
    FOOTER
 ========================== */
