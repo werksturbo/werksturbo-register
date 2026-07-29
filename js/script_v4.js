@@ -958,7 +958,13 @@ function closeLightbox(){
     image.onerror = null;
 
     loader.style.display = "none";
-
+	
+	// Galerie zurücksetzen
+	APP.gallery.active = false;
+	APP.gallery.images = [];
+	APP.gallery.index = 0;
+	APP.gallery.title = "";
+	
     lightbox.classList.remove("show");
 
     setTimeout(()=>{
