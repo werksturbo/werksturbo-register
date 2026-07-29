@@ -822,19 +822,56 @@ function initLightbox() {
 }
 
 
+/******************************************************************
+ * Navigation Lightbox
+ ******************************************************************/
+
 document
 .getElementById("prevImage")
-.addEventListener("click",()=>{
+.addEventListener("click", () => {
 
-    showVehicle(APP.currentIndex-1);
+    // Galerie-Modus
+    if (APP.gallery.active) {
+
+        if (APP.gallery.index > 0) {
+
+            APP.gallery.index--;
+
+            openLightbox(APP.gallery.images[APP.gallery.index]);
+
+        }
+
+        return;
+
+    }
+
+    // Fahrzeugregister
+    showVehicle(APP.currentIndex - 1);
 
 });
 
+
 document
 .getElementById("nextImage")
-.addEventListener("click",()=>{
+.addEventListener("click", () => {
 
-    showVehicle(APP.currentIndex+1);
+    // Galerie-Modus
+    if (APP.gallery.active) {
+
+        if (APP.gallery.index < APP.gallery.images.length - 1) {
+
+            APP.gallery.index++;
+
+            openLightbox(APP.gallery.images[APP.gallery.index]);
+
+        }
+
+        return;
+
+    }
+
+    // Fahrzeugregister
+    showVehicle(APP.currentIndex + 1);
 
 });
 
