@@ -938,9 +938,29 @@ function openLightbox(url){
 
     };
 
-    image.src = getImageLink(url);
+// ----------------------------------------------------------
+// Bildquelle bestimmen
+// ----------------------------------------------------------
 
-    download.href = url;
+let imageSource;
+
+// Galerie verwendet bereits den fertigen Bildpfad
+if (APP.gallery.active) {
+
+    imageSource = url;
+
+} else {
+
+    // Fahrzeugregister benutzt getImageLink()
+    imageSource = getImageLink(url);
+
+}
+
+// Bild laden
+image.src = imageSource;
+
+// Download-Link
+download.href = imageSource;
 
 }
 
