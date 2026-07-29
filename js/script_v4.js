@@ -70,21 +70,33 @@ const APP = {
 
     currentImage: "",
 
-   currentRow: null,
+    currentRow: null,
 
     currentIndex: 0,
 
-    filters:{
+    filters: {
 
-        search:"",
-        country:"",
-        status:"",
-        year:""
+        search: "",
+        country: "",
+        status: "",
+        year: ""
+
+    },
+	
+    // ==========================================================
+    // Lightbox 2.0 - Galerie
+    // ==========================================================
+    gallery: {
+
+        active: false,
+
+        images: [],
+
+        index: 0,
+
+        title: ""
 
     }
-
-
-
 
 };
 
