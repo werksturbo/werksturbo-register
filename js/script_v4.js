@@ -754,88 +754,40 @@ function statusFormatter(cell) {
  * Tabelle erzeugen
  ******************************************************************/
 
-function buildTable() {
+    APP.table = new Tabulator("#registerTable", {
 
-    console.log("========== buildTable() gestartet ==========");
+    data: APP.data,
 
-    // Existiert bereits eine Tabelle?
-    console.log("APP.table vor destroy:", APP.table);
+    columns: buildColumns(),
 
-    if (APP.table) {
-        console.log("Vor destroy()");
-        APP.table.destroy();
-        console.log("Nach destroy()");
-    } else {
-        console.log("Keine bestehende Tabelle vorhanden.");
-    }
+    layout: "fitDataTable",
 
-    console.log("Vor new Tabulator");
+    rowHeight: 60,
 
-    try {
+    pagination: true,
 
-        APP.table = new Tabulator("#registerTable", {
+    paginationSize: CONFIG.pageSize,
 
-            data: APP.data,
+    movableColumns: true,
 
-            columns: buildColumns(),
+    resizableColumns: true,
 
-            layout: "fitDataTable",
+    responsiveLayout: false,
 
-            rowHeight: 60,
+    placeholder: "Keine Fahrzeuge gefunden"
 
-            pagination: true,
+});
 
-            paginationSize: CONFIG.pageSize,
+console.log("Nach new Tabulator");
 
-            movableColumns: true,
+// Tabelle einmal komplett zeichnen lassen
+requestAnimationFrame(() => {
 
-            resizableColumns: true,
+    console.log("requestAnimationFrame");
 
-            responsiveLayout: false,
+    buildRegisterGallery();
 
-            placeholder: "Keine Fahrzeuge gefunden",
-
-            tableBuilt: function () {
-
-                console.log(">>> tableBuilt Callback wurde aufgerufen");
-
-                console.log("APP.table =", APP.table);
-
-                console.log("Vor buildRegisterGallery()");
-
-                try {
-
-                    buildRegisterGallery();
-
-                    console.log("Nach buildRegisterGallery()");
-
-                } catch (err) {
-
-                    console.error("Fehler in buildRegisterGallery():", err);
-
-                }
-
-            }
-
-        });
-
-        console.log("Nach new Tabulator");
-		console.log("Anzahl aktive Zeilen:",
-    APP.table.getRows("active").length);
-
-console.log("Anzahl aller Zeilen:",
-    APP.table.getRows().length);
-        console.log("APP.table nach Erzeugung:", APP.table);
-
-    } catch (err) {
-
-        console.error("Fehler beim Erzeugen der Tabelle:", err);
-
-    }
-
-    console.log("========== buildTable() beendet ==========");
-
-}
+});
 /******************************************************************
  * Galerie für die Werksturbo-Lightbox aufbauen
  ******************************************************************/
