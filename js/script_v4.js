@@ -124,9 +124,14 @@ async function init() {
         // Fahrzeugzähler
         updateCounter();
 
+
+console.log("vor Aufruf tabelle build");
+		
         // Tabelle aufbauen
         buildTable();
 
+console.log("nach Aufruf tabelle build");
+		
         // Suche initialisieren
         initSearch();
 
