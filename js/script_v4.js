@@ -777,14 +777,11 @@ console.log("tableBuilt wurde aufgerufen");
 
 		tableBuilt: function () {
 
-    console.log("tableBuilt wurde aufgerufen");
-
-    console.log("Typ:", typeof buildRegisterGallery);
-    console.log("Inhalt:", buildRegisterGallery);
+    console.log("vor dem Aufruf");
 
     buildRegisterGallery();
 
-    console.log("Aufruf beendet");
+    console.log("nach dem Aufruf");
 }
 
     });
