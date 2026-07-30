@@ -1,144 +1,79 @@
 /*!
----------------------------------------------------------
-Lightbox 4.0
-Modul 1 - Gallery Manager
-Ford Capri Werksturbo Register
----------------------------------------------------------
-*/
+ * ==========================================================
+ * Werksturbo Lightbox
+ * Version 4.0.0
+ *
+ * Ford Capri Werksturbo Register
+ *
+ * Autor:
+ * Udo Schneider
+ * ChatGPT
+ *
+ * ==========================================================
+ */
 
 "use strict";
 
-class GalleryManager {
+class WerksturboLightbox {
 
-    constructor() {
+    constructor(options = {}) {
+
+        this.version = "4.0.0";
+
+        this.options = Object.assign({
+
+            preload: true,
+            keyboard: true,
+            closeOnOverlay: true,
+            loop: false,
+            animationSpeed: 250
+
+        }, options);
+
+        /* ------------------------------
+           Galerieverwaltung
+        ------------------------------ */
+
         this.galleries = new Map();
-    }
 
-    /**
-     * Neue Galerie anlegen
-     */
-    register(name, images = []) {
+        this.currentGallery = null;
 
-        if (!name)
-            throw new Error("Galeriename fehlt.");
+        this.currentImages = [];
 
-        this.galleries.set(name, images);
+        this.currentIndex = 0;
 
-        return this;
+        /* ------------------------------
+           Status
+        ------------------------------ */
 
-    }
+        this.isOpen = false;
 
-    /**
-     * Galerie abrufen
-     */
-    get(name) {
+        this.isLoading = false;
 
-        return this.galleries.get(name) || [];
+        /* ------------------------------
+           DOM Elemente
+        ------------------------------ */
 
-    }
+        this.dom = {
 
-    /**
-     * Existiert Galerie?
-     */
-    has(name) {
+            lightbox: null,
+            image: null,
+            loader: null,
 
-        return this.galleries.has(name);
+            close: null,
+            previous: null,
+            next: null,
 
-    }
+            info: null,
 
-    /**
-     * Galerie löschen
-     */
-    remove(name) {
+            lnr: null,
+            chassis: null,
+            land: null,
+            status: null,
+            counter: null,
 
-        this.galleries.delete(name);
+            download: null
 
-    }
-
-    /**
-     * Alle Galerien löschen
-     */
-    clear() {
-
-        this.galleries.clear();
+        };
 
     }
-
-    /**
-     * Bild hinzufügen
-     */
-    addImage(name, image) {
-
-        if (!this.has(name))
-            this.register(name);
-
-        this.galleries.get(name).push(image);
-
-    }
-
-    /**
-     * Anzahl Bilder
-     */
-    count(name) {
-
-        return this.get(name).length;
-
-    }
-
-    /**
-     * Einzelnes Bild
-     */
-    image(name, index) {
-
-        return this.get(name)[index] || null;
-
-    }
-
-    /**
-     * Nächstes Bild
-     */
-    next(name, index) {
-
-        const gallery = this.get(name);
-
-        if (!gallery.length)
-            return null;
-
-        index++;
-
-        if (index >= gallery.length)
-            index = gallery.length - 1;
-
-        return gallery[index];
-
-    }
-
-    /**
-     * Vorheriges Bild
-     */
-    previous(name, index) {
-
-        const gallery = this.get(name);
-
-        if (!gallery.length)
-            return null;
-
-        index--;
-
-        if (index < 0)
-            index = 0;
-
-        return gallery[index];
-
-    }
-
-    /**
-     * Alle Galerien
-     */
-    list() {
-
-        return [...this.galleries.keys()];
-
-    }
-
-}
