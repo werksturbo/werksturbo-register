@@ -1084,7 +1084,11 @@ function showVehicle(index){
     const row = APP.currentRow.getData();
 
     // Neue Werksturbo-Lightbox öffnen
-    Lightbox.openRegisterRow(row, APP.photoColumn);
+    Lightbox.openRegisterRow(
+    rows,
+    index,
+    APP.photoColumn
+);
 
 }
 
