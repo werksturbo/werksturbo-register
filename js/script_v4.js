@@ -745,7 +745,7 @@ function statusFormatter(cell) {
 
 function buildTable() {
 
-console.log("tableBuilt wurde aufgerufen");	
+console.log("tableBuilt gestartet");	
 	
     if (APP.table) {
 
