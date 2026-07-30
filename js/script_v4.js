@@ -750,54 +750,81 @@ function statusFormatter(cell) {
 
 function buildTable() {
 
-console.log("tableBuilt gestartet");	
-	
-    if (APP.table) {
+    console.log("========== buildTable() gestartet ==========");
 
+    // Existiert bereits eine Tabelle?
+    console.log("APP.table vor destroy:", APP.table);
+
+    if (APP.table) {
+        console.log("Vor destroy()");
         APP.table.destroy();
+        console.log("Nach destroy()");
+    } else {
+        console.log("Keine bestehende Tabelle vorhanden.");
+    }
+
+    console.log("Vor new Tabulator");
+
+    try {
+
+        APP.table = new Tabulator("#registerTable", {
+
+            data: APP.data,
+
+            columns: buildColumns(),
+
+            layout: "fitDataTable",
+
+            rowHeight: 60,
+
+            pagination: true,
+
+            paginationSize: CONFIG.pageSize,
+
+            movableColumns: true,
+
+            resizableColumns: true,
+
+            responsiveLayout: false,
+
+            placeholder: "Keine Fahrzeuge gefunden",
+
+            tableBuilt: function () {
+
+                console.log(">>> tableBuilt Callback wurde aufgerufen");
+
+                console.log("APP.table =", APP.table);
+
+                console.log("Vor buildRegisterGallery()");
+
+                try {
+
+                    buildRegisterGallery();
+
+                    console.log("Nach buildRegisterGallery()");
+
+                } catch (err) {
+
+                    console.error("Fehler in buildRegisterGallery():", err);
+
+                }
+
+            }
+
+        });
+
+        console.log("Nach new Tabulator");
+        console.log("APP.table nach Erzeugung:", APP.table);
+
+    } catch (err) {
+
+        console.error("Fehler beim Erzeugen der Tabelle:", err);
 
     }
 
-console.log("Vor new Tabulator");
-	
-    APP.table = new Tabulator("#registerTable", {
-
-
-		
-        data: APP.data,
-
-        columns: buildColumns(),
-
-        layout: "fitDataTable",
-
-        rowHeight: 60,
-
-        pagination: true,
-
-        paginationSize: CONFIG.pageSize,
-
-        movableColumns: true,
-
-        resizableColumns: true,
-
-        responsiveLayout: false,
-
-        placeholder: "Keine Fahrzeuge gefunden",
-
-		tableBuilt: function () {
-
-	console.log("nach new Tabulator");	
-    console.log("vor dem Aufruf");
-
-    buildRegisterGallery();
-
-    console.log("nach dem Aufruf");
-}
-
-    });
+    console.log("========== buildTable() beendet ==========");
 
 }
-
 /******************************************************************
  * Galerie für die Werksturbo-Lightbox aufbauen
  ******************************************************************/
