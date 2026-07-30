@@ -1,0 +1,144 @@
+/*!
+---------------------------------------------------------
+Lightbox 4.0
+Modul 1 - Gallery Manager
+Ford Capri Werksturbo Register
+---------------------------------------------------------
+*/
+
+"use strict";
+
+class GalleryManager {
+
+    constructor() {
+        this.galleries = new Map();
+    }
+
+    /**
+     * Neue Galerie anlegen
+     */
+    register(name, images = []) {
+
+        if (!name)
+            throw new Error("Galeriename fehlt.");
+
+        this.galleries.set(name, images);
+
+        return this;
+
+    }
+
+    /**
+     * Galerie abrufen
+     */
+    get(name) {
+
+        return this.galleries.get(name) || [];
+
+    }
+
+    /**
+     * Existiert Galerie?
+     */
+    has(name) {
+
+        return this.galleries.has(name);
+
+    }
+
+    /**
+     * Galerie löschen
+     */
+    remove(name) {
+
+        this.galleries.delete(name);
+
+    }
+
+    /**
+     * Alle Galerien löschen
+     */
+    clear() {
+
+        this.galleries.clear();
+
+    }
+
+    /**
+     * Bild hinzufügen
+     */
+    addImage(name, image) {
+
+        if (!this.has(name))
+            this.register(name);
+
+        this.galleries.get(name).push(image);
+
+    }
+
+    /**
+     * Anzahl Bilder
+     */
+    count(name) {
+
+        return this.get(name).length;
+
+    }
+
+    /**
+     * Einzelnes Bild
+     */
+    image(name, index) {
+
+        return this.get(name)[index] || null;
+
+    }
+
+    /**
+     * Nächstes Bild
+     */
+    next(name, index) {
+
+        const gallery = this.get(name);
+
+        if (!gallery.length)
+            return null;
+
+        index++;
+
+        if (index >= gallery.length)
+            index = gallery.length - 1;
+
+        return gallery[index];
+
+    }
+
+    /**
+     * Vorheriges Bild
+     */
+    previous(name, index) {
+
+        const gallery = this.get(name);
+
+        if (!gallery.length)
+            return null;
+
+        index--;
+
+        if (index < 0)
+            index = 0;
+
+        return gallery[index];
+
+    }
+
+    /**
+     * Alle Galerien
+     */
+    list() {
+
+        return [...this.galleries.keys()];
+
+    }
+
+}
