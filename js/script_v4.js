@@ -758,8 +758,12 @@ console.log("tableBuilt gestartet");
 
     }
 
+console.log("Vor new Tabulator");
+	
     APP.table = new Tabulator("#registerTable", {
 
+console.log("nach new Tabulator");
+		
         data: APP.data,
 
         columns: buildColumns(),
