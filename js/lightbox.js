@@ -22,7 +22,7 @@ class WerksturboLightbox {
 
         this.options = Object.assign({
 
-            preload: false,
+            preload: true,
             keyboard: true,
             closeOnOverlay: true,
             loop: false,
