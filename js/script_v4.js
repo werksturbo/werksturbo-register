@@ -828,6 +828,8 @@ function buildRegisterGallery() {
 
     console.log("Register-Galerie aufgebaut:", gallery.length, "Bilder");
 
+	console.log("Register-Galerie:", gallery);
+
 }
 
 
