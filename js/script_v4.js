@@ -876,6 +876,50 @@ document
 });
 
 /******************************************************************
+ * Wissensdatenbank-Galerien
+ ******************************************************************/
+
+const KNOWLEDGE_GALLERIES = {
+
+    motorcode: [
+
+        "../images/wissensdb/motorcode_gross.jpg"
+
+    ],
+
+    karosseriefarbe: [
+
+        "../images/wissensdb/farbe00.jpg",
+        "../images/wissensdb/farbe01.jpg",
+        "../images/wissensdb/farbe02.jpg",
+        "../images/wissensdb/farbe03.jpg"
+    ]
+
+};
+
+/******************************************************************
+ * Galerie anhand ihres Namens öffnen
+ ******************************************************************/
+
+function openKnowledgeGallery(name, startIndex = 0, title = "") {
+
+    const images = KNOWLEDGE_GALLERIES[name];
+
+    if (!images) {
+
+        console.warn("Galerie nicht gefunden:", name);
+
+        return;
+
+    }
+
+    openGallery(images, startIndex, title);
+
+}
+
+
+
+/******************************************************************
  * Galerie öffnen (Lightbox 2.0)
  ******************************************************************/
 
