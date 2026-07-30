@@ -229,5 +229,134 @@ class WerksturboLightbox {
 
     }
 
+    /* ===========================================
+       Galerieverwaltung
+    =========================================== */
+
+    registerGallery(name, images = []) {
+
+        if (!name) {
+            console.error("Lightbox: Galerie benötigt einen Namen.");
+            return;
+        }
+
+        if (!Array.isArray(images)) {
+            console.error("Lightbox: Bilder müssen als Array übergeben werden.");
+            return;
+        }
+
+        this.galleries.set(name, images);
+
+    }
+
+    getGallery(name) {
+
+        return this.galleries.get(name) || [];
+
+    }
+
+    /* ===========================================
+       Lightbox öffnen / schließen
+    =========================================== */
+
+    open(galleryName, index = 0) {
+
+        const gallery = this.getGallery(galleryName);
+
+        if (gallery.length === 0) {
+
+            console.warn(`Lightbox: Galerie "${galleryName}" ist leer oder existiert nicht.`);
+            return;
+
+        }
+
+        this.currentGallery = galleryName;
+        this.currentImages = gallery;
+        this.currentIndex = index;
+
+        this.isOpen = true;
+
+        this.dom.lightbox.style.display = "flex";
+
+        document.body.style.overflow = "hidden";
+
+        this.showImage();
+
+    }
+
+    close() {
+
+        this.isOpen = false;
+
+        this.dom.lightbox.style.display = "none";
+
+        document.body.style.overflow = "";
+
+        this.currentGallery = null;
+        this.currentImages = [];
+        this.currentIndex = 0;
+
+    }
+
+    toggle() {
+
+        if (this.isOpen)
+            this.close();
+        else
+            console.warn("Lightbox: toggle() kann nur verwendet werden, wenn bereits eine Galerie geöffnet wurde.");
+
+    }
+
+    /* ===========================================
+       Navigation
+    =========================================== */
+
+    next() {
+
+        if (!this.currentImages.length)
+            return;
+
+        if (this.currentIndex < this.currentImages.length - 1) {
+
+            this.currentIndex++;
+
+        } else if (this.options.loop) {
+
+            this.currentIndex = 0;
+
+        } else {
+
+            return;
+
+        }
+
+        this.showImage();
+
+    }
+
+    previous() {
+
+        if (!this.currentImages.length)
+            return;
+
+        if (this.currentIndex > 0) {
+
+            this.currentIndex--;
+
+        } else if (this.options.loop) {
+
+            this.currentIndex = this.currentImages.length - 1;
+
+        } else {
+
+            return;
+
+        }
+
+        this.showImage();
+
+    }
+
+
 }
 
