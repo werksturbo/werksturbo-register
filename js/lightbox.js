@@ -491,18 +491,25 @@ class WerksturboLightbox {
 
     }
 
-    /* ===========================================
-       Modul 5 Register-Adapter
-    =========================================== */
+  /* ===========================================
+   Register-Adapter
+=========================================== */
 
-    openRegisterRow(row, photoColumn = "Foto") {
+openRegisterRow(rows, index, photoColumn = "Foto") {
 
-        if (!row) {
-            console.error("Lightbox: Kein Register-Datensatz übergeben.");
-            return;
-        }
+    if (!rows || rows.length === 0) {
+        console.error("Lightbox: Keine Registerdaten vorhanden.");
+        return;
+    }
 
-        const imageData = {
+    this.currentGallery = "register";
+    this.currentImages = [];
+
+    rows.forEach(tabRow => {
+
+        const row = tabRow.getData();
+
+        this.currentImages.push({
 
             src: row[photoColumn] || "",
 
@@ -518,17 +525,15 @@ class WerksturboLightbox {
 
             raw: row
 
-        };
+        });
 
-        this.currentGallery = "register";
+    });
 
-        this.currentImages = [imageData];
+    this.currentIndex = index;
 
-        this.currentIndex = 0;
+    this.openCurrentImage();
 
-        this.openCurrentImage();
-
-    }
+}
 
 
   /* ===========================================
