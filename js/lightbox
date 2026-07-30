@@ -357,6 +357,148 @@ class WerksturboLightbox {
 
     }
 
+    /* ===========================================
+       Bild anzeigen
+    =========================================== */
+
+    showImage() {
+
+        if (!this.currentImages.length)
+            return;
+
+        const imageData = this.currentImages[this.currentIndex];
+
+        if (!imageData)
+            return;
+
+        this.showLoader();
+
+        const img = new Image();
+
+        img.onload = () => {
+
+            this.dom.image.src = imageData.src;
+
+            this.dom.image.alt = imageData.title || "";
+
+            this.hideLoader();
+
+            this.updateInfo(imageData);
+
+            this.updateCounter();
+
+            this.updateDownload(imageData);
+
+            this.preload();
+
+        };
+
+        img.onerror = () => {
+
+            this.hideLoader();
+
+            console.error("Lightbox: Bild konnte nicht geladen werden:", imageData.src);
+
+        };
+
+        img.src = imageData.src;
+
+    }
+
+    /* ===========================================
+       Informationen aktualisieren
+    =========================================== */
+
+    updateInfo(imageData) {
+
+        if (this.dom.lnr)
+            this.dom.lnr.textContent = imageData.lnr || "-";
+
+        if (this.dom.chassis)
+            this.dom.chassis.textContent = imageData.chassis || "-";
+
+        if (this.dom.land)
+            this.dom.land.textContent = imageData.country || "-";
+
+        if (this.dom.status)
+            this.dom.status.textContent = imageData.status || "-";
+
+    }
+
+
+ /* ===========================================
+       Modul 4b – Bildzähler
+    =========================================== */
+
+
+    updateCounter() {
+
+        if (!this.dom.counter)
+            return;
+
+        this.dom.counter.textContent =
+            (this.currentIndex + 1) + " / " + this.currentImages.length;
+
+    }
+
+ /* ===========================================
+      Modul 4c – Downloadbutton
+    =========================================== */
+
+    updateDownload(imageData) {
+
+        if (!this.dom.download)
+            return;
+
+        this.dom.download.href = imageData.src;
+
+        this.dom.download.download = "";
+
+    }
+
+ /* ===========================================
+     Modul 4d – Loader
+    =========================================== */
+
+
+
+    showLoader() {
+
+        if (this.dom.loader)
+            this.dom.loader.style.display = "block";
+
+    }
+
+    hideLoader() {
+
+        if (this.dom.loader)
+            this.dom.loader.style.display = "none";
+
+    }
+
+
+ /* ===========================================
+     Modul 4e – Vorladen des nächsten Bildes
+    =========================================== */
+
+
+    preload() {
+
+        if (!this.options.preload)
+            return;
+
+        const nextIndex = this.currentIndex + 1;
+
+        if (nextIndex >= this.currentImages.length)
+            return;
+
+        const img = new Image();
+
+        img.src = this.currentImages[nextIndex].src;
+
+    }
+
+
 
 }
 
