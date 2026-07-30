@@ -788,11 +788,14 @@ function buildTable() {
  ******************************************************************/
 
 function buildRegisterGallery() {
-
-    if (!APP.table) {
+console.log("buildRegisterGallery gestartet");
+    
+	if (!APP.table) {
         return;
     }
+	
 
+	
     const rows = APP.table.getRows("active");
 
     const gallery = [];
@@ -827,6 +830,8 @@ function buildRegisterGallery() {
     Lightbox.registerGallery("register", gallery);
 
     console.log("Register-Galerie aufgebaut:", gallery.length, "Bilder");
+
+	console.log("Register-Galerie aufgebaut:", gallery.length);
 
 }
 
