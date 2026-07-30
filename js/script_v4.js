@@ -820,6 +820,11 @@ function buildTable() {
         });
 
         console.log("Nach new Tabulator");
+		console.log("Anzahl aktive Zeilen:",
+    APP.table.getRows("active").length);
+
+console.log("Anzahl aller Zeilen:",
+    APP.table.getRows().length);
         console.log("APP.table nach Erzeugung:", APP.table);
 
     } catch (err) {
