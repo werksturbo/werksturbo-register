@@ -771,7 +771,7 @@ function buildTable() {
 
         responsiveLayout: false,
 
-        placeholder: "Keine Fahrzeuge gefunden"
+        placeholder: "Keine Fahrzeuge gefunden",
 
 		tableBuilt: function () {
 
