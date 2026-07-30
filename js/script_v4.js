@@ -786,6 +786,7 @@ console.log("Vor new Tabulator");
 
 		tableBuilt: function () {
 
+	console.log("nach new Tabulator");	
     console.log("vor dem Aufruf");
 
     buildRegisterGallery();
@@ -794,7 +795,7 @@ console.log("Vor new Tabulator");
 }
 
     });
-console.log("nach new Tabulator");
+
 }
 
 /******************************************************************
