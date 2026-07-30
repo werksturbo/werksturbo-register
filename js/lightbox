@@ -553,3 +553,5 @@ class WerksturboLightbox {
 
 }
 
+const Lightbox = new WerksturboLightbox();
+Lightbox.init();
