@@ -773,9 +773,64 @@ function buildTable() {
 
         placeholder: "Keine Fahrzeuge gefunden"
 
+		tableBuilt: function () {
+
+        buildRegisterGallery();
+
+    }
+
     });
 
 }
+
+/******************************************************************
+ * Galerie für die Werksturbo-Lightbox aufbauen
+ ******************************************************************/
+
+function buildRegisterGallery() {
+
+    if (!APP.table) {
+        return;
+    }
+
+    const rows = APP.table.getRows("active");
+
+    const gallery = [];
+
+    rows.forEach(tabRow => {
+
+        const row = tabRow.getData();
+
+        // Nur Fahrzeuge mit Bild übernehmen
+        if (!row[APP.photoColumn]) {
+            return;
+        }
+
+        gallery.push({
+
+            src: row[APP.photoColumn],
+
+            lnr: row.Lnr || "",
+
+            chassis: row.Chassis || "",
+
+            country: row.Land || "",
+
+            status: row.Status || "",
+
+            raw: row
+
+        });
+
+    });
+
+    Lightbox.registerGallery("register", gallery);
+
+    console.log("Register-Galerie aufgebaut:", gallery.length, "Bilder");
+
+}
+
+
 
 
 /******************************************************************
