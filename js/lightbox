@@ -77,3 +77,166 @@ class WerksturboLightbox {
         };
 
     }
+
+class WerksturboLightbox {
+
+    /* ===========================================
+       Konstruktor
+    =========================================== */
+
+    constructor() {
+
+    }
+
+    /* ===========================================
+       Initialisierung
+    =========================================== */
+
+        init() {
+
+        this.cacheDom();
+
+        this.bindEvents();
+
+        console.info(
+
+            "Werksturbo Lightbox",
+
+            this.version,
+
+            "initialisiert"
+
+        );
+
+    }
+    /* ===========================================
+       DOM
+    =========================================== */
+
+    cacheDom() {
+
+        this.dom.lightbox = document.getElementById("lightbox");
+
+        this.dom.image = document.getElementById("lightboxImage");
+
+        this.dom.loader = document.getElementById("lightboxLoader");
+
+        this.dom.close = document.getElementById("closeLightbox");
+
+        this.dom.previous = document.getElementById("prevImage");
+
+        this.dom.next = document.getElementById("nextImage");
+
+        this.dom.info = document.getElementById("lightboxInfo");
+
+        this.dom.lnr = document.getElementById("lbLnr");
+
+        this.dom.chassis = document.getElementById("lbChassis");
+
+        this.dom.land = document.getElementById("lbLand");
+
+        this.dom.status = document.getElementById("lbStatus");
+
+        this.dom.counter = document.getElementById("lbCounter");
+
+        this.dom.download = document.getElementById("downloadImage");
+
+    }
+
+        checkDom() {
+
+        const missing = [];
+
+        for (const key in this.dom) {
+
+            if (this.dom[key] === null)
+
+                missing.push(key);
+
+        }
+
+        if (missing.length) {
+
+            console.error(
+
+                "Lightbox: Fehlende HTML Elemente:",
+
+                missing.join(", ")
+
+            );
+
+            return false;
+
+        }
+
+        return true;
+
+    }
+
+    /* ===========================================
+       Events
+    =========================================== */
+
+        bindEvents() {
+
+        if (!this.checkDom())
+
+            return;
+
+        this.dom.close.addEventListener("click", () => this.close());
+
+        this.dom.previous.addEventListener("click", () => this.previous());
+
+        this.dom.next.addEventListener("click", () => this.next());
+
+        if (this.options.closeOnOverlay) {
+
+            this.dom.lightbox.addEventListener("click", (event) => {
+
+                if (event.target === this.dom.lightbox)
+
+                    this.close();
+
+            });
+
+        }
+
+        if (this.options.keyboard) {
+
+            document.addEventListener("keydown", (event) => {
+
+                if (!this.isOpen)
+
+                    return;
+
+                switch (event.key) {
+
+                    case "Escape":
+
+                        this.close();
+
+                        break;
+
+                    case "ArrowLeft":
+
+                        this.previous();
+
+                        break;
+
+                    case "ArrowRight":
+
+                        this.next();
+
+                        break;
+
+                }
+
+            });
+
+        }
+
+    }
+
+}
+
+}
