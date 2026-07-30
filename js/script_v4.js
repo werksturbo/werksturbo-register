@@ -560,6 +560,9 @@ async function loadCSV() {
 
 function buildColumns() {
 
+console.log("APP.photoColumn =", APP.photoColumn);
+console.log("APP.headers =", APP.headers);
+	
     const columns = [];
 
     // ---------------------------------------------------------
@@ -693,6 +696,9 @@ columns.push({
 });
     });
 
+console.log("Anzahl Spalten:", columns.length);
+console.log(columns);
+	
     return columns;
 
 }
