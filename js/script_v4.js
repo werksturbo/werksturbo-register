@@ -1082,11 +1082,8 @@ function showVehicle(index){
     // Datensatz der Zeile
     const row = APP.currentRow.getData();
 
-    // Bild anzeigen
-    openLightbox(row[APP.photoColumn]);
-
-    // Zusatzinformationen
-    updateLightboxInfo(row);
+    // Neue Werksturbo-Lightbox öffnen
+    Lightbox.openRegisterRow(row, APP.photoColumn);
 
 }
 
