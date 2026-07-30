@@ -762,7 +762,7 @@ console.log("Vor new Tabulator");
 	
     APP.table = new Tabulator("#registerTable", {
 
-console.log("nach new Tabulator");
+
 		
         data: APP.data,
 
@@ -794,7 +794,7 @@ console.log("nach new Tabulator");
 }
 
     });
-
+console.log("nach new Tabulator");
 }
 
 /******************************************************************
