@@ -78,15 +78,6 @@ class WerksturboLightbox {
 
     }
 
-class WerksturboLightbox {
-
-    /* ===========================================
-       Konstruktor
-    =========================================== */
-
-    constructor() {
-
-    }
 
     /* ===========================================
        Initialisierung
@@ -239,4 +230,3 @@ class WerksturboLightbox {
 
 }
 
-}
