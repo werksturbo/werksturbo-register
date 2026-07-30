@@ -745,6 +745,8 @@ function statusFormatter(cell) {
 
 function buildTable() {
 
+console.log("tableBuilt wurde aufgerufen");	
+	
     if (APP.table) {
 
         APP.table.destroy();
