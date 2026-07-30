@@ -893,7 +893,14 @@ const KNOWLEDGE_GALLERIES = {
         "../images/wissensdb/farbe01.jpg",
         "../images/wissensdb/farbe02.jpg",
         "../images/wissensdb/farbe03.jpg"
-    ]
+    ],
+
+  motorcode: [
+
+        "../images/wissensdb/nr_kardantunnel_gross.jpg"
+
+    ],
+	
 
 };
 
@@ -1042,11 +1049,6 @@ function closeLightbox(){
     },250);
 
 }
-
-
-/******************************************************************
- * Fahrzeug anzeigen
- ******************************************************************/
 
 
 /******************************************************************
