@@ -393,7 +393,7 @@ class WerksturboLightbox {
             console.error("Lightbox: Bild konnte nicht geladen werden:", imageData.src);
 
         };
-
+console.log("Lightbox lädt:", imageData.src);
         img.src = imageData.src;
 
     }
