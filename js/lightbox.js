@@ -281,7 +281,13 @@ class WerksturboLightbox {
 
         this.isOpen = false;
 
+        this.dom.lightbox.classList.remove("show");
+
+        setTimeout(() => {
         this.dom.lightbox.style.display = "none";
+        }, 250);
+
+        
 
         document.body.style.overflow = "";
 
