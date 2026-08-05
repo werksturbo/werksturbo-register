@@ -804,15 +804,20 @@ function buildTable() {
  ******************************************************************/
 
 function buildRegisterGallery() {
-console.log("buildRegisterGallery gestartet");
-    
-	if (!APP.table) {
+
+    if (!APP.table) {
         return;
     }
-	
 
-	
     const rows = APP.table.getRows("active");
+
+    if (!rows || rows.length === 0) {
+
+        Lightbox.registerGallery("register", []);
+
+        return;
+
+    }
 
     const gallery = [];
 
@@ -820,14 +825,17 @@ console.log("buildRegisterGallery gestartet");
 
         const row = tabRow.getData();
 
-        // Nur Fahrzeuge mit Bild übernehmen
-        if (!row[APP.photoColumn]) {
+        const image = row[APP.photoColumn];
+
+        if (!image) {
             return;
         }
 
         gallery.push({
 
-            src: row[APP.photoColumn],
+            src: image,
+
+            raw: row,
 
             lnr: row.Lnr || "",
 
@@ -835,19 +843,13 @@ console.log("buildRegisterGallery gestartet");
 
             country: row.Land || "",
 
-            status: row.Status || "",
-
-            raw: row
+            status: row.Status || ""
 
         });
 
     });
 
     Lightbox.registerGallery("register", gallery);
-
-    console.log("Register-Galerie aufgebaut:", gallery.length, "Bilder");
-
-	console.log("Register-Galerie aufgebaut:", gallery.length);
 
 }
 
