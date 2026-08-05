@@ -367,67 +367,62 @@ function fillSelect(selectId,column){
 
 
 /******************************************************************
- * Alle Filter anwenden
+ * Filter anwenden
  ******************************************************************/
 
 function applyFilters() {
 
     APP.table.setFilter(function (row) {
 
-        // --------------------------------------------------------
-        // Volltextsuche (Mehrwortsuche)
-        // --------------------------------------------------------
-
+        // Volltextsuche
         if (APP.filters.search) {
 
             const text = JSON.stringify(row).toLowerCase();
 
-            // Suchtext in einzelne Wörter zerlegen
             const words = APP.filters.search
                 .toLowerCase()
                 .split(/\s+/)
                 .filter(word => word.length > 0);
 
-            // Alle Wörter müssen vorkommen
             for (const word of words) {
 
                 if (!text.includes(word)) {
-
                     return false;
-
                 }
 
             }
 
         }
 
-        // --------------------------------------------------------
         // Land
-        // --------------------------------------------------------
+        if (APP.filters.country &&
+            row[COLUMNS.country] !== APP.filters.country) {
 
-        if (APP.filters.country) {
-
-            if (row[COLUMNS.country] !== APP.filters.country) {
-
-                return false;
-
-            }
+            return false;
 
         }
 
-        // --------------------------------------------------------
         // Status
-        // --------------------------------------------------------
+        if (APP.filters.status &&
+            row[COLUMNS.status] !== APP.filters.status) {
 
-        if (APP.filters.status) {
-
-            if (row[COLUMNS.status] !== APP.filters.status) {
-
-                return false;
-
-            }
+            return false;
 
         }
+
+        // Baujahr
+        if (APP.filters.year &&
+            row[COLUMNS.year] !== APP.filters.year) {
+
+            return false;
+
+        }
+
+        return true;
+
+    });
+
+}
 
         // --------------------------------------------------------
         // Baujahr
