@@ -372,6 +372,9 @@ class WerksturboLightbox {
 
             this.dom.image.src = imageData.src;
 
+            this.dom.image.style.display = "block";
+            this.dom.image.style.visibility = "visible";
+
             this.dom.image.alt = imageData.title || "";
 
             this.hideLoader();
