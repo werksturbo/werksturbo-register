@@ -539,6 +539,7 @@ openRegisterRow(rows, index, photoColumn = "Foto") {
         this.isOpen = true;
 
         this.dom.lightbox.style.display = "flex";
+        this.dom.lightbox.classList.add("show");
 
         console.log("Lightbox sichtbar");
         console.log("Bild:", this.currentImages[this.currentIndex].src);
