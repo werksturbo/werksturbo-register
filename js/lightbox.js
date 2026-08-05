@@ -350,56 +350,44 @@ class WerksturboLightbox {
 
     }
 
-    /* ===========================================
-       Bild anzeigen
-    =========================================== */
+showImage() {
 
-    showImage() {
+    if (!this.currentImages.length)
+        return;
 
-        if (!this.currentImages.length)
-            return;
+    const imageData = this.currentImages[this.currentIndex];
 
-        const imageData = this.currentImages[this.currentIndex];
+    if (!imageData)
+        return;
 
-        if (!imageData)
-            return;
+    this.showLoader();
 
-        this.showLoader();
+    // Direkt das sichtbare Bild verwenden
+    this.dom.image.onload = () => {
 
-        const img = new Image();
+        this.hideLoader();
 
-        img.onload = () => {
+        this.updateInfo(imageData);
 
-            this.dom.image.src = imageData.src;
+        this.updateCounter();
 
-            this.dom.image.style.display = "block";
-            this.dom.image.style.visibility = "visible";
+        this.updateDownload(imageData);
 
-            this.dom.image.alt = imageData.title || "";
+        this.preload();
 
-            this.hideLoader();
+    };
 
-            this.updateInfo(imageData);
+    this.dom.image.onerror = () => {
 
-            this.updateCounter();
+        this.hideLoader();
 
-            this.updateDownload(imageData);
+        console.error("Bild konnte nicht geladen werden:", imageData.src);
 
-            this.preload();
+    };
 
-        };
+    this.dom.image.src = imageData.src;
 
-        img.onerror = () => {
-
-            this.hideLoader();
-
-            console.error("Lightbox: Bild konnte nicht geladen werden:", imageData.src);
-
-        };
-console.log("Lightbox lädt:", imageData.src);
-        img.src = imageData.src;
-
-    }
+}
 
     /* ===========================================
        Informationen aktualisieren
