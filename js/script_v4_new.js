@@ -1,7 +1,7 @@
 /******************************************************************
  *
  * CAPRI REGISTER
- * Version 4.1
+ * Version 4.4
  *
  * CSV + Tabulator + Lightbox
  *
@@ -53,7 +53,6 @@ const COLUMNS = {
 
 };
 
-
 /******************************************************************
  * Globale Anwendung
  ******************************************************************/
@@ -74,6 +73,8 @@ const APP = {
 
     currentIndex: 0,
 
+    visibleData: [],
+
     filters: {
 
         search: "",
@@ -82,10 +83,7 @@ const APP = {
         year: ""
 
     },
-	
-    // ==========================================================
-    // Lightbox 2.0 - Galerie
-    // ==========================================================
+
     gallery: {
 
         active: false,
@@ -112,40 +110,27 @@ document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
 
-    console.log("Capri Register V4.3.5 gestartet");
+    console.log("Capri Register V4.4 gestartet");
 
     setStatus("CSV wird geladen ...");
 
     try {
 
-        // CSV laden
         await loadCSV();
 
-        // Fahrzeugzähler
         updateCounter();
 
-
-console.log("vor Aufruf tabelle build");
-		
-        // Tabelle aufbauen
         buildTable();
 
-console.log("nach Aufruf tabelle build");
-		
-        // Suche initialisieren
         initSearch();
 
-        // Filter initialisieren
         initFilters();
 
-        // Lightbox initialisieren
         initLightbox();
 
-        // Trefferzähler aktualisieren
         updateResultCounter();
 
-	// Aktuell sichtbare Fahrzeuge merken
-	APP.visibleData = APP.table.getData("active");
+        APP.visibleData = APP.table.getData("active");
 
         setStatus("CSV erfolgreich geladen");
 
@@ -160,7 +145,6 @@ console.log("nach Aufruf tabelle build");
     }
 
 }
-
 /******************************************************************
  * Status
  ******************************************************************/
@@ -754,40 +738,73 @@ function statusFormatter(cell) {
  * Tabelle erzeugen
  ******************************************************************/
 
+function buildTable() {
+
+    // Alte Tabelle entfernen
+    if (APP.table) {
+        APP.table.destroy();
+        APP.table = null;
+    }
+
+    // Neue Tabelle erzeugen
     APP.table = new Tabulator("#registerTable", {
 
-    data: APP.data,
+        data: APP.data,
 
-    columns: buildColumns(),
+        columns: buildColumns(),
 
-    layout: "fitDataTable",
+        layout: "fitDataTable",
 
-    rowHeight: 60,
+        rowHeight: 60,
 
-    pagination: true,
+        pagination: true,
 
-    paginationSize: CONFIG.pageSize,
+        paginationSize: CONFIG.pageSize,
 
-    movableColumns: true,
+        movableColumns: true,
 
-    resizableColumns: true,
+        resizableColumns: true,
 
-    responsiveLayout: false,
+        responsiveLayout: false,
 
-    placeholder: "Keine Fahrzeuge gefunden"
+        placeholder: "Keine Fahrzeuge gefunden"
 
-});
+    });
 
-console.log("Nach new Tabulator");
+    // Galerie erst nach dem ersten Rendern aufbauen
+    requestAnimationFrame(() => {
 
-// Tabelle einmal komplett zeichnen lassen
-requestAnimationFrame(() => {
+        buildRegisterGallery();
 
-    console.log("requestAnimationFrame");
+    });
 
-    buildRegisterGallery();
+    // Nach jedem Seitenwechsel Galerie aktualisieren
+    APP.table.on("pageLoaded", function () {
 
-});
+        buildRegisterGallery();
+
+        updateResultCounter();
+
+    });
+
+    // Nach jeder Datenänderung Galerie aktualisieren
+    APP.table.on("dataFiltered", function () {
+
+        buildRegisterGallery();
+
+        updateResultCounter();
+
+    });
+
+    // Nach jeder Sortierung Galerie aktualisieren
+    APP.table.on("dataSorted", function () {
+
+        buildRegisterGallery();
+
+    });
+
+}
+
 /******************************************************************
  * Galerie für die Werksturbo-Lightbox aufbauen
  ******************************************************************/
