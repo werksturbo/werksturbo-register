@@ -368,7 +368,13 @@ showImage() {
 
     this.showLoader();
 
-    // Direkt das sichtbare Bild verwenden
+    // Alte Events entfernen
+    this.dom.image.onload = null;
+    this.dom.image.onerror = null;
+
+    // Bild vollständig zurücksetzen
+    this.dom.image.removeAttribute("src");
+
     this.dom.image.onload = () => {
 
         this.hideLoader();
@@ -391,7 +397,12 @@ showImage() {
 
     };
 
-    this.dom.image.src = imageData.src;
+    // Browser einen Tick warten lassen
+    requestAnimationFrame(() => {
+
+        this.dom.image.src = imageData.src;
+
+    });
 
 }
 
