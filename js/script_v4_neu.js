@@ -514,13 +514,10 @@ async function loadCSV() {
 
 function buildColumns() {
 
-console.log("APP.photoColumn =", APP.photoColumn);
-console.log("APP.headers =", APP.headers);
-	
     const columns = [];
 
     // ---------------------------------------------------------
-    // 1. Foto-Spalte IMMER zuerst
+    // 1. Foto-Spalte
     // ---------------------------------------------------------
 
     if (APP.photoColumn) {
@@ -541,34 +538,39 @@ console.log("APP.headers =", APP.headers);
 
             formatter: photoFormatter,
 
-cellClick(e, cell) {
+            cellClick(e, cell) {
 
-    const rows = APP.table.getRows("active");
-    const index = rows.indexOf(cell.getRow());
+                const rows = APP.table.getRows("active");
+                const index = rows.indexOf(cell.getRow());
 
-    if (index < 0) {
-        return;
+                if (index < 0) {
+                    return;
+                }
+
+                APP.currentIndex = index;
+                APP.currentRow = cell.getRow();
+
+                Lightbox.openRegisterRow(
+                    rows,
+                    index,
+                    APP.photoColumn
+                );
+
+            }
+
+        });
+
     }
 
-    APP.currentIndex = index;
-    APP.currentRow = cell.getRow();
-
-    // Register-Lightbox mit kompletter aktueller Fahrzeugliste öffnen
-    Lightbox.openRegisterRow(
-        rows,
-        index,
-        APP.photoColumn
-    );
-}
-}); 
     // ---------------------------------------------------------
-    // 2. Alle übrigen Spalten
+    // Restliche Spalten
     // ---------------------------------------------------------
 
     APP.headers.forEach(header => {
 
-        // Foto-Spalte überspringen
-        if (header === APP.photoColumn) return;
+        if (header === APP.photoColumn) {
+            return;
+        }
 
         const h = header.trim().toLowerCase();
 
@@ -610,51 +612,37 @@ cellClick(e, cell) {
 
         }
 
+        columns.push({
 
-console.log("Header:", header);
+            title: header,
 
+            field: header,
 
+            width: width,
 
-columns.push({
+            headerSort: true,
 
-    title: header,
+            frozen:
+                header === COLUMNS.number ||
+                header === COLUMNS.chassis,
 
-    field: header,
+            formatter:
 
-    width: width,
+                header.trim().toLowerCase() === COLUMNS.status.toLowerCase()
+                    ? statusFormatter
 
-    headerSort: true,
+                : header.trim().toLowerCase() === COLUMNS.owner.toLowerCase()
+                    ? ownerFormatter
 
-    // Erste Spalten fixieren
-    frozen: (
-        header === COLUMNS.number ||
-        header === COLUMNS.chassis
-    ),
+                : undefined
 
-    // Formatter
-    formatter:
+        });
 
-        // Status
-        (header.trim().toLowerCase() === COLUMNS.status.toLowerCase())
-            ? statusFormatter
-
-        // Eigentümer
-        : (header.trim().toLowerCase() === COLUMNS.owner.toLowerCase())
-            ? ownerFormatter
-
-        // Standard
-        : undefined
-
-});
     });
 
-console.log("Anzahl Spalten:", columns.length);
-console.log(columns);
-	
     return columns;
 
 }
-
 /******************************************************************
  * Eigentümer-Formatter
  ******************************************************************/
