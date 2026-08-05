@@ -541,27 +541,25 @@ console.log("APP.headers =", APP.headers);
 
             formatter: photoFormatter,
 
-cellClick(e, cell){
+cellClick(e, cell) {
 
-    // Aktuell sichtbare Zeilen
     const rows = APP.table.getRows("active");
+    const index = rows.indexOf(cell.getRow());
 
-    // Position der angeklickten Zeile bestimmen
-    APP.currentIndex = rows.indexOf(cell.getRow());
+    if (index < 0) {
+        return;
+    }
 
+    APP.currentIndex = index;
     APP.currentRow = cell.getRow();
 
-    const row = APP.currentRow.getData();
-
-    openLightbox(row[APP.photoColumn]);
-
-    updateLightboxInfo(row);
-
+    // Register-Lightbox mit kompletter aktueller Fahrzeugliste öffnen
+    Lightbox.openRegisterRow(
+        rows,
+        index,
+        APP.photoColumn
+    );
 }
-
-        });
-
-    }
 
     // ---------------------------------------------------------
     // 2. Alle übrigen Spalten
