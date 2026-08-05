@@ -511,7 +511,7 @@ openRegisterRow(rows, index, photoColumn = "Foto") {
 
         this.currentImages.push({
 
-            src: row[photoColumn] || "",
+            src: getImageLink(row[photoColumn]),
 
             title: row.Fahrzeug || row.Bezeichnung || "",
 
