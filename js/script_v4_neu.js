@@ -698,8 +698,10 @@ function buildTable() {
 
     // Alte Tabelle entfernen
     if (APP.table) {
+
         APP.table.destroy();
         APP.table = null;
+
     }
 
     // Neue Tabelle erzeugen
@@ -727,35 +729,71 @@ function buildTable() {
 
     });
 
-    // Galerie erst nach dem ersten Rendern aufbauen
+    // ---------------------------------------------------------
+    // Galerie nach dem ersten Zeichnen aufbauen
+    // ---------------------------------------------------------
+
     requestAnimationFrame(() => {
 
         buildRegisterGallery();
 
+        APP.visibleData = APP.table.getData("active");
+
+        updateResultCounter();
+
     });
 
-    // Nach jedem Seitenwechsel Galerie aktualisieren
+    // ---------------------------------------------------------
+    // Nach Seitenwechsel
+    // ---------------------------------------------------------
+
     APP.table.on("pageLoaded", function () {
 
         buildRegisterGallery();
 
+        APP.visibleData = APP.table.getData("active");
+
         updateResultCounter();
 
     });
 
-    // Nach jeder Datenänderung Galerie aktualisieren
+    // ---------------------------------------------------------
+    // Nach Filter
+    // ---------------------------------------------------------
+
     APP.table.on("dataFiltered", function () {
 
         buildRegisterGallery();
 
+        APP.visibleData = APP.table.getData("active");
+
         updateResultCounter();
 
     });
 
-    // Nach jeder Sortierung Galerie aktualisieren
+    // ---------------------------------------------------------
+    // Nach Sortierung
+    // ---------------------------------------------------------
+
     APP.table.on("dataSorted", function () {
 
         buildRegisterGallery();
+
+        APP.visibleData = APP.table.getData("active");
+
+    });
+
+    // ---------------------------------------------------------
+    // Nach Änderung der Daten
+    // ---------------------------------------------------------
+
+    APP.table.on("dataChanged", function () {
+
+        buildRegisterGallery();
+
+        APP.visibleData = APP.table.getData("active");
+
+        updateResultCounter();
 
     });
 
