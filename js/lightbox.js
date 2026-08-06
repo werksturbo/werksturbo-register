@@ -279,24 +279,27 @@ class WerksturboLightbox {
 
     close() {
 
-        this.isOpen = false;
+    this.isOpen = false;
 
-        this.dom.lightbox.classList.remove("show");
+    this.dom.lightbox.classList.remove("show");
 
-        setTimeout(() => {
+    // Bild vollständig zurücksetzen
+    this.dom.image.onload = null;
+    this.dom.image.onerror = null;
+    this.dom.image.removeAttribute("src");
+    this.dom.image.style.display = "none";
+
+    setTimeout(() => {
         this.dom.lightbox.style.display = "none";
-        }, 250);
+    }, 250);
 
-        
+    document.body.style.overflow = "";
 
-        document.body.style.overflow = "";
+    this.currentGallery = null;
+    this.currentImages = [];
+    this.currentIndex = 0;
 
-        this.currentGallery = null;
-        this.currentImages = [];
-        this.currentIndex = 0;
-
-    }
-
+}
     toggle() {
 
         if (this.isOpen)
