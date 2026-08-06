@@ -380,7 +380,7 @@ showImage() {
     this.dom.image.removeAttribute("src");
 
     console.log("1 - showImage Start");
-   
+
     this.dom.image.onload = () => {
    
     console.log("2 - onload");
