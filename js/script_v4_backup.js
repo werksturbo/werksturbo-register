@@ -1,7 +1,7 @@
 /******************************************************************
  *
  * CAPRI REGISTER
- * Version 4.1
+ * Version 4.4
  *
  * CSV + Tabulator + Lightbox
  *
@@ -53,7 +53,6 @@ const COLUMNS = {
 
 };
 
-
 /******************************************************************
  * Globale Anwendung
  ******************************************************************/
@@ -74,6 +73,8 @@ const APP = {
 
     currentIndex: 0,
 
+    visibleData: [],
+
     filters: {
 
         search: "",
@@ -82,10 +83,7 @@ const APP = {
         year: ""
 
     },
-	
-    // ==========================================================
-    // Lightbox 2.0 - Galerie
-    // ==========================================================
+
     gallery: {
 
         active: false,
@@ -112,35 +110,27 @@ document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
 
-    console.log("Capri Register V4.3.5 gestartet");
+    console.log("Capri Register V4.4 gestartet");
 
     setStatus("CSV wird geladen ...");
 
     try {
 
-        // CSV laden
         await loadCSV();
 
-        // Fahrzeugzähler
         updateCounter();
 
-        // Tabelle aufbauen
         buildTable();
 
-        // Suche initialisieren
         initSearch();
 
-        // Filter initialisieren
         initFilters();
 
-        // Lightbox initialisieren
         initLightbox();
 
-        // Trefferzähler aktualisieren
         updateResultCounter();
 
-	// Aktuell sichtbare Fahrzeuge merken
-	APP.visibleData = APP.table.getData("active");
+        APP.visibleData = APP.table.getData("active");
 
         setStatus("CSV erfolgreich geladen");
 
@@ -155,7 +145,6 @@ async function init() {
     }
 
 }
-
 /******************************************************************
  * Status
  ******************************************************************/
@@ -378,79 +367,54 @@ function fillSelect(selectId,column){
 
 
 /******************************************************************
- * Alle Filter anwenden
+ * Filter anwenden
  ******************************************************************/
 
 function applyFilters() {
 
     APP.table.setFilter(function (row) {
 
-        // --------------------------------------------------------
-        // Volltextsuche (Mehrwortsuche)
-        // --------------------------------------------------------
-
+        // Volltextsuche
         if (APP.filters.search) {
 
             const text = JSON.stringify(row).toLowerCase();
 
-            // Suchtext in einzelne Wörter zerlegen
             const words = APP.filters.search
                 .toLowerCase()
                 .split(/\s+/)
                 .filter(word => word.length > 0);
 
-            // Alle Wörter müssen vorkommen
             for (const word of words) {
 
                 if (!text.includes(word)) {
-
                     return false;
-
                 }
 
             }
 
         }
 
-        // --------------------------------------------------------
         // Land
-        // --------------------------------------------------------
+        if (APP.filters.country &&
+            row[COLUMNS.country] !== APP.filters.country) {
 
-        if (APP.filters.country) {
-
-            if (row[COLUMNS.country] !== APP.filters.country) {
-
-                return false;
-
-            }
+            return false;
 
         }
 
-        // --------------------------------------------------------
         // Status
-        // --------------------------------------------------------
+        if (APP.filters.status &&
+            row[COLUMNS.status] !== APP.filters.status) {
 
-        if (APP.filters.status) {
-
-            if (row[COLUMNS.status] !== APP.filters.status) {
-
-                return false;
-
-            }
+            return false;
 
         }
 
-        // --------------------------------------------------------
         // Baujahr
-        // --------------------------------------------------------
+        if (APP.filters.year &&
+            row[COLUMNS.year] !== APP.filters.year) {
 
-        if (APP.filters.year) {
-
-            if (row[COLUMNS.year] !== APP.filters.year) {
-
-                return false;
-
-            }
+            return false;
 
         }
 
@@ -458,14 +422,9 @@ function applyFilters() {
 
     });
 
-    // --------------------------------------------------------
-    // Trefferzähler aktualisieren
-    // --------------------------------------------------------
-
-
-    updateResultCounter();
-
 }
+
+
 /******************************************************************
  * Filter zurücksetzen
  ******************************************************************/
@@ -558,7 +517,7 @@ function buildColumns() {
     const columns = [];
 
     // ---------------------------------------------------------
-    // 1. Foto-Spalte IMMER zuerst
+    // 1. Foto-Spalte
     // ---------------------------------------------------------
 
     if (APP.photoColumn) {
@@ -579,36 +538,39 @@ function buildColumns() {
 
             formatter: photoFormatter,
 
-cellClick(e, cell){
+            cellClick(e, cell) {
 
-    // Aktuell sichtbare Zeilen
-    const rows = APP.table.getRows("active");
+                const rows = APP.table.getRows("active");
+                const index = rows.indexOf(cell.getRow());
 
-    // Position der angeklickten Zeile bestimmen
-    APP.currentIndex = rows.indexOf(cell.getRow());
+                if (index < 0) {
+                    return;
+                }
 
-    APP.currentRow = cell.getRow();
+                APP.currentIndex = index;
+                APP.currentRow = cell.getRow();
 
-    const row = APP.currentRow.getData();
+                Lightbox.openRegisterRow(
+                    rows,
+                    index,
+                    APP.photoColumn
+                );
 
-    openLightbox(row[APP.photoColumn]);
-
-    updateLightboxInfo(row);
-
-}
+            }
 
         });
 
     }
 
     // ---------------------------------------------------------
-    // 2. Alle übrigen Spalten
+    // Restliche Spalten
     // ---------------------------------------------------------
 
     APP.headers.forEach(header => {
 
-        // Foto-Spalte überspringen
-        if (header === APP.photoColumn) return;
+        if (header === APP.photoColumn) {
+            return;
+        }
 
         const h = header.trim().toLowerCase();
 
@@ -650,48 +612,37 @@ cellClick(e, cell){
 
         }
 
+        columns.push({
 
-console.log("Header:", header);
+            title: header,
 
+            field: header,
 
+            width: width,
 
-columns.push({
+            headerSort: true,
 
-    title: header,
+            frozen:
+                header === COLUMNS.number ||
+                header === COLUMNS.chassis,
 
-    field: header,
+            formatter:
 
-    width: width,
+                header.trim().toLowerCase() === COLUMNS.status.toLowerCase()
+                    ? statusFormatter
 
-    headerSort: true,
+                : header.trim().toLowerCase() === COLUMNS.owner.toLowerCase()
+                    ? ownerFormatter
 
-    // Erste Spalten fixieren
-    frozen: (
-        header === COLUMNS.number ||
-        header === COLUMNS.chassis
-    ),
+                : undefined
 
-    // Formatter
-    formatter:
+        });
 
-        // Status
-        (header.trim().toLowerCase() === COLUMNS.status.toLowerCase())
-            ? statusFormatter
-
-        // Eigentümer
-        : (header.trim().toLowerCase() === COLUMNS.owner.toLowerCase())
-            ? ownerFormatter
-
-        // Standard
-        : undefined
-
-});
     });
 
     return columns;
 
 }
-
 /******************************************************************
  * Eigentümer-Formatter
  ******************************************************************/
@@ -745,12 +696,15 @@ function statusFormatter(cell) {
 
 function buildTable() {
 
+    // Alte Tabelle entfernen
     if (APP.table) {
 
         APP.table.destroy();
+        APP.table = null;
 
     }
 
+    // Neue Tabelle erzeugen
     APP.table = new Tabulator("#registerTable", {
 
         data: APP.data,
@@ -775,7 +729,132 @@ function buildTable() {
 
     });
 
+    // ---------------------------------------------------------
+    // Galerie nach dem ersten Zeichnen aufbauen
+    // ---------------------------------------------------------
+
+    requestAnimationFrame(() => {
+
+        buildRegisterGallery();
+
+        APP.visibleData = APP.table.getData("active");
+
+        updateResultCounter();
+
+    });
+
+    // ---------------------------------------------------------
+    // Nach Seitenwechsel
+    // ---------------------------------------------------------
+
+    APP.table.on("pageLoaded", function () {
+
+        buildRegisterGallery();
+
+        APP.visibleData = APP.table.getData("active");
+
+        updateResultCounter();
+
+    });
+
+    // ---------------------------------------------------------
+    // Nach Filter
+    // ---------------------------------------------------------
+
+    APP.table.on("dataFiltered", function () {
+
+        buildRegisterGallery();
+
+        APP.visibleData = APP.table.getData("active");
+
+        updateResultCounter();
+
+    });
+
+    // ---------------------------------------------------------
+    // Nach Sortierung
+    // ---------------------------------------------------------
+
+    APP.table.on("dataSorted", function () {
+
+        buildRegisterGallery();
+
+        APP.visibleData = APP.table.getData("active");
+
+    });
+
+    // ---------------------------------------------------------
+    // Nach Änderung der Daten
+    // ---------------------------------------------------------
+
+    APP.table.on("dataChanged", function () {
+
+        buildRegisterGallery();
+
+        APP.visibleData = APP.table.getData("active");
+
+        updateResultCounter();
+
+    });
+
 }
+
+/******************************************************************
+ * Galerie für die Werksturbo-Lightbox aufbauen
+ ******************************************************************/
+
+function buildRegisterGallery() {
+
+    if (!APP.table) {
+        return;
+    }
+
+    const rows = APP.table.getRows("active");
+
+    if (!rows || rows.length === 0) {
+
+        Lightbox.registerGallery("register", []);
+
+        return;
+
+    }
+
+    const gallery = [];
+
+    rows.forEach(tabRow => {
+
+        const row = tabRow.getData();
+
+        const image = row[APP.photoColumn];
+
+        if (!image) {
+            return;
+        }
+
+        gallery.push({
+
+            src: image,
+
+            raw: row,
+
+            lnr: row.Lnr || "",
+
+            chassis: row.Chassis || "",
+
+            country: row.Land || "",
+
+            status: row.Status || ""
+
+        });
+
+    });
+
+    Lightbox.registerGallery("register", gallery);
+
+}
+
+
+
 
 /******************************************************************
  * Lightbox initialisieren
@@ -785,35 +864,93 @@ function initLightbox() {
 
     const lightbox = document.getElementById("lightbox");
     const closeBtn = document.getElementById("closeLightbox");
+    const prevBtn = document.getElementById("prevImage");
+    const nextBtn = document.getElementById("nextImage");
 
     if (!lightbox || !closeBtn) {
 
         console.warn("Lightbox-Elemente nicht gefunden.");
-
         return;
 
     }
 
+    // ----------------------------------------------------------
     // Schließen über X
+    // ----------------------------------------------------------
+
     closeBtn.addEventListener("click", closeLightbox);
 
+
+    // ----------------------------------------------------------
     // Schließen über Hintergrund
+    // ----------------------------------------------------------
+
     lightbox.addEventListener("click", function (e) {
 
         if (e.target === lightbox) {
-
             closeLightbox();
-
         }
 
     });
 
-    // ESC
+
+    // ----------------------------------------------------------
+    // Linker Pfeil
+    // ----------------------------------------------------------
+
+    if (prevBtn) {
+
+        prevBtn.addEventListener("click", function (e) {
+
+            e.stopPropagation();
+
+            navigateLightbox(-1);
+
+        });
+
+    }
+
+
+    // ----------------------------------------------------------
+    // Rechter Pfeil
+    // ----------------------------------------------------------
+
+    if (nextBtn) {
+
+        nextBtn.addEventListener("click", function (e) {
+
+            e.stopPropagation();
+
+            navigateLightbox(1);
+
+        });
+
+    }
+
+
+    // ----------------------------------------------------------
+    // Tastatur
+    // ----------------------------------------------------------
+
     document.addEventListener("keydown", function (e) {
+
+        if (!isLightboxOpen()) {
+            return;
+        }
 
         if (e.key === "Escape") {
 
             closeLightbox();
+
+        } else if (e.key === "ArrowLeft") {
+
+            e.preventDefault();
+            navigateLightbox(-1);
+
+        } else if (e.key === "ArrowRight") {
+
+            e.preventDefault();
+            navigateLightbox(1);
 
         }
 
@@ -823,57 +960,81 @@ function initLightbox() {
 
 
 /******************************************************************
- * Navigation Lightbox
+ * Prüfen, ob Lightbox geöffnet ist
  ******************************************************************/
 
-document
-.getElementById("prevImage")
-.addEventListener("click", () => {
+function isLightboxOpen() {
 
-    // Galerie-Modus
+    const lightbox = document.getElementById("lightbox");
+
+    if (!lightbox) {
+        return false;
+    }
+
+    return lightbox.classList.contains("show") ||
+           lightbox.style.display === "flex";
+
+}
+
+
+/******************************************************************
+ * Lightbox Navigation
+ ******************************************************************/
+
+function navigateLightbox(direction) {
+
+    // ----------------------------------------------------------
+    // Wissensdatenbank-Galerie
+    // ----------------------------------------------------------
+
     if (APP.gallery.active) {
 
-        if (APP.gallery.index > 0) {
+        const images = APP.gallery.images;
 
-            APP.gallery.index--;
+        if (!images || images.length === 0) {
+            return;
+        }
 
-            openLightbox(APP.gallery.images[APP.gallery.index]);
+        APP.gallery.index += direction;
+
+        // Zyklische Navigation
+        if (APP.gallery.index < 0) {
+            APP.gallery.index = images.length - 1;
+        }
+
+        if (APP.gallery.index >= images.length) {
+            APP.gallery.index = 0;
+        }
+
+        const item = images[APP.gallery.index];
+
+        // Galerie kann Strings oder Objekte enthalten
+        if (typeof item === "string") {
+
+            openLightbox(item);
+
+        } else if (item && item.src) {
+
+            openLightbox(item.src);
+
+            if (item.raw) {
+                updateLightboxInfo(item.raw);
+            }
 
         }
 
         return;
-
     }
 
+
+    // ----------------------------------------------------------
     // Fahrzeugregister
-    showVehicle(APP.currentIndex - 1);
+    // ----------------------------------------------------------
 
-});
+    showVehicle(APP.currentIndex + direction);
 
+}
 
-document
-.getElementById("nextImage")
-.addEventListener("click", () => {
-
-    // Galerie-Modus
-    if (APP.gallery.active) {
-
-        if (APP.gallery.index < APP.gallery.images.length - 1) {
-
-            APP.gallery.index++;
-
-            openLightbox(APP.gallery.images[APP.gallery.index]);
-
-        }
-
-        return;
-
-    }
-
-    // Fahrzeugregister
-    showVehicle(APP.currentIndex + 1);
-
-});
 
 /******************************************************************
  * Wissensdatenbank-Galerien
@@ -885,24 +1046,12 @@ const KNOWLEDGE_GALLERIES = {
 
         "../images/wissensdb/motorcode_gross.jpg"
 
-    ],
+    ]
 
-    karosseriefarbe: [
-
-        "../images/wissensdb/farbe00.jpg",
-        "../images/wissensdb/farbe01.jpg",
-        "../images/wissensdb/farbe02.jpg",
-        "../images/wissensdb/farbe03.jpg"
-    ],
-
-  motorcode: [
-
-        "../images/wissensdb/nr_kardantunnel_gross.jpg"
-
-    ],
-	
+    // Weitere Galerien bleiben hier wie bisher bestehen.
 
 };
+
 
 /******************************************************************
  * Galerie anhand ihres Namens öffnen
@@ -915,7 +1064,6 @@ function openKnowledgeGallery(name, startIndex = 0, title = "") {
     if (!images) {
 
         console.warn("Galerie nicht gefunden:", name);
-
         return;
 
     }
@@ -925,52 +1073,84 @@ function openKnowledgeGallery(name, startIndex = 0, title = "") {
 }
 
 
-
 /******************************************************************
- * Galerie öffnen (Lightbox 2.0)
+ * Galerie öffnen
  ******************************************************************/
 
 function openGallery(images, startIndex = 0, title = "") {
 
-    if (!images || images.length === 0) return;
+    if (!images || images.length === 0) {
+        return;
+    }
 
-    // Galerie speichern
+    // Index absichern
+    if (startIndex < 0) {
+        startIndex = 0;
+    }
+
+    if (startIndex >= images.length) {
+        startIndex = images.length - 1;
+    }
+
     APP.gallery.active = true;
     APP.gallery.images = images;
     APP.gallery.index = startIndex;
     APP.gallery.title = title;
 
-    // Erstes Bild anzeigen
-    openLightbox(images[startIndex]);
+    const item = images[startIndex];
+
+    if (typeof item === "string") {
+
+        openLightbox(item);
+
+    } else if (item && item.src) {
+
+        openLightbox(item.src);
+
+        if (item.raw) {
+            updateLightboxInfo(item.raw);
+        }
+
+    }
 
 }
+
 
 /******************************************************************
  * Lightbox öffnen
  ******************************************************************/
 
+function openLightbox(url) {
 
-function openLightbox(url){
-
-    if(!url) return;
+    if (!url) {
+        return;
+    }
 
     const lightbox = document.getElementById("lightbox");
     const image = document.getElementById("lightboxImage");
     const loader = document.getElementById("lightboxLoader");
     const download = document.getElementById("downloadImage");
 
+    if (!lightbox || !image) {
+        return;
+    }
+
     // Loader anzeigen
-    loader.style.display = "block";
+    if (loader) {
+        loader.style.display = "block";
+    }
 
     // Bild zunächst ausblenden
     image.style.display = "none";
 
+
     image.onload = () => {
 
-        loader.style.display = "none";
+        if (loader) {
+            loader.style.display = "none";
+        }
 
         image.style.display = "block";
-
         lightbox.style.display = "flex";
 
         requestAnimationFrame(() => {
@@ -981,72 +1161,106 @@ function openLightbox(url){
 
     };
 
+
     image.onerror = () => {
 
-        loader.style.display = "none";
+        if (loader) {
+            loader.style.display = "none";
+        }
 
-        console.error("Bild konnte nicht geladen werden.");
+        console.error(
+            "Bild konnte nicht geladen werden:",
+            image.src
+        );
 
     };
 
-// ----------------------------------------------------------
-// Bildquelle bestimmen
-// ----------------------------------------------------------
 
-let imageSource;
+    // ----------------------------------------------------------
+    // Bildquelle bestimmen
+    // ----------------------------------------------------------
 
-// Galerie verwendet bereits den fertigen Bildpfad
-if (APP.gallery.active) {
+    let imageSource;
 
-    imageSource = url;
+    if (APP.gallery.active) {
 
-} else {
+        // Wissensdatenbank-Galerie:
+        // fertiger Bildpfad
+        imageSource = url;
 
-    // Fahrzeugregister benutzt getImageLink()
-    imageSource = getImageLink(url);
+    } else {
+
+        // Fahrzeugregister:
+        // CSV-Bildpfad umwandeln
+        imageSource = getImageLink(url);
+
+    }
+
+
+    // ----------------------------------------------------------
+    // Bild laden
+    // ----------------------------------------------------------
+
+    image.src = imageSource;
+
+
+    // ----------------------------------------------------------
+    // Download-Link
+    // ----------------------------------------------------------
+
+    if (download) {
+        download.href = imageSource;
+    }
 
 }
 
-// Bild laden
-image.src = imageSource;
-
-// Download-Link
-download.href = imageSource;
-
-}
 
 /******************************************************************
  * Lightbox schließen
  ******************************************************************/
 
-function closeLightbox(){
+function closeLightbox() {
 
     const lightbox = document.getElementById("lightbox");
     const image = document.getElementById("lightboxImage");
     const loader = document.getElementById("lightboxLoader");
 
+    if (!lightbox || !image) {
+        return;
+    }
+
     image.onload = null;
     image.onerror = null;
 
-    loader.style.display = "none";
-	
-	// Galerie zurücksetzen
-	APP.gallery.active = false;
-	APP.gallery.images = [];
-	APP.gallery.index = 0;
-	APP.gallery.title = "";
-	
+    if (loader) {
+        loader.style.display = "none";
+    }
+
+
+    // ----------------------------------------------------------
+    // Galerie-Modus zurücksetzen
+    // ----------------------------------------------------------
+
+    APP.gallery.active = false;
+    APP.gallery.images = [];
+    APP.gallery.index = 0;
+    APP.gallery.title = "";
+
+
+    // ----------------------------------------------------------
+    // Lightbox schließen
+    // ----------------------------------------------------------
+
     lightbox.classList.remove("show");
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         lightbox.style.display = "none";
 
         image.removeAttribute("src");
-
         image.style.display = "none";
 
-    },250);
+    }, 250);
 
 }
 
@@ -1055,65 +1269,99 @@ function closeLightbox(){
  * Fahrzeug in der Lightbox anzeigen
  ******************************************************************/
 
-function showVehicle(index){
+function showVehicle(index) {
 
-    // Aktuell sichtbare Zeilen der Tabelle
-    const rows = APP.table.getRows("active");
-
-    if (!rows || rows.length === 0){
+    if (!APP.table) {
         return;
     }
 
+    const rows = APP.table.getRows("active");
+
+    if (!rows || rows.length === 0) {
+        return;
+    }
+
+
+    // ----------------------------------------------------------
     // Zyklische Navigation
-    if (index < 0){
+    // ----------------------------------------------------------
+
+    if (index < 0) {
         index = rows.length - 1;
     }
 
-    if (index >= rows.length){
+    if (index >= rows.length) {
         index = 0;
     }
 
-    // Aktuellen Index merken
-    APP.currentIndex = index;
 
-    // Aktuelle Tabulator-Zeile merken
+    // ----------------------------------------------------------
+    // Aktuelles Fahrzeug merken
+    // ----------------------------------------------------------
+
+    APP.currentIndex = index;
     APP.currentRow = rows[index];
 
-    // Datensatz der Zeile
-    const row = APP.currentRow.getData();
 
-    // Bild anzeigen
-    openLightbox(row[APP.photoColumn]);
+    // ----------------------------------------------------------
+    // Werksturbo-Lightbox
+    // ----------------------------------------------------------
 
-    // Zusatzinformationen
-    updateLightboxInfo(row);
+    Lightbox.openRegisterRow(
+        rows,
+        index,
+        APP.photoColumn
+    );
 
 }
+
 
 /******************************************************************
  * Lightbox Informationen
  ******************************************************************/
 
-function updateLightboxInfo(row){
+function updateLightboxInfo(row) {
 
-    if(!row) return;
+    if (!row) {
+        return;
+    }
 
-    document.getElementById("lbLnr").textContent =
-        row["Lnr"] || "";
+    const lnr = document.getElementById("lbLnr");
+    const chassis = document.getElementById("lbChassis");
+    const land = document.getElementById("lbLand");
+    const status = document.getElementById("lbStatus");
+    const counter = document.getElementById("lbCounter");
 
-    document.getElementById("lbChassis").textContent =
-        row["Chassis"] || "";
 
-    document.getElementById("lbLand").textContent =
-        row["Land"] || "";
+    if (lnr) {
+        lnr.textContent = row["Lnr"] || "";
+    }
 
-    document.getElementById("lbStatus").textContent =
-        row["Status"] || "";
+    if (chassis) {
+        chassis.textContent = row["Chassis"] || "";
+    }
 
-    const index = APP.data.indexOf(row);
+    if (land) {
+        land.textContent = row["Land"] || "";
+    }
 
-    document.getElementById("lbCounter").textContent =
-        (index + 1) + " / " + APP.data.length;
+    if (status) {
+        status.textContent = row["Status"] || "";
+    }
+
+
+    // ----------------------------------------------------------
+    // Zähler auf Basis der aktuell sichtbaren Fahrzeuge
+    // ----------------------------------------------------------
+
+    if (counter && APP.table) {
+
+        const rows = APP.table.getRows("active");
+
+        counter.textContent =
+            (APP.currentIndex + 1) + " / " + rows.length;
+
+    }
 
 }
 
@@ -1235,3 +1483,5 @@ function getImageLink(url){
     return url;
 
 }
+
+
