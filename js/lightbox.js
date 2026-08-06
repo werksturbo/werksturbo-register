@@ -546,7 +546,6 @@ openRegisterRow(rows, index, photoColumn = "Foto") {
 
 }
 
-
   /* ===========================================
        Neue Hilfsfunktion
     =========================================== */
