@@ -14,6 +14,8 @@
 
 "use strict";
 
+console.log("LIGHTBOX VERSION TEST 17:20");
+
 class WerksturboLightbox {
 
     constructor(options = {}) {
