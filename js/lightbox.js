@@ -379,8 +379,12 @@ showImage() {
     // Bild vollständig zurücksetzen
     this.dom.image.removeAttribute("src");
 
+    console.log("1 - showImage Start");
+   
     this.dom.image.onload = () => {
-
+   
+    console.log("2 - onload");
+       
         this.hideLoader();
         this.dom.image.style.display = "block";
 
@@ -396,6 +400,8 @@ showImage() {
 
     this.dom.image.onerror = () => {
 
+        console.log("3 - onerror");
+
         this.hideLoader();
 
         console.error("Bild konnte nicht geladen werden:", imageData.src);
@@ -407,6 +413,7 @@ showImage() {
 
         this.dom.image.src = imageData.src;
 
+        console.log("4 - src gesetzt:", this.dom.image.src);
     });
 
 }
