@@ -369,6 +369,7 @@ showImage() {
     if (!imageData)
         return;
 
+    this.dom.image.style.display = "none";
     this.showLoader();
 
     // Alte Events entfernen
@@ -381,6 +382,7 @@ showImage() {
     this.dom.image.onload = () => {
 
         this.hideLoader();
+        this.dom.image.style.display = "block";
 
         this.updateInfo(imageData);
 
