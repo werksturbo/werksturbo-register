@@ -14,7 +14,7 @@
 
 "use strict";
 
-console.log("LIGHTBOX VERSION TEST 07.08.26");
+console.log("LIGHTBOX VERSION TEST 07.08.26-02");
 
 class WerksturboLightbox {
 
@@ -320,6 +320,66 @@ createGalleryFromImages(selector, galleryName = "default") {
     this.registerGallery(galleryName, images);
 
 }
+
+/* ===========================================
+   Galerie für einen Container aktivieren
+=========================================== */
+
+enableGalleryContainer(selector) {
+
+    const container = document.querySelector(selector);
+
+    if (!container) {
+
+        console.warn("Lightbox: Container nicht gefunden:", selector);
+
+        return;
+
+    }
+
+    // Galerie-Name aus der ID erzeugen
+    const galleryName =
+        container.id || ("gallery_" + Date.now());
+
+    const images = [];
+
+    const imgElements =
+        container.querySelectorAll("img");
+
+    imgElements.forEach((img, index) => {
+
+        images.push({
+
+            src: img.dataset.full || img.src,
+
+            title: img.dataset.title || img.alt || "",
+
+            description: img.dataset.description || "",
+
+            lnr: "",
+
+            chassis: "",
+
+            country: "",
+
+            status: ""
+
+        });
+
+        img.style.cursor = "zoom-in";
+
+        img.addEventListener("click", () => {
+
+            this.openGallery(galleryName, index);
+
+        });
+
+    });
+
+    this.registerGallery(galleryName, images);
+
+}
+
     
     /* ===========================================
        Lightbox öffnen / schließen
