@@ -347,6 +347,59 @@ enableGallery(selector, galleryName = "default") {
 
 }
 
+/* ===========================================
+   Galerie für einen Container aktivieren
+=========================================== */
+
+enableGalleryContainer(selector) {
+
+    const container = document.querySelector(selector);
+
+    if (!container) {
+
+        console.warn("Lightbox: Container nicht gefunden:", selector);
+
+        return;
+
+    }
+
+    // Galerie-Name = Container-ID
+    const galleryName = container.id;
+
+    if (!galleryName) {
+
+        console.warn("Lightbox: Container besitzt keine ID.");
+
+        return;
+
+    }
+
+    // Alle Bilder innerhalb des Containers
+    const images = container.querySelectorAll("img");
+
+    // Galerie erzeugen
+    this.createGalleryFromImages(
+        selector + " img",
+        galleryName
+    );
+
+    // Klick-Events registrieren
+    images.forEach((img, index) => {
+
+        img.style.cursor = "zoom-in";
+
+        img.addEventListener("click", () => {
+
+            this.openGallery(galleryName, index);
+
+        });
+
+    });
+
+}
+
+
+    
     /* ===========================================
    Galerie für einen Container aktivieren
 =========================================== */
