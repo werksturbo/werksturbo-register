@@ -14,7 +14,7 @@
 
 "use strict";
 
-console.log("LIGHTBOX VERSION TEST 17:20");
+console.log("LIGHTBOX VERSION TEST 07.08.26");
 
 class WerksturboLightbox {
 
