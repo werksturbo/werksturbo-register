@@ -1484,5 +1484,21 @@ function getImageLink(url){
 
 }
 
+function openKnowledgeGallery(name, index = 0, title = "") {
 
+    const gallery = KnowledgeGalleries[name];
+
+    if (!gallery) {
+
+        console.warn("Galerie nicht gefunden:", name);
+
+        return;
+
+    }
+
+    Lightbox.registerGallery(name, gallery);
+
+    Lightbox.openGallery(name, index);
+
+}
 
