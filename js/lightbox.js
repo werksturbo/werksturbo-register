@@ -257,6 +257,70 @@ class WerksturboLightbox {
 
     }
 
+/* ===========================================
+   Galerie öffnen
+=========================================== */
+
+openGallery(name, index = 0) {
+
+    const gallery = this.getGallery(name);
+
+    if (!gallery || gallery.length === 0) {
+
+        console.warn(`Lightbox: Galerie "${name}" ist leer.`);
+
+        return;
+
+    }
+
+    this.currentGallery = name;
+
+    this.currentImages = gallery;
+
+    this.currentIndex = Math.max(
+        0,
+        Math.min(index, gallery.length - 1)
+    );
+
+    this.openCurrentImage();
+
+}
+
+
+/* ===========================================
+   Galerie aus HTML-Bildern erzeugen
+=========================================== */
+
+createGalleryFromImages(selector, galleryName = "default") {
+
+    const images = [];
+
+    document.querySelectorAll(selector).forEach(img => {
+
+        images.push({
+
+            src: img.dataset.full || img.src,
+
+            title: img.dataset.title || img.alt || "",
+
+            description: img.dataset.description || "",
+
+            lnr: "",
+
+            chassis: "",
+
+            country: "",
+
+            status: ""
+
+        });
+
+    });
+
+    this.registerGallery(galleryName, images);
+
+}
+    
     /* ===========================================
        Lightbox öffnen / schließen
     =========================================== */
