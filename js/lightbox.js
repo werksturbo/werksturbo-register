@@ -14,7 +14,7 @@
 
 "use strict";
 
-console.log("LIGHTBOX VERSION Lauffähig");
+console.log("LIGHTBOX VERSION Lauffähig-erste Änderung");
 
 class WerksturboLightbox {
 
