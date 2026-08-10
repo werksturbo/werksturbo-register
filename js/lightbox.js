@@ -80,13 +80,58 @@ class WerksturboLightbox {
 
     }
 
+/******************************************************************
+ * Lightbox HTML erzeugen
+ ******************************************************************/
 
+createLightboxHTML() {
+
+    // Bereits vorhanden?
+    if (document.getElementById("lightbox")) {
+        return;
+    }
+
+    document.body.insertAdjacentHTML("beforeend", `
+
+<div id="lightbox">
+
+    <span id="closeLightbox">&times;</span>
+
+    <div id="lightboxLoader"></div>
+
+    <button id="prevImage" class="lightboxNav">&#10094;</button>
+
+    <img id="lightboxImage" alt="">
+
+    <button id="nextImage" class="lightboxNav">&#10095;</button>
+
+    <div id="lightboxInfo"></div>
+
+    <div class="lightboxToolbar">
+
+        <a id="downloadImage" download>
+            Download
+        </a>
+
+    </div>
+
+</div>
+
+`);
+
+}
+
+
+
+
+    
     /* ===========================================
        Initialisierung
     =========================================== */
 
         init() {
 
+        this.createLightboxHTML();    
         this.cacheDom();
 
         this.bindEvents();
