@@ -595,29 +595,35 @@ openRegisterRow(rows, index, photoColumn = "Foto") {
 
 }
 
-  /* ===========================================
-       Neue Hilfsfunktion
-    =========================================== */
+ openCurrentImage() {
 
-    openCurrentImage() {
+    if (!this.currentImages.length)
+        return;
 
-        if (!this.currentImages.length)
-            return;
+    this.isOpen = true;
 
-        this.isOpen = true;
+    /*
+     * Lightbox sichtbar machen
+     */
+    this.dom.lightbox.style.display = "flex";
 
-        this.dom.lightbox.style.display = "flex";
+    requestAnimationFrame(() => {
+
         this.dom.lightbox.classList.add("show");
 
-        console.log("Lightbox sichtbar");
-        console.log("Bild:", this.currentImages[this.currentIndex].src);
+    });
 
-        document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
-        this.showImage();
+    console.log("Lightbox sichtbar");
+    console.log(
+        "Bild:",
+        this.currentImages[this.currentIndex].src
+    );
 
-    }
+    this.showImage();
 
+}
 
 }
 
