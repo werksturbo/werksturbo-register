@@ -427,6 +427,8 @@ showImage() {
     this.dom.image.removeAttribute("src");
 
     this.dom.image.onload = () => {
+
+ console.log("LIGHTBOX: Bild erfolgreich geladen");
         
         this.hideLoader();
         this.dom.image.style.display = "block";
@@ -443,11 +445,14 @@ showImage() {
 
     this.dom.image.onerror = () => {
 
-        this.hideLoader();
+    console.error(
+        "LIGHTBOX: Bild konnte NICHT geladen werden:",
+        imageData.src
+    );
 
-        console.error("Bild konnte nicht geladen werden:", imageData.src);
+    this.hideLoader();
 
-    };
+};
 
     // Browser einen Tick warten lassen
     requestAnimationFrame(() => {
