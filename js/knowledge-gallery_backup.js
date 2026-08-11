@@ -1,62 +1,54 @@
+"use strict";
+
 /******************************************************************
- * Wissensdatenbank – Bildgalerien
+ * WERKSTURBO WISSENSDATENBANK
+ * Galerie-Verwaltung
+ *
+ * Zuständig ausschließlich für die Bilder der Wissensdatenbank.
+ * Die eigentliche Lightbox-Funktion kommt aus lightbox.js.
  ******************************************************************/
 
-const KnowledgeGalleries = {
+console.log("Knowledge Gallery geladen");
 
-    /* ----------------------------------------------------------
-       Nummer auf dem Kardantunnel
-    ---------------------------------------------------------- */
 
+/******************************************************************
+ * Galerien der Wissensdatenbank
+ ******************************************************************/
+
+const KNOWLEDGE_GALLERIES = {
+
+    /*
+     * Nummer auf dem Kardantunnel
+     */
     kardantunnel: [
 
-        {
-            src: "../images/wissensdb/nr_kardantunnel_gross.jpg",
-            title: "Nummer auf dem Kardantunnel"
-        }
+        "../images/wissensdb/nr_kardantunnel_gross.jpg"
 
     ],
 
 
-    /* ----------------------------------------------------------
-       Karosseriefarbe bei Erstauslieferung
-    ---------------------------------------------------------- */
-
+    /*
+     * Karosseriefarbe bei Erstauslieferung
+     *
+     * Zwei Bilder:
+     * 1. Silber
+     * 2. Weiß
+     */
     karosseriefarbe: [
 
-        {
-            src: "../images/wissensdb/farbe00.jpg",
-            title: "Karosseriefarbe – Übersicht"
-        },
+        "../images/wissensdb/karosserie_farbe_gross_silber.jpg",
 
-        {
-            src: "../images/wissensdb/farbe01.jpg",
-            title: "Karosseriefarbe – Bild 2"
-        },
-
-        {
-            src: "../images/wissensdb/farbe02.jpg",
-            title: "Karosseriefarbe – Bild 3"
-        },
-
-        {
-            src: "../images/wissensdb/farbe03.jpg",
-            title: "Karosseriefarbe – Bild 4"
-        }
+        "../images/wissensdb/karosserie_farbe_gross_weiss.jpg"
 
     ],
 
 
-    /* ----------------------------------------------------------
-       Motorcode PYN
-    ---------------------------------------------------------- */
-
+    /*
+     * Motorcode PYN
+     */
     motorcode: [
 
-        {
-            src: "../images/wissensdb/motorcode_gross.jpg",
-            title: "Motorcode PYN"
-        }
+        "../images/wissensdb/motorcode_gross.jpg"
 
     ]
 
@@ -64,21 +56,48 @@ const KnowledgeGalleries = {
 
 
 /******************************************************************
- * Wissensdatenbank-Galerie öffnen
+ * Galerien bei der zentralen Lightbox registrieren
+ ******************************************************************/
+
+Object.entries(KNOWLEDGE_GALLERIES).forEach(
+    ([name, images]) => {
+
+        Lightbox.registerGallery(
+            name,
+            images
+        );
+
+        console.log(
+            "Knowledge-Galerie registriert:",
+            name,
+            images
+        );
+
+    }
+);
+
+
+/******************************************************************
+ * Öffnen einer Wissensdatenbank-Galerie
+ *
+ * Diese Funktion bleibt zunächst bestehen, damit die vorhandenen
+ * onclick-Aufrufe in der wissensdatenbank.html unverändert
+ * weiter funktionieren.
+ *
+ * Die Funktion benutzt aber NICHT mehr die alte Lightbox aus
+ * script_v4.js, sondern ausschließlich die neue zentrale Lightbox.
  ******************************************************************/
 
 function openKnowledgeGallery(
     name,
-    index = 0,
+    startIndex = 0,
     title = ""
 ) {
 
-    const gallery = KnowledgeGalleries[name];
-
-    if (!gallery) {
+    if (!KNOWLEDGE_GALLERIES[name]) {
 
         console.warn(
-            "Wissensdatenbank-Galerie nicht gefunden:",
+            "Knowledge-Galerie nicht gefunden:",
             name
         );
 
@@ -87,37 +106,18 @@ function openKnowledgeGallery(
 
 
     console.log(
-        "Wissensdatenbank-Galerie:",
-        name
-    );
-
-    console.log(
-        "Bilder:",
-        gallery.length
-    );
-
-
-    /*
-     * Galerie bei der zentralen Lightbox registrieren
-     */
-
-    Lightbox.registerGallery(
+        "Knowledge-Galerie öffnen:",
         name,
-        gallery
+        "Start:",
+        startIndex,
+        "Titel:",
+        title
     );
 
-
-    /*
-     * Zentrale Lightbox öffnen
-     *
-     * WICHTIG:
-     * Die aktuelle lightbox.js verwendet
-     * Lightbox.open() und nicht openGallery().
-     */
 
     Lightbox.open(
         name,
-        index
+        startIndex
     );
 
 }
