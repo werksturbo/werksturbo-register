@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
 
-    console.log("Capri Register V4.4 gestartet");
+    console.log("Capri Register V4.4 ohne Lightbox gestartet");
 
     setStatus("CSV wird geladen ...");
 
@@ -125,8 +125,6 @@ async function init() {
         initSearch();
 
         initFilters();
-
-        initLightbox();
 
         updateResultCounter();
 
@@ -853,110 +851,6 @@ function buildRegisterGallery() {
 
 }
 
-
-
-
-/******************************************************************
- * Lightbox initialisieren
- ******************************************************************/
-
-function initLightbox() {
-
-    const lightbox = document.getElementById("lightbox");
-    const closeBtn = document.getElementById("closeLightbox");
-    const prevBtn = document.getElementById("prevImage");
-    const nextBtn = document.getElementById("nextImage");
-
-    if (!lightbox || !closeBtn) {
-
-        console.warn("Lightbox-Elemente nicht gefunden.");
-        return;
-
-    }
-
-    // ----------------------------------------------------------
-    // Schließen über X
-    // ----------------------------------------------------------
-
-    closeBtn.addEventListener("click", closeLightbox);
-
-
-    // ----------------------------------------------------------
-    // Schließen über Hintergrund
-    // ----------------------------------------------------------
-
-    lightbox.addEventListener("click", function (e) {
-
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
-
-    });
-
-
-    // ----------------------------------------------------------
-    // Linker Pfeil
-    // ----------------------------------------------------------
-
-    if (prevBtn) {
-
-        prevBtn.addEventListener("click", function (e) {
-
-            e.stopPropagation();
-
-            navigateLightbox(-1);
-
-        });
-
-    }
-
-
-    // ----------------------------------------------------------
-    // Rechter Pfeil
-    // ----------------------------------------------------------
-
-    if (nextBtn) {
-
-        nextBtn.addEventListener("click", function (e) {
-
-            e.stopPropagation();
-
-            navigateLightbox(1);
-
-        });
-
-    }
-
-
-    // ----------------------------------------------------------
-    // Tastatur
-    // ----------------------------------------------------------
-
-    document.addEventListener("keydown", function (e) {
-
-        if (!isLightboxOpen()) {
-            return;
-        }
-
-        if (e.key === "Escape") {
-
-            closeLightbox();
-
-        } else if (e.key === "ArrowLeft") {
-
-            e.preventDefault();
-            navigateLightbox(-1);
-
-        } else if (e.key === "ArrowRight") {
-
-            e.preventDefault();
-            navigateLightbox(1);
-
-        }
-
-    });
-
-}
 
 
 /******************************************************************
