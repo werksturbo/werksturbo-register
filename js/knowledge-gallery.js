@@ -21,15 +21,25 @@ const KNOWLEDGE_GALLERIES = {
      * Nummer auf dem Kardantunnel
      */
     kardantunnel: [
+
         "../images/wissensdb/nr_kardantunnel_gross.jpg"
+
     ],
 
 
     /*
      * Karosseriefarbe bei Erstauslieferung
+     *
+     * Zwei Bilder:
+     * 1. Silber
+     * 2. Weiß
      */
     karosseriefarbe: [
-        "../images/wissensdb/karosserie_farbe.jpg"
+
+        "../images/wissensdb/karosserie_farbe_gross_silber.jpg",
+
+        "../images/wissensdb/karosserie_farbe_gross_weiss.jpg"
+
     ],
 
 
@@ -37,7 +47,9 @@ const KNOWLEDGE_GALLERIES = {
      * Motorcode PYN
      */
     motorcode: [
+
         "../images/wissensdb/motorcode_gross.jpg"
+
     ]
 
 };
