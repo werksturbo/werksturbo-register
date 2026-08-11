@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
 
-    console.log("Capri Register V4.4 gestartet");
+    console.log("Capri Register V4.4 ohne Lightbox gestartet");
 
     setStatus("CSV wird geladen ...");
 
