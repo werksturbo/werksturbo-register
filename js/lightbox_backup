@@ -14,7 +14,7 @@
 
 "use strict";
 
-console.log("LIGHTBOX VERSION Lauffähig");
+console.log("LIGHTBOX VERSION Lauffähig-erste Änderung");
 
 class WerksturboLightbox {
 
@@ -80,13 +80,58 @@ class WerksturboLightbox {
 
     }
 
+/******************************************************************
+ * Lightbox HTML erzeugen
+ ******************************************************************/
 
+createLightboxHTML() {
+
+    // Bereits vorhanden?
+    if (document.getElementById("lightbox")) {
+        return;
+    }
+
+    document.body.insertAdjacentHTML("beforeend", `
+
+<div id="lightbox">
+
+    <span id="closeLightbox">&times;</span>
+
+    <div id="lightboxLoader"></div>
+
+    <button id="prevImage" class="lightboxNav">&#10094;</button>
+
+    <img id="lightboxImage" alt="">
+
+    <button id="nextImage" class="lightboxNav">&#10095;</button>
+
+    <div id="lightboxInfo"></div>
+
+    <div class="lightboxToolbar">
+
+        <a id="downloadImage" download>
+            Download
+        </a>
+
+    </div>
+
+</div>
+
+`);
+
+}
+
+
+
+
+    
     /* ===========================================
        Initialisierung
     =========================================== */
 
         init() {
 
+        this.createLightboxHTML();    
         this.cacheDom();
 
         this.bindEvents();
@@ -382,6 +427,8 @@ showImage() {
     this.dom.image.removeAttribute("src");
 
     this.dom.image.onload = () => {
+
+ console.log("LIGHTBOX: Bild erfolgreich geladen");
         
         this.hideLoader();
         this.dom.image.style.display = "block";
@@ -398,11 +445,14 @@ showImage() {
 
     this.dom.image.onerror = () => {
 
-        this.hideLoader();
+    console.error(
+        "LIGHTBOX: Bild konnte NICHT geladen werden:",
+        imageData.src
+    );
 
-        console.error("Bild konnte nicht geladen werden:", imageData.src);
+    this.hideLoader();
 
-    };
+};
 
     // Browser einen Tick warten lassen
     requestAnimationFrame(() => {
@@ -550,29 +600,35 @@ openRegisterRow(rows, index, photoColumn = "Foto") {
 
 }
 
-  /* ===========================================
-       Neue Hilfsfunktion
-    =========================================== */
+ openCurrentImage() {
 
-    openCurrentImage() {
+    if (!this.currentImages.length)
+        return;
 
-        if (!this.currentImages.length)
-            return;
+    this.isOpen = true;
 
-        this.isOpen = true;
+    /*
+     * Lightbox sichtbar machen
+     */
+    this.dom.lightbox.style.display = "flex";
 
-        this.dom.lightbox.style.display = "flex";
+    requestAnimationFrame(() => {
+
         this.dom.lightbox.classList.add("show");
 
-        console.log("Lightbox sichtbar");
-        console.log("Bild:", this.currentImages[this.currentIndex].src);
+    });
 
-        document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
-        this.showImage();
+    console.log("Lightbox sichtbar");
+    console.log(
+        "Bild:",
+        this.currentImages[this.currentIndex].src
+    );
 
-    }
+    this.showImage();
 
+}
 
 }
 
