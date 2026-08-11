@@ -126,8 +126,6 @@ async function init() {
 
         initFilters();
 
-        initLightbox();
-
         updateResultCounter();
 
         APP.visibleData = APP.table.getData("active");
@@ -853,110 +851,6 @@ function buildRegisterGallery() {
 
 }
 
-
-
-
-/******************************************************************
- * Lightbox initialisieren
- ******************************************************************/
-
-function initLightbox() {
-
-    const lightbox = document.getElementById("lightbox");
-    const closeBtn = document.getElementById("closeLightbox");
-    const prevBtn = document.getElementById("prevImage");
-    const nextBtn = document.getElementById("nextImage");
-
-    if (!lightbox || !closeBtn) {
-
-        console.warn("Lightbox-Elemente nicht gefunden.");
-        return;
-
-    }
-
-    // ----------------------------------------------------------
-    // Schließen über X
-    // ----------------------------------------------------------
-
-    closeBtn.addEventListener("click", closeLightbox);
-
-
-    // ----------------------------------------------------------
-    // Schließen über Hintergrund
-    // ----------------------------------------------------------
-
-    lightbox.addEventListener("click", function (e) {
-
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
-
-    });
-
-
-    // ----------------------------------------------------------
-    // Linker Pfeil
-    // ----------------------------------------------------------
-
-    if (prevBtn) {
-
-        prevBtn.addEventListener("click", function (e) {
-
-            e.stopPropagation();
-
-            navigateLightbox(-1);
-
-        });
-
-    }
-
-
-    // ----------------------------------------------------------
-    // Rechter Pfeil
-    // ----------------------------------------------------------
-
-    if (nextBtn) {
-
-        nextBtn.addEventListener("click", function (e) {
-
-            e.stopPropagation();
-
-            navigateLightbox(1);
-
-        });
-
-    }
-
-
-    // ----------------------------------------------------------
-    // Tastatur
-    // ----------------------------------------------------------
-
-    document.addEventListener("keydown", function (e) {
-
-        if (!isLightboxOpen()) {
-            return;
-        }
-
-        if (e.key === "Escape") {
-
-            closeLightbox();
-
-        } else if (e.key === "ArrowLeft") {
-
-            e.preventDefault();
-            navigateLightbox(-1);
-
-        } else if (e.key === "ArrowRight") {
-
-            e.preventDefault();
-            navigateLightbox(1);
-
-        }
-
-    });
-
-}
 
 
 /******************************************************************
