@@ -101,8 +101,6 @@ async function init() {
 
         updateResultCounter();
 
-        APP.visibleData = APP.table.getData("active");
-
         setStatus("CSV erfolgreich geladen");
 
     }
@@ -705,8 +703,6 @@ function buildTable() {
 
         buildRegisterGallery();
 
-        APP.visibleData = APP.table.getData("active");
-
         updateResultCounter();
 
     });
@@ -718,8 +714,6 @@ function buildTable() {
     APP.table.on("pageLoaded", function () {
 
         buildRegisterGallery();
-
-        APP.visibleData = APP.table.getData("active");
 
         updateResultCounter();
 
@@ -746,8 +740,6 @@ function buildTable() {
     APP.table.on("dataSorted", function () {
 
         buildRegisterGallery();
-
-        APP.visibleData = APP.table.getData("active");
 
     });
 
