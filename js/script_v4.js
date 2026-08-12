@@ -1,7 +1,7 @@
  /* Lightbox Navigation/******************************************************************
  *
  * CAPRI REGISTER
- * Version 4.4(ohne function isLightboxOpen())
+ * Version 4.4(letzte Löschungen)
  *
  * CSV + Tabulator + Lightbox
  *
