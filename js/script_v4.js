@@ -1,7 +1,7 @@
 /******************************************************************
  *
  * CAPRI REGISTER
- * Version 4.4
+ * Version 4.4(ohne function isLightboxOpen())
  *
  * CSV + Tabulator + Lightbox
  *
