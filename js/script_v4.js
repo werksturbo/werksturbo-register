@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: ohne showVehicle.");
+console.log("=== CONTROL TEST SCRIPT_V4: doppelter Formatter gelöscht");
 
 /******************************************************************
  * Konfiguration
