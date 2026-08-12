@@ -957,3 +957,7 @@ body.knowledge-page {
     background: var(--background);
 }
 
+body.knowledge-page .knowledge-content h3 {
+    color: var(--headline);
+}
+
