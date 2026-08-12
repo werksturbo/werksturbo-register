@@ -863,60 +863,6 @@ function buildRegisterGallery() {
  * Lightbox Navigation
  ******************************************************************/
 
-function navigateLightbox(direction) {
-
-    // ----------------------------------------------------------
-    // Wissensdatenbank-Galerie
-    // ----------------------------------------------------------
-
-    if (APP.gallery.active) {
-
-        const images = APP.gallery.images;
-
-        if (!images || images.length === 0) {
-            return;
-        }
-
-        APP.gallery.index += direction;
-
-        // Zyklische Navigation
-        if (APP.gallery.index < 0) {
-            APP.gallery.index = images.length - 1;
-        }
-
-        if (APP.gallery.index >= images.length) {
-            APP.gallery.index = 0;
-        }
-
-        const item = images[APP.gallery.index];
-
-        // Galerie kann Strings oder Objekte enthalten
-        if (typeof item === "string") {
-
-            openLightbox(item);
-
-        } else if (item && item.src) {
-
-            openLightbox(item.src);
-
-            if (item.raw) {
-                updateLightboxInfo(item.raw);
-            }
-
-        }
-
-        return;
-    }
-
-
-    // ----------------------------------------------------------
-    // Fahrzeugregister
-    // ----------------------------------------------------------
-
-    showVehicle(APP.currentIndex + direction);
-
-}
-
 
 /******************************************************************
  * Wissensdatenbank-Galerien
