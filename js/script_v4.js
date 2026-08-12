@@ -557,7 +557,7 @@ function buildColumns() {
                 break;
 
             case "jahr":
-                width = 60;
+                width = 70;
                 break;
 
             case "land":
