@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: ohne Lightbox Informationen");
+console.log("=== CONTROL TEST SCRIPT_V4: ohne showVehicle.");
 
 /******************************************************************
  * Konfiguration
