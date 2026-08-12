@@ -68,12 +68,6 @@ const APP = {
 
     photoColumn: null,
 
-    currentImage: "",
-
-    currentRow: null,
-
-    currentIndex: 0,
-
     visibleData: [],
 
     filters: {
@@ -901,10 +895,6 @@ function getThumbnailLink(url){
 
 }
 
-
-/******************************************************************
- * Originalbild für Lightbox
- ******************************************************************/
 
 
 
