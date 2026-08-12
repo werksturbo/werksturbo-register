@@ -515,7 +515,7 @@ function buildColumns() {
 
             field: APP.photoColumn,
 
-            width: 150,
+            width: 100,
 
             frozen: true,
 
