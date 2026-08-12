@@ -871,32 +871,6 @@ function photoFormatter(cell) {
 
 }
 
-/******************************************************************
- * Bild-Formatter
- ******************************************************************/
-
-function photoFormatter(cell){
-
-    const url = cell.getValue();
-
-    if(!url) return "";
-
-    return `
-        <img
-            class="thumbnail"
-            src="${getThumbnailLink(url)}"
-            style="
-                width:${CONFIG.thumbnailWidth}px;
-                height:${CONFIG.thumbnailHeight}px;
-                object-fit:contain;
-                background:white;
-                border-radius:6px;
-                cursor:pointer;
-                padding:2px;
-            ">
-    `;
-
-}
 
 /******************************************************************
  * Thumbnail-Link erzeugen
