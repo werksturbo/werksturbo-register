@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: Thumbnail 120 x 56");
+console.log("=== CONTROL TEST SCRIPT_V4: Thumbnail 90 x 56");
 
 /******************************************************************
  * Konfiguration
@@ -20,7 +20,7 @@ const CONFIG = {
 
     pageSize: 25,
 
-    thumbnailWidth: 120,
+    thumbnailWidth: 90,
 
     thumbnailHeight: 56,
 
