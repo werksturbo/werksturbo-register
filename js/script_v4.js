@@ -60,8 +60,6 @@ const APP = {
 
     photoColumn: null,
 
-    visibleData: [],
-
     filters: {
 
         search: "",
