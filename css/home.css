@@ -571,45 +571,7 @@ nav a.active{
 
 }
 
-.knowledge-image::after{
 
-    content:"🔍";
-
-    position:absolute;
-
-    right:10px;
-
-    bottom:10px;
-
-    width:34px;
-
-    height:34px;
-
-    border-radius:50%;
-
-    background:rgba(0,0,0,.65);
-
-    color:white;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:18px;
-
-    opacity:0;
-
-    transition:.25s;
-
-}
-
-.knowledge-image:hover::after{
-
-    opacity:1;
-
-} 
 .knowledge-content{
 
     flex:1;
