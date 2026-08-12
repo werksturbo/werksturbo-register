@@ -949,3 +949,11 @@ nav a{
 
 }
 
+/* ==========================================================
+   Wissensdatenbank – Seitenhintergrund
+========================================================== */
+
+body.knowledge-page {
+    background: var(--background);
+}
+
