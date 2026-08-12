@@ -1000,30 +1000,5 @@ function getThumbnailLink(url){
  * Originalbild für Lightbox
  ******************************************************************/
 
-function getImageLink(url){
 
-    if(!url) return "";
-
-    try{
-
-        const u = new URL(url);
-
-        const id = u.searchParams.get("id");
-
-        if(id){
-
-            // Großes Bild (ca. 4000 px)
-            return `https://drive.google.com/thumbnail?id=${id}&sz=s4000`;
-
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-    }
-
-    return url;
-
-}
 
