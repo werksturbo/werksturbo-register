@@ -857,19 +857,6 @@ function buildRegisterGallery() {
  * Prüfen, ob Lightbox geöffnet ist
  ******************************************************************/
 
-function isLightboxOpen() {
-
-    const lightbox = document.getElementById("lightbox");
-
-    if (!lightbox) {
-        return false;
-    }
-
-    return lightbox.classList.contains("show") ||
-           lightbox.style.display === "flex";
-
-}
-
 
 /******************************************************************
  * Lightbox Navigation
