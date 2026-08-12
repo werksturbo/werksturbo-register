@@ -1,4 +1,4 @@
- * Lightbox Navigation/******************************************************************
+ /* Lightbox Navigation/******************************************************************
  *
  * CAPRI REGISTER
  * Version 4.4(ohne function isLightboxOpen())
