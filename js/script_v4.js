@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: ohne visibel...");
+console.log("=== CONTROL TEST SCRIPT_V4: Filter zurücksetzen gelöscht");
 
 /******************************************************************
  * Konfiguration
