@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: Variablen gelöscht");
+console.log("=== CONTROL TEST SCRIPT_V4: Breite 100");
 
 /******************************************************************
  * Konfiguration
@@ -559,7 +559,7 @@ function buildColumns() {
                 break;
 
             case "chassis":
-                width = 120;
+                width = 100;
                 break;
 
             case "monat":
