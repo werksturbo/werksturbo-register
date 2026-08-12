@@ -528,9 +528,6 @@ function buildColumns() {
                     return;
                 }
 
-                APP.currentIndex = index;
-                APP.currentRow = cell.getRow();
-
                 Lightbox.openRegisterRow(
                     rows,
                     index,
