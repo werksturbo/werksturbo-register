@@ -727,8 +727,6 @@ function buildTable() {
 
         buildRegisterGallery();
 
-        APP.visibleData = APP.table.getData("active");
-
         updateResultCounter();
 
     });
@@ -750,8 +748,6 @@ function buildTable() {
     APP.table.on("dataChanged", function () {
 
         buildRegisterGallery();
-
-        APP.visibleData = APP.table.getData("active");
 
         updateResultCounter();
 
