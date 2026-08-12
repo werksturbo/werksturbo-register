@@ -83,7 +83,7 @@ const APP = {
         status: "",
         year: ""
 
-    },
+    }
 
    };
 
