@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: doppelter Formatter V2");
+console.log("=== CONTROL TEST SCRIPT_V4: doppelter Formatter V3");
 
 /******************************************************************
  * Konfiguration
@@ -845,11 +845,11 @@ function buildRegisterGallery() {
  * Thumbnail
  ******************************************************************/
 
-function photoFormatter(cell){
+function photoFormatter(cell) {
 
     const url = cell.getValue();
 
-    if(!url) return "";
+    if (!url) return "";
 
     return `
         <img
@@ -859,10 +859,13 @@ function photoFormatter(cell){
                 width:${CONFIG.thumbnailWidth}px;
                 height:${CONFIG.thumbnailHeight}px;
                 object-fit:contain;
-                background:white;
+                object-position:center;
+                background:#ffffff;
                 border-radius:6px;
-                cursor:pointer;
                 padding:2px;
+                cursor:pointer;
+                display:block;
+                margin:auto;
             ">
     `;
 
