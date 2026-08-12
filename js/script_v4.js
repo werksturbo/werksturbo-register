@@ -1,4 +1,4 @@
-/******************************************************************
+ * Lightbox Navigation/******************************************************************
  *
  * CAPRI REGISTER
  * Version 4.4(ohne function isLightboxOpen())
@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: C-001 ===");
+console.log("=== CONTROL TEST SCRIPT_V4: ohne Lightbox Navigation");
 
 /******************************************************************
  * Konfiguration
