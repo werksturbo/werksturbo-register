@@ -44,10 +44,6 @@ const COLUMNS = {
 
     year: "Jahr",
 
-    month: "Monat",
-
-    notes: "Anmerkungen"
-
 };
 
 /******************************************************************
