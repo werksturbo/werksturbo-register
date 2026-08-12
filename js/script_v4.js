@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: Breite 100");
+console.log("=== CONTROL TEST SCRIPT_V4: ohne visibel...");
 
 /******************************************************************
  * Konfiguration
@@ -557,7 +557,7 @@ function buildColumns() {
                 break;
 
             case "jahr":
-                width = 70;
+                width = 60;
                 break;
 
             case "land":
