@@ -395,31 +395,6 @@ function applyFilters() {
 
 
 /******************************************************************
- * Filter zurücksetzen
- ******************************************************************/
-
-function resetFilters() {
-
-    // APP zurücksetzen
-    APP.filters.search = "";
-    APP.filters.country = "";
-    APP.filters.status = "";
-    APP.filters.year = "";
-
-    // Suchfeld leeren
-    document.getElementById("globalSearch").value = "";
-
-    // Dropdowns zurücksetzen
-    document.getElementById("countryFilter").value = "";
-    document.getElementById("statusFilter").value = "";
-    document.getElementById("yearFilter").value = "";
-
-    // Tabelle neu filtern
-    applyFilters();
-
-}
-
-/******************************************************************
  * CSV laden
  ******************************************************************/
 
