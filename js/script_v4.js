@@ -85,19 +85,7 @@ const APP = {
 
     },
 
-    gallery: {
-
-        active: false,
-
-        images: [],
-
-        index: 0,
-
-        title: ""
-
-    }
-
-};
+   };
 
 /******************************************************************
  * Programmstart
