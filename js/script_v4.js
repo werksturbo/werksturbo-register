@@ -24,8 +24,6 @@ const CONFIG = {
 
     thumbnailHeight: 56,
 
-    lightboxBackground: "#000"
-
 };
 
 /******************************************************************
