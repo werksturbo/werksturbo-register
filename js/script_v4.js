@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: Thumbnail 90 x 56");
+console.log("=== CONTROL TEST SCRIPT_V4: Thumbnail 100");
 
 /******************************************************************
  * Konfiguration
