@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: ohne Lightbox Gallery");
+console.log("=== CONTROL TEST SCRIPT_V4: ohne Lightbox Informationen");
 
 /******************************************************************
  * Konfiguration
@@ -907,51 +907,6 @@ function showVehicle(index) {
 /******************************************************************
  * Lightbox Informationen
  ******************************************************************/
-
-function updateLightboxInfo(row) {
-
-    if (!row) {
-        return;
-    }
-
-    const lnr = document.getElementById("lbLnr");
-    const chassis = document.getElementById("lbChassis");
-    const land = document.getElementById("lbLand");
-    const status = document.getElementById("lbStatus");
-    const counter = document.getElementById("lbCounter");
-
-
-    if (lnr) {
-        lnr.textContent = row["Lnr"] || "";
-    }
-
-    if (chassis) {
-        chassis.textContent = row["Chassis"] || "";
-    }
-
-    if (land) {
-        land.textContent = row["Land"] || "";
-    }
-
-    if (status) {
-        status.textContent = row["Status"] || "";
-    }
-
-
-    // ----------------------------------------------------------
-    // Zähler auf Basis der aktuell sichtbaren Fahrzeuge
-    // ----------------------------------------------------------
-
-    if (counter && APP.table) {
-
-        const rows = APP.table.getRows("active");
-
-        counter.textContent =
-            (APP.currentIndex + 1) + " / " + rows.length;
-
-    }
-
-}
 
 /******************************************************************
  * Thumbnail
