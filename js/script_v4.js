@@ -34,8 +34,6 @@ const CONFIG = {
 
 const COLUMNS = {
 
-    photo: "Foto Link",
-
     number: "Lnr",
 
     chassis: "Chassis",
