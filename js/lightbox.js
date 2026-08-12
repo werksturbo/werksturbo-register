@@ -10,7 +10,7 @@
 
 "use strict";
 
-console.log("LIGHTBOX VERSION 4.1.1 – zentrale Lightbox");
+console.log("LIGHTBOX VERSION 4.1.1 –    Originalbild für Register-Lightbox");
 
 
 class WerksturboLightbox {
@@ -1191,6 +1191,46 @@ class WerksturboLightbox {
 
     }
 
+    
+    /* ==========================================================
+   Originalbild für Register-Lightbox
+========================================================== */
+
+getImageLink(url) {
+
+    if (!url) {
+        return "";
+    }
+
+    try {
+
+        const u = new URL(url);
+
+        const id =
+            u.searchParams.get("id");
+
+        if (id) {
+
+            /*
+             * Großes Google-Drive-Bild
+             */
+            return `https://drive.google.com/thumbnail?id=${id}&sz=s4000`;
+
+        }
+
+    }
+    catch (error) {
+
+        console.error(
+            "Lightbox: Fehler beim Ermitteln des Bildpfades:",
+            error
+        );
+
+    }
+
+    return url;
+
+}
 
     /* ==========================================================
        Register-Adapter
@@ -1245,17 +1285,10 @@ class WerksturboLightbox {
                 originalUrl;
 
 
-            if (
-                typeof getImageLink ===
-                "function"
-            ) {
-
-                imageSource =
-                    getImageLink(
-                        originalUrl
-                    );
-
-            }
+           imageSource =
+    this.getImageLink(
+        originalUrl
+    );
 
 
             this.currentImages.push({
