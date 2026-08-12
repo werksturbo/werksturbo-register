@@ -8,7 +8,7 @@
  ******************************************************************/
 
 "use strict";
-console.log("=== CONTROL TEST SCRIPT_V4: doppelter Formatter V3");
+console.log("=== CONTROL TEST SCRIPT_V4: Thumbnail 120 x 56");
 
 /******************************************************************
  * Konfiguration
@@ -22,7 +22,7 @@ const CONFIG = {
 
     thumbnailWidth: 120,
 
-    thumbnailHeight: 80,
+    thumbnailHeight: 56,
 
     lightboxBackground: "#000"
 
