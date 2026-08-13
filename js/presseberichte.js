@@ -79,23 +79,8 @@ function buildPresseberichteTable(data) {
 const tdBericht =
     document.createElement("td");
 
-if (bericht.Link) {
-
-    const link =
-        document.createElement("a");
-
-    link.href = bericht.Link;
-    link.target = "_blank";
-    link.textContent = bericht.Bericht || "Bericht";
-
-    tdBericht.appendChild(link);
-
-} else {
-
-    tdBericht.textContent =
-        bericht.Bericht || "";
-
-}
+tdBericht.textContent =
+    bericht.Bericht || "";
 
 tr.appendChild(tdBericht);
 
@@ -126,35 +111,35 @@ tr.appendChild(tdBericht);
         tr.appendChild(tdBeschreibung);
 
 
-        /* --------------------------------------------------
-           Vorschau
-        -------------------------------------------------- */
+/* --------------------------------------------------
+   Vorschau
+-------------------------------------------------- */
 
-        const tdVorschau =
-            document.createElement("td");
+const tdVorschau =
+    document.createElement("td");
 
-        tdVorschau.style.textAlign = "center";
-
-
-        if (bericht.Thumbnail) {
-
-            const img =
-                document.createElement("img");
-
-            img.src =
-                "../images/presseberichte/" +
-                encodeURIComponent(bericht.Thumbnail)
-                    .replace(/%2F/g, "/");
-
-            img.className = "thumbnail";
-
-            img.alt =
-                bericht.Bericht || "Pressebericht";
+tdVorschau.style.textAlign = "center";
 
 
-            tdVorschau.appendChild(img);
+if (bericht.Thumbnail) {
 
-        }
+    const img =
+        document.createElement("img");
+
+    img.src =
+        "../images/presseberichte/" +
+        encodeURIComponent(bericht.Thumbnail)
+            .replace(/%2F/g, "/");
+
+    img.className = "thumbnail";
+
+    img.alt =
+        bericht.Bericht || "Pressebericht";
+
+
+    tdVorschau.appendChild(img);
+
+}
 
 
         tr.appendChild(tdVorschau);
