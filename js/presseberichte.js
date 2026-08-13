@@ -112,7 +112,7 @@ tr.appendChild(tdBericht);
 
 
 /* --------------------------------------------------
-   Vorschau
+   Vorschau mit PDF-Link
 -------------------------------------------------- */
 
 const tdVorschau =
@@ -128,8 +128,7 @@ if (bericht.Thumbnail) {
 
     img.src =
         "../images/presseberichte/" +
-        encodeURIComponent(bericht.Thumbnail)
-            .replace(/%2F/g, "/");
+        bericht.Thumbnail;
 
     img.className = "thumbnail";
 
@@ -137,7 +136,34 @@ if (bericht.Thumbnail) {
         bericht.Bericht || "Pressebericht";
 
 
-    tdVorschau.appendChild(img);
+    /* ----------------------------------------------
+       Thumbnail mit PDF verknüpfen
+    ---------------------------------------------- */
+
+    if (bericht.Link) {
+
+        const link =
+            document.createElement("a");
+
+        link.href =
+            bericht.Link;
+
+        link.target =
+            "_blank";
+
+        link.rel =
+            "noopener";
+
+
+        link.appendChild(img);
+
+        tdVorschau.appendChild(link);
+
+    } else {
+
+        tdVorschau.appendChild(img);
+
+    }
 
 }
 
