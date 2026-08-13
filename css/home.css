@@ -919,6 +919,19 @@ nav a{
 
 }
 
+/* ==========================================================
+   Presseberichte – Thumbnail Hover
+========================================================== */
+
+#dokumente-tabelle .thumbnail {
+    transition: transform 0.2s ease;
+}
+
+#dokumente-tabelle .thumbnail:hover {
+    transform: scale(1.05);
+}
+
+
 /* ==========================
    KONTAKT
 ========================== */
