@@ -72,17 +72,32 @@ function buildPresseberichteTable(data) {
         const tr = document.createElement("tr");
 
 
-        /* --------------------------------------------------
-           Bericht
-        -------------------------------------------------- */
+/* --------------------------------------------------
+   Bericht
+-------------------------------------------------- */
 
-        const tdBericht =
-            document.createElement("td");
+const tdBericht =
+    document.createElement("td");
 
-        tdBericht.textContent =
-            bericht.Bericht || "";
+if (bericht.Link) {
 
-        tr.appendChild(tdBericht);
+    const link =
+        document.createElement("a");
+
+    link.href = bericht.Link;
+    link.target = "_blank";
+    link.textContent = bericht.Bericht || "Bericht";
+
+    tdBericht.appendChild(link);
+
+} else {
+
+    tdBericht.textContent =
+        bericht.Bericht || "";
+
+}
+
+tr.appendChild(tdBericht);
 
 
         /* --------------------------------------------------
