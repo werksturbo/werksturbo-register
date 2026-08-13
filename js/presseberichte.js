@@ -127,9 +127,14 @@ if (bericht.Thumbnail) {
     const img =
         document.createElement("img");
 
-    img.src =
-        "../images/presseberichte/" +
-        bericht.Thumbnail;
+const thumbnailName =
+    (bericht.Thumbnail || "").trim();
+
+img.src =
+    "../images/presseberichte/" +
+    encodeURIComponent(thumbnailName);
+
+   console.log("Thumbnail:", img.src);
 
     img.className = "thumbnail";
 
