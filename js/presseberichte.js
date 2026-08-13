@@ -21,11 +21,12 @@ function loadPresseberichte() {
         download: true,
         header: true,
         skipEmptyLines: true,
+        encoding: "UTF-8",
 
         complete: function(results) {
 
             console.log(
-                "Presseberichte CSV geladen:",
+                "Presseberichte CSV geladen:23.13",
                 results.data
             );
 
