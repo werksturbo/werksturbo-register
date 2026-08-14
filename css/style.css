@@ -145,7 +145,7 @@ body{
 
 main{
 
-    padding:15px;
+    padding:0 15px 15px;
 
 }
 
@@ -794,7 +794,7 @@ Horizontale Bildlaufleiste
 footer {
     background: #0b4f7d;
     color: #fff;
-    margin-top: 80px;
+    margin-top: 15px;
     padding: 15px 20px;
 }
 
