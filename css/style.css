@@ -223,10 +223,10 @@ main{
 
 /* Fixierte Spalten */
 
-.tabulator-frozen{
-
+.tabulator-frozen,
+.tabulator-frozen .tabulator-cell{
     background:#013454 !important;
-
+    color:#ffffff !important;
 }
 
 /* Footer */
