@@ -114,21 +114,7 @@ async function init() {
     }
 
 }
-/******************************************************************
- * Status
- ******************************************************************/
 
-function setStatus(text){
-
-    const obj = document.getElementById("csvStatus");
-
-    if(obj){
-
-        obj.textContent = text;
-
-    }
-
-}
 
 /******************************************************************
  * Fahrzeugzähler
