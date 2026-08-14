@@ -85,7 +85,6 @@ async function init() {
 
     console.log("Capri Register V4.4 ohne Lightbox gestartet");
 
-    setStatus("CSV wird geladen ...");
 
     try {
 
@@ -101,15 +100,12 @@ async function init() {
 
         updateResultCounter();
 
-        setStatus("CSV erfolgreich geladen");
-
     }
 
     catch (error) {
 
         console.error(error);
 
-        setStatus("Fehler beim Laden");
 
     }
 
