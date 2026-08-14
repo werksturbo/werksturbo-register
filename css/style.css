@@ -830,3 +830,11 @@ footer {
     font-size: 13px;
     color: #d9e2ea;
 }
+
+/* ----------------------------------------------------------
+   Register – Abstand zum Footer
+---------------------------------------------------------- */
+
+body:has(#registerTable) > footer {
+    margin-top: 15px !important;
+}
