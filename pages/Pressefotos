@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pressefotos | Werksturbo Register</title>
+
+    <meta name="description"
+      content="Pressefotos & Pressetexte">
+
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/dokumente.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../images/logo-werksturbo.png" alt="Werksturbo Register">
+        </a>
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="../index.html">Startseite</a></li>
+
+            <li><a href="../register.html">Register</a></li>
+
+            <li><a class="active" href="pressefotos.html">Pressefotos</a></li>
+
+            <li><a href="dokumente.html">Dokumente</a></li>
+            
+            <li><a href="presseberichte.html">Presseberichte</a></li>
+
+            <li><a href="wissensdatenbank.html">Wissensdatenbank</a></li>
+
+            <li><a href="kontakt.html">Kontakt</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<section class="page-header">
+
+    <h2>Presseberichte</h2>
+
+<p>
+    In dieser Rubrik finden Sie eine umfangreiche Sammlung von Presseberichten
+    über den Ford Capri Werksturbo aus den Jahren 1981 bis heute.
+    Zeitgenössische Testberichte, Fachartikel und spätere Rückblicke
+    dokumentieren, wie dieser außergewöhnliche Capri über die Jahrzehnte
+    in der Öffentlichkeit wahrgenommen wurde. Die Sammlung wird kontinuierlich
+    erweitert und soll möglichst umfassend die Geschichte des Ford Capri
+    Werksturbo in der Presse festhalten.
+</p>
+
+<p>
+    Sie besitzen weitere Presseberichte oder seltene Veröffentlichungen?
+    Dann freuen wir uns über Ihre Unterstützung, damit wir diese Sammlung
+    gemeinsam vervollständigen können.
+</p>
+
+</section>
+
+<section class="table-container">
+
+    <table id="dokumente-tabelle">
+
+        <thead>
+
+            <tr>
+
+                <th>Bericht</th>
+                <th>Kategorie</th>
+                <th>Beschreibung</th>
+                <th>Vorschau</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <!-- Hier erscheinen später automatisch die Dokumente -->
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<footer>
+
+    <div class="footer-content">
+
+        <h3>Ford Capri III Werksturbo Register</h3>
+
+        <div class="footer-nav">
+
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+            <a href="kontakt.html">Kontakt</a>
+        </div>
+
+        <div class="footer-bottom">
+
+            © 2026 Werksturbo Register
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="../js/presseberichte.js"></script>
+
+</body>
+
+</html>
