@@ -165,68 +165,61 @@ main{
 
 }
 
+/* ==========================================================
+   TABULATOR
+========================================================== */
+
 /* Kopfzeile */
 
-.tabulator-header{
-
-    background:#1B3650 !important;
-
-    color:white !important;
-
-    border-bottom:2px solid #4b6c88;
-
+.tabulator-header {
+    background: #1B3650 !important;
+    color: white !important;
+    border-bottom: 2px solid #4b6c88;
 }
 
-.tabulator-col{
-
-    background:#1B3650 !important;
-
-    color:white !important;
-
-    border-right:1px solid #3c5e7b;
-
-    font-weight:bold;
-
+.tabulator-col {
+    background: #1B3650 !important;
+    color: white !important;
+    border-right: 1px solid #3c5e7b;
+    font-weight: bold;
 }
 
-/* Zeilen */
 
-.tabulator-row{
-    background:#ffffff !important;
-    color:#222222 !important;
-    border-bottom:1px solid #d9e0e6;
+/* ==========================================================
+   Zeilen – komplett weiß
+========================================================== */
+
+.tabulator-row {
+    background: #ffffff !important;
+    color: #222222 !important;
+    border-bottom: 1px solid #d9e0e6;
 }
 
-.tabulator-row:nth-child(even){
-    background:#f7f9fb !important;
+
+/* Auch gerade Zeilen weiß */
+
+.tabulator-row:nth-child(even) {
+    background: #ffffff !important;
 }
 
-.tabulator-row:hover{
-    background:#eef4f8 !important;
+
+/* Hover – dezente Hervorhebung */
+
+.tabulator-row:hover {
+    background: #f5f5f5 !important;
 }
 
-.tabulator-cell{
-    color:#222222 !important;
-    border-right:1px solid #d9e0e6;
-    padding:6px;
+
+/* ==========================================================
+   Zellen
+========================================================== */
+
+.tabulator-cell {
+    background: transparent !important;
+    color: #222222 !important;
+    border-right: 1px solid #d9e0e6;
+    padding: 6px;
 }
-
-/* Kein Zebra */
-
-.tabulator-row:nth-child(even){
-
-    background:#02426B !important;
-
-}
-
-/* Hover */
-
-.tabulator-row:hover{
-
-    background:#0b5f91 !important;
-
-}
-
 
 /* Fixierte Spalten */
 
