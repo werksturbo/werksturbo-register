@@ -126,7 +126,6 @@ nav a.active{
 ========================== */
 
 .hero{
-
     height:720px;
 
     background-image:
@@ -134,15 +133,16 @@ nav a.active{
                         rgba(8,46,73,.60)),
         url("../images/hero-capri.jpg");
 
-    background-size:cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position:center;
+
+    background-color:white;
 
     display:flex;
     justify-content:center;
     align-items:center;
-
     text-align:center;
-
 }
 
 .hero-overlay{
