@@ -192,13 +192,23 @@ main{
 /* Zeilen */
 
 .tabulator-row{
+    background:#ffffff !important;
+    color:#222222 !important;
+    border-bottom:1px solid #d9e0e6;
+}
 
-    background:#02426B !important;
+.tabulator-row:nth-child(even){
+    background:#f7f9fb !important;
+}
 
-    color:white !important;
+.tabulator-row:hover{
+    background:#eef4f8 !important;
+}
 
-    border-bottom:1px solid #2d5673;
-
+.tabulator-cell{
+    color:#222222 !important;
+    border-right:1px solid #d9e0e6;
+    padding:6px;
 }
 
 /* Kein Zebra */
@@ -217,17 +227,6 @@ main{
 
 }
 
-/* Zellen */
-
-.tabulator-cell{
-
-    color:white !important;
-
-    border-right:1px solid #2d5673;
-
-    padding:6px;
-
-}
 
 /* Fixierte Spalten */
 
