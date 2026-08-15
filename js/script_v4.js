@@ -561,15 +561,20 @@ function buildColumns() {
 
         }
 
-        columns.push({
+columns.push({
 
-            title: header,
+           title: header,
 
-            field: header,
+           field: header,
 
-            width: width,
+           width: width,
 
-            headerSort: true,
+           headerSort: true,
+
+           sorter:
+                h === "lnr"
+                ? "number"
+                : undefined,
 
             frozen:
                 header === COLUMNS.number ||
