@@ -660,6 +660,10 @@ function buildTable() {
 
         columns: buildColumns(),
 
+       initialSort: [
+      { column: "LNR", dir: "asc" }
+      ],
+
         layout: "fitDataTable",
 
         rowHeight: 60,
