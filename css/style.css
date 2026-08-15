@@ -384,12 +384,11 @@ main{
 Horizontale Bildlaufleiste
 ---------------------------------------------------------- */
 
-#registerTable{
-
-    width:100%;
-
-    overflow-x:auto;
-
+#registerTable {
+    width: 100%;
+    max-height: calc(100vh - 260px);
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 /* ==========================================================
