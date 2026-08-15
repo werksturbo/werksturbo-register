@@ -661,7 +661,7 @@ function buildTable() {
         columns: buildColumns(),
 
        initialSort: [
-      { column: "LNR", dir: "asc" }
+      { column: "Lnr", dir: "asc" }
       ],
 
         layout: "fitDataTable",
