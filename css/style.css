@@ -827,3 +827,58 @@ footer {
 body:has(#registerTable) > footer {
     margin-top: 15px !important;
 }
+
+/* ----------------------------------------------------------
+    Hinweisfeld für vertrauliche Eigentümerangaben
+---------------------------------------------------------- */
+
+
+.confidential-info {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.confidential-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: 9999;
+
+    width: 260px;
+    padding: 12px 14px;
+
+    background: #333;
+    color: #fff;
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.4;
+
+    border-radius: 7px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    transition: opacity 0.2s ease;
+}
+
+/* Kleiner Pfeil nach unten */
+.confidential-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+
+    border-width: 6px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* Tooltip beim Überfahren anzeigen */
+.confidential-info:hover .confidential-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
