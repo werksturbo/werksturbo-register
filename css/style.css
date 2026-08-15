@@ -154,15 +154,12 @@ main{
 ---------------------------------------------------------- */
 
 .tabulator{
-
     background:#02426B !important;
-
     color:#ffffff !important;
-
     border:1px solid #2d5673;
-
     font-size:14px;
 
+    height:calc(100vh - 220px);
 }
 
 /* ==========================================================
