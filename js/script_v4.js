@@ -612,9 +612,18 @@ function ownerFormatter(cell){
     }
 
     return `
-        <span class="owner-private">
-          🔒 Vertraulich
-        </span>
+         <span class="confidential-info">
+
+         <span class="confidential">🔒 Vertraulich</span>
+
+         <span class="confidential-tooltip">
+              <strong>Vertrauliche Angabe</strong><br>
+              Der Name des Eigentümers ist uns bekannt,
+              wird aus Gründen des Datenschutzes jedoch
+              nicht öffentlich angezeigt.
+    </span>
+
+</span>
     `;
 
 }
