@@ -614,28 +614,28 @@ function ownerFormatter(cell){
 
 }
 
-/******************************************************************
- * Status-Formatter
- ******************************************************************/
-
 function statusFormatter(cell) {
 
     const value = cell.getValue() || "";
 
-    // CSS-Klasse aus dem Status erzeugen
-    const cssClass = "status-" +
-        value
-            .toLowerCase()
-            .replace(/\//g, "-")
-            .replace(/\s+/g, "-")
-            .replace(/[^a-z0-9-]/g, "");
+    const statusClasses = {
+        "current": "status-current",
+        "fahrbereit": "status-fahrbereit",
+        "in restaurierung": "status-restoration",
+        "stored": "status-stored",
+        "verschrottet": "status-scrapped",
+        "unbekannt": "status-unknown"
+    };
+
+    const cssClass =
+        statusClasses[value.toLowerCase().trim()] ||
+        "status-unknown";
 
     return `
         <span class="status-badge ${cssClass}">
             ${value}
         </span>
     `;
-
 }
 
 
