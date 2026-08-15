@@ -9,6 +9,7 @@
 <title>Werksturbo Register V4</title>
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
 
 <!-- Tabulator -->
 <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator_midnight.min.css" rel="stylesheet">
@@ -17,17 +18,35 @@
 
 <body>
 
-<header class="topbar">
+<header>
 
-    <div class="title">
-
-        <h1>Capri Register</h1>
-
-        <span class="version">Version 4.0</span>
-
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/logo-werksturbo.png" alt="Werksturbo Register">
+        </a>
     </div>
 
+    <nav>
 
+        <ul>
+
+            <li><a href="index.html">Startseite</a></li>
+
+            <li><a class="active" href="register.html">Register</a></li>
+
+            <li><a href="pages/pressefotos.html">Pressefotos</a></li>
+
+            <li><a href="pages/dokumente.html">Dokumente</a></li>
+
+            <li><a href="pages/presseberichte.html">Presseberichte</a></li>
+
+            <li><a href="pages/wissensdatenbank.html">Wissensdatenbank</a></li>
+
+            <li><a href="pages/kontakt.html">Kontakt</a></li>
+
+        </ul>
+
+    </nav>
 
 </header>
 
@@ -60,15 +79,6 @@
 
 </section>
 
-<section class="statusbar">
-
-    <span id="csvStatus">
-
-        CSV wird geladen...
-
-    </span>
-
-</section>
 
 <main>
 
