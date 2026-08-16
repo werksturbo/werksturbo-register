@@ -266,11 +266,6 @@
     width: 45%;
 }
 
-#pressefotos-tabelle th:nth-child(4),
-#pressefotos-tabelle td:nth-child(4) {
-    width: 15%;
-    text-align: center;
-}
 
 /* Pressefoto-Thumbnail */
 
