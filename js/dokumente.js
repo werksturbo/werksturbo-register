@@ -18,23 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 const row = document.createElement("tr");
 
                 row.innerHTML = `
-                    <td>${doc.Dokument}</td>
-                    <td>${doc.Kategorie}</td>
-                    <td>${doc.Beschreibung}</td>
-                    <td style="text-align:center">
+                <td style="text-align:center">
 
-                        <a href="../documents/${doc.Datei}" target="_blank">
+                <a href="../documents/${doc.Datei}" target="_blank">
 
-                            <img
-                                src="../images/dokumente/${doc.Thumbnail}"
-                                class="thumb"
-                                alt="${doc.Dokument}"
-                                loading="lazy">
+                <img
+                    src="../images/dokumente/${doc.Thumbnail}"
+                    class="thumb"
+                    alt="${doc.Dokument}"
+                    loading="lazy">
 
-                        </a>
+                </a>
 
-                    </td>
-                `;
+            </td>
+
+            <td>${doc.Dokument}</td>
+            <td>${doc.Kategorie}</td>
+            <td>${doc.Beschreibung}</td>
+`;
 
                 tbody.appendChild(row);
 
