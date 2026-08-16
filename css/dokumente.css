@@ -112,36 +112,37 @@
 
 }
 
-/* ---------- Spaltenbreiten ---------- */
+/* ----------------------------------------------------------
+   Dokumentenarchiv – Spaltenbreiten
+---------------------------------------------------------- */
 
+#dokumente-tabelle {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Vorschau */
 #dokumente-tabelle th:nth-child(1),
-#dokumente-tabelle td:nth-child(1){
-
-    width:28%;
-
+#dokumente-tabelle td:nth-child(1) {
+    width: 16%;
 }
 
+/* Dokument */
 #dokumente-tabelle th:nth-child(2),
-#dokumente-tabelle td:nth-child(2){
-
-    width:18%;
-
+#dokumente-tabelle td:nth-child(2) {
+    width: 25%;
 }
 
+/* Kategorie */
 #dokumente-tabelle th:nth-child(3),
-#dokumente-tabelle td:nth-child(3){
-
-    width:42%;
-
+#dokumente-tabelle td:nth-child(3) {
+    width: 17%;
 }
 
+/* Beschreibung */
 #dokumente-tabelle th:nth-child(4),
-#dokumente-tabelle td:nth-child(4){
-
-    width:12%;
-
-    text-align:center;
-
+#dokumente-tabelle td:nth-child(4) {
+    width: 42%;
 }
 
 /* ---------- Responsive ---------- */
