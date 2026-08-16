@@ -882,3 +882,23 @@ body:has(#registerTable) > footer {
     visibility: visible;
     opacity: 1;
 }
+
+
+/* ==========================================================
+   Mauszeiger im Register
+   ========================================================== */
+
+/* Normale Tabellenzellen: normaler Mauszeiger */
+.tabulator-cell {
+    cursor: default !important;
+}
+
+/* Thumbnail: anklickbar */
+.tabulator-cell .thumbnail {
+    cursor: pointer !important;
+}
+
+/* Eigentümer "Vertraulich": Hinweis verfügbar */
+.tabulator-cell .owner-private {
+    cursor: help !important;
+}
