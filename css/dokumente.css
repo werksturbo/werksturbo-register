@@ -189,3 +189,100 @@
     box-shadow:0 6px 15px rgba(0,0,0,.30);
 
 }
+
+
+/* ==========================================================
+   Pressefotos – Tabellenlayout wie Dokumente
+========================================================== */
+
+#pressefotos-tabelle {
+    width: 1100px;
+    max-width: 90%;
+    margin: 40px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* Kopfzeile */
+
+#pressefotos-tabelle thead {
+    background: #0b4f7d;
+    color: #ffffff;
+}
+
+#pressefotos-tabelle th {
+    background: #0b4f7d;
+    color: #ffffff;
+    padding: 16px 18px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Tabellenzeilen */
+
+#pressefotos-tabelle td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #dfe4e8;
+    color: #243b53;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+/* Abwechselnde Zeilen */
+
+#pressefotos-tabelle tbody tr:nth-child(even) {
+    background: #f7f9fb;
+}
+
+#pressefotos-tabelle tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+/* Hover */
+
+#pressefotos-tabelle tbody tr:hover {
+    background: #eef4f8;
+}
+
+/* Spaltenbreiten */
+
+#pressefotos-tabelle th:nth-child(1),
+#pressefotos-tabelle td:nth-child(1) {
+    width: 25%;
+}
+
+#pressefotos-tabelle th:nth-child(2),
+#pressefotos-tabelle td:nth-child(2) {
+    width: 15%;
+}
+
+#pressefotos-tabelle th:nth-child(3),
+#pressefotos-tabelle td:nth-child(3) {
+    width: 45%;
+}
+
+#pressefotos-tabelle th:nth-child(4),
+#pressefotos-tabelle td:nth-child(4) {
+    width: 15%;
+    text-align: center;
+}
+
+/* Pressefoto-Thumbnail */
+
+#pressefotos-tabelle .pressefoto-thumbnail {
+    width: 120px;
+    height: auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+/* Vergrößerung bei Mouseover */
+
+#pressefotos-tabelle .pressefoto-thumbnail:hover {
+    transform: scale(1.08);
+}
