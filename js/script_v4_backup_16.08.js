@@ -561,15 +561,20 @@ function buildColumns() {
 
         }
 
-        columns.push({
+columns.push({
 
-            title: header,
+           title: header,
 
-            field: header,
+           field: header,
 
-            width: width,
+           width: width,
 
-            headerSort: true,
+           headerSort: true,
+
+           sorter:
+                h === "lnr"
+                ? "number"
+                : undefined,
 
             frozen:
                 header === COLUMNS.number ||
@@ -607,35 +612,44 @@ function ownerFormatter(cell){
     }
 
     return `
-        <span class="owner-private">
-          🔒 Vertraulich
-        </span>
+         <span class="confidential-info">
+
+         <span class="confidential">🔒 Vertraulich</span>
+
+         <span class="confidential-tooltip">
+              <strong>Vertrauliche Angabe</strong><br>
+              Der Name des Eigentümers ist uns bekannt,
+              wird aus Gründen des Datenschutzes jedoch
+              nicht öffentlich angezeigt.
+    </span>
+
+</span>
     `;
 
 }
-
-/******************************************************************
- * Status-Formatter
- ******************************************************************/
 
 function statusFormatter(cell) {
 
     const value = cell.getValue() || "";
 
-    // CSS-Klasse aus dem Status erzeugen
-    const cssClass = "status-" +
-        value
-            .toLowerCase()
-            .replace(/\//g, "-")
-            .replace(/\s+/g, "-")
-            .replace(/[^a-z0-9-]/g, "");
+    const statusClasses = {
+        "current": "status-current",
+        "fahrbereit": "status-fahrbereit",
+        "in restaurierung": "status-restoration",
+        "stored": "status-stored",
+        "verschrottet": "status-scrapped",
+        "unbekannt": "status-unknown"
+    };
+
+    const cssClass =
+        statusClasses[value.toLowerCase().trim()] ||
+        "status-unknown";
 
     return `
         <span class="status-badge ${cssClass}">
             ${value}
         </span>
     `;
-
 }
 
 
@@ -659,6 +673,10 @@ function buildTable() {
         data: APP.data,
 
         columns: buildColumns(),
+
+       initialSort: [
+      { column: "Lnr", dir: "asc" }
+      ],
 
         layout: "fitDataTable",
 
