@@ -117,6 +117,8 @@ function buildTable(data) {
 
         thumbnail.loading = "lazy";
 
+        thumbnail.classList.add("pressefoto-thumbnail");
+
 
         imageLink.appendChild(thumbnail);
 
