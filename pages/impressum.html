@@ -13,6 +13,159 @@
 
     <link rel="stylesheet" href="../css/home.css">
 
+    <style>
+        /* =========================================================
+           MOBILE NAVIGATION
+           ========================================================= */
+
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+
+            header {
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                min-height: 74px !important;
+                height: auto !important;
+                padding: 8px 14px !important;
+                box-sizing: border-box !important;
+            }
+
+            header .logo {
+                flex: 0 1 auto !important;
+                min-width: 0 !important;
+                margin: 0 auto !important;
+                text-align: center !important;
+            }
+
+            header .logo img {
+                display: block !important;
+                width: auto !important;
+                max-width: min(72vw, 300px) !important;
+                max-height: 58px !important;
+                margin: 0 !important;
+            }
+
+            /* Hamburger */
+
+            .mobile-menu-toggle {
+                position: absolute !important;
+                left: 14px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+
+                width: 48px !important;
+                height: 48px !important;
+
+                margin: 0 !important;
+                padding: 9px 8px !important;
+
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 5px !important;
+
+                border: 1px solid rgba(255,255,255,.35) !important;
+                border-radius: 8px !important;
+
+                background: rgba(255,255,255,.10) !important;
+                color: inherit !important;
+
+                cursor: pointer !important;
+                box-sizing: border-box !important;
+                z-index: 10001 !important;
+            }
+
+            .mobile-menu-toggle span {
+                display: block !important;
+                width: 25px !important;
+                height: 3px !important;
+                border-radius: 3px !important;
+                background: currentColor !important;
+            }
+
+            /* Mobile-Menü */
+
+            header nav {
+                display: none !important;
+
+                position: absolute !important;
+                z-index: 10000 !important;
+
+                top: calc(100% - 1px) !important;
+                left: 10px !important;
+                right: 10px !important;
+
+                width: auto !important;
+                height: auto !important;
+
+                max-height: calc(100vh - 90px) !important;
+                overflow-y: auto !important;
+
+                margin: 0 !important;
+                padding: 6px 0 !important;
+
+                border-radius: 0 0 10px 10px !important;
+
+                box-sizing: border-box !important;
+
+                background: #0b4f78 !important;
+                box-shadow: 0 8px 20px rgba(0,0,0,.28) !important;
+            }
+
+            header.nav-open nav {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            header nav a {
+                display: block !important;
+                width: 100% !important;
+                min-height: 45px !important;
+
+                padding: 11px 18px !important;
+
+                box-sizing: border-box !important;
+
+                text-align: left !important;
+
+                font-size: 17px !important;
+                line-height: 1.3 !important;
+
+                white-space: normal !important;
+                border-radius: 0 !important;
+            }
+
+            header nav a.active {
+                background: rgba(255,255,255,.16) !important;
+            }
+        }
+
+        @media (max-width: 420px) {
+
+            header {
+                min-height: 66px !important;
+                padding: 6px 10px !important;
+            }
+
+            header .logo img {
+                max-width: 68vw !important;
+                max-height: 52px !important;
+            }
+
+            .mobile-menu-toggle {
+                left: 10px !important;
+                width: 44px !important;
+                height: 44px !important;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -26,7 +179,19 @@
         </a>
     </div>
 
-    <nav>
+    <!-- Hamburger für Smartphones und Tablets -->
+    <button class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            type="button"
+            aria-label="Menü öffnen"
+            aria-expanded="false"
+            aria-controls="mainNavigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="mainNavigation">
 
         <a href="../index.html">Startseite</a>
         <a href="../register.html">Register</a>
@@ -133,11 +298,10 @@
         <p>
             Anschrift: Akkoallee 58
         </p>
-        
-         <p>
+
+        <p>
             PLZ / Ort: 45659 Recklinghausen
         </p>
-
 
     </div>
 
@@ -286,6 +450,70 @@
 
 </footer>
 
-</body>
 
+<!-- ==========================================
+     MOBILE MENU SCRIPT
+=========================================== -->
+
+<script>
+(function () {
+
+    const header = document.querySelector("header");
+    const toggle = document.getElementById("mobileMenuToggle");
+    const nav = document.getElementById("mainNavigation");
+
+    if (!header || !toggle || !nav) return;
+
+    function closeMenu() {
+        header.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Menü öffnen");
+    }
+
+    toggle.addEventListener("click", function () {
+
+        const open = header.classList.toggle("nav-open");
+
+        toggle.setAttribute(
+            "aria-expanded",
+            open ? "true" : "false"
+        );
+
+        toggle.setAttribute(
+            "aria-label",
+            open ? "Menü schließen" : "Menü öffnen"
+        );
+
+    });
+
+    /* Menü nach Auswahl eines Links schließen */
+    nav.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", closeMenu);
+
+    });
+
+    /* Menü schließen, wenn außerhalb geklickt wird */
+    document.addEventListener("click", function (event) {
+
+        if (!header.contains(event.target)) {
+            closeMenu();
+        }
+
+    });
+
+    /* Menü schließen, wenn wieder auf Desktop-Breite gewechselt wird */
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 900) {
+            closeMenu();
+        }
+
+    });
+
+})();
+</script>
+
+
+</body>
 </html>
