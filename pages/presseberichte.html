@@ -9,121 +9,596 @@
     <title>Presseberichte | Werksturbo Register</title>
 
     <meta name="description"
-      content="Zeitgenössische und aktuelle Presseberichte zum Ford Capri Werksturbo">
+          content="Zeitgenössische und aktuelle Presseberichte zum Ford Capri Werksturbo">
 
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/dokumente.css">
 
+
+    <style>
+
+        /* =========================================================
+           MOBILE NAVIGATION
+           Bis 900px bleibt die Navigation auch im Querformat mobil.
+           ========================================================= */
+
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+
+        @media (max-width: 900px) {
+
+            header {
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                min-height: 74px !important;
+                height: auto !important;
+                padding: 8px 14px !important;
+                box-sizing: border-box !important;
+            }
+
+
+            header .logo {
+                flex: 0 1 auto !important;
+                min-width: 0 !important;
+                margin: 0 auto !important;
+                text-align: center !important;
+            }
+
+
+            header .logo img {
+                display: block !important;
+                width: auto !important;
+                max-width: min(72vw, 300px) !important;
+                max-height: 58px !important;
+                margin: 0 !important;
+            }
+
+
+            /* =====================================================
+               HAMBURGER
+               ===================================================== */
+
+            .mobile-menu-toggle {
+                position: absolute !important;
+
+                left: 14px !important;
+                top: 50% !important;
+
+                transform: translateY(-50%) !important;
+
+                width: 48px !important;
+                height: 48px !important;
+
+                margin: 0 !important;
+                padding: 9px 8px !important;
+
+                display: flex !important;
+
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+
+                gap: 5px !important;
+
+                border: 1px solid rgba(255,255,255,.35) !important;
+                border-radius: 8px !important;
+
+                background: rgba(255,255,255,.10) !important;
+                color: inherit !important;
+
+                cursor: pointer !important;
+
+                box-sizing: border-box !important;
+
+                z-index: 10001 !important;
+            }
+
+
+            .mobile-menu-toggle span {
+                display: block !important;
+
+                width: 25px !important;
+                height: 3px !important;
+
+                border-radius: 3px !important;
+
+                background: currentColor !important;
+            }
+
+
+            /* =====================================================
+               MOBILE NAVIGATION
+               ===================================================== */
+
+            header nav {
+                display: none !important;
+
+                position: absolute !important;
+
+                z-index: 10000 !important;
+
+                top: calc(100% - 1px) !important;
+
+                left: 10px !important;
+                right: 10px !important;
+
+                width: auto !important;
+                height: auto !important;
+
+                max-height: calc(100vh - 90px) !important;
+
+                overflow-y: auto !important;
+
+                margin: 0 !important;
+                padding: 6px 0 !important;
+
+                border-radius: 0 0 10px 10px !important;
+
+                box-sizing: border-box !important;
+
+                background: #0b4f78 !important;
+
+                box-shadow: 0 8px 20px rgba(0,0,0,.28) !important;
+            }
+
+
+            header.nav-open nav {
+                display: block !important;
+            }
+
+
+            header nav ul {
+                display: flex !important;
+
+                flex-direction: column !important;
+                align-items: stretch !important;
+
+                width: 100% !important;
+                height: auto !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                list-style: none !important;
+
+                gap: 0 !important;
+            }
+
+
+            header nav li {
+                display: block !important;
+
+                width: 100% !important;
+                height: auto !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+
+            header nav li a {
+                display: block !important;
+
+                width: 100% !important;
+
+                min-height: 45px !important;
+
+                padding: 11px 18px !important;
+
+                box-sizing: border-box !important;
+
+                text-align: left !important;
+
+                font-size: 17px !important;
+                line-height: 1.3 !important;
+
+                white-space: normal !important;
+
+                border-radius: 0 !important;
+            }
+
+
+            /* Aktive Seite */
+
+            header nav li a.active {
+                background: rgba(255,255,255,.16) !important;
+            }
+
+        }
+
+
+        /* =========================================================
+           SEHR KLEINE SMARTPHONES
+           ========================================================= */
+
+        @media (max-width: 420px) {
+
+            header {
+                min-height: 66px !important;
+                padding: 6px 10px !important;
+            }
+
+
+            header .logo img {
+                max-width: 68vw !important;
+                max-height: 52px !important;
+            }
+
+
+            .mobile-menu-toggle {
+                left: 10px !important;
+
+                width: 44px !important;
+                height: 44px !important;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<header>
 
-    <div class="logo">
-        <a href="../index.html">
-            <img src="../images/logo-werksturbo.png" alt="Werksturbo Register">
-        </a>
-    </div>
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
 
-    <nav>
+    <header>
 
-        <ul>
 
-            <li><a href="../index.html">Startseite</a></li>
+        <div class="logo">
 
-            <li><a href="../register.html">Register</a></li>
+            <a href="../index.html">
 
-            <li><a href="pressefotos.html">Pressefotos</a></li>
+                <img src="../images/logo-werksturbo.png"
+                     alt="Werksturbo Register">
 
-            <li><a href="dokumente.html">Dokumente</a></li>
-            
-            <li><a class="active" href="presseberichte.html">Presseberichte</a></li>
-
-            <li><a href="wissensdatenbank.html">Wissensdatenbank</a></li>
-
-            <li><a href="kontakt.html">Kontakt</a></li>
-
-        </ul>
-
-    </nav>
-
-</header>
-
-<section class="page-header">
-
-    <h2>Presseberichte</h2>
-
-<p>
-    In dieser Rubrik finden Sie eine umfangreiche Sammlung von Presseberichten
-    über den Ford Capri Werksturbo aus den Jahren 1981 bis heute.
-    Zeitgenössische Testberichte, Fachartikel und spätere Rückblicke
-    dokumentieren, wie dieser außergewöhnliche Capri über die Jahrzehnte
-    in der Öffentlichkeit wahrgenommen wurde. Die Sammlung wird kontinuierlich
-    erweitert und soll möglichst umfassend die Geschichte des Ford Capri
-    Werksturbo in der Presse festhalten.
-</p>
-
-<p>
-    Sie besitzen weitere Presseberichte oder seltene Veröffentlichungen?
-    Dann freuen wir uns über Ihre Unterstützung, damit wir diese Sammlung
-    gemeinsam vervollständigen können.
-</p>
-
-</section>
-
-<section class="table-container">
-
-    <table id="dokumente-tabelle">
-
-        <thead>
-
-            <tr>
-
-                <th>Bericht</th>
-                <th>Kategorie</th>
-                <th>Beschreibung</th>
-                <th>Vorschau</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <!-- Hier erscheinen später automatisch die Dokumente -->
-
-        </tbody>
-
-    </table>
-
-</section>
-
-<footer>
-
-    <div class="footer-content">
-
-        <h3>Ford Capri III Werksturbo Register</h3>
-
-        <div class="footer-nav">
-
-            <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html">Datenschutz</a>
-            <a href="kontakt.html">Kontakt</a>
-        </div>
-
-        <div class="footer-bottom">
-
-            © 2026 Werksturbo Register
+            </a>
 
         </div>
 
-    </div>
 
-</footer>
+        <!-- =========================
+             MOBILE HAMBURGER
+             ========================= -->
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-<script src="../js/presseberichte.js"></script>
+        <button
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            type="button"
+            aria-label="Menü öffnen"
+            aria-expanded="false"
+            aria-controls="mainNavigation">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- =========================
+             HAUPTNAVIGATION
+             ========================= -->
+
+        <nav id="mainNavigation">
+
+            <ul>
+
+                <li>
+                    <a href="../index.html">
+                        Startseite
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="../register.html">
+                        Register
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="pressefotos.html">
+                        Pressefotos
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="dokumente.html">
+                        Dokumente
+                    </a>
+                </li>
+
+
+                <li>
+                    <a class="active" href="presseberichte.html">
+                        Presseberichte
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="wissensdatenbank.html">
+                        Wissensdatenbank
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="kontakt.html">
+                        Kontakt
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- SEITENKOPF -->
+    <!-- ========================= -->
+
+    <section class="page-header">
+
+        <h2>
+            Presseberichte
+        </h2>
+
+
+        <p>
+
+            In dieser Rubrik finden Sie eine umfangreiche Sammlung von
+            Presseberichten über den Ford Capri Werksturbo aus den Jahren
+            1981 bis heute.
+            Zeitgenössische Testberichte, Fachartikel und spätere Rückblicke
+            dokumentieren, wie dieser außergewöhnliche Capri über die
+            Jahrzehnte in der Öffentlichkeit wahrgenommen wurde.
+            Die Sammlung wird kontinuierlich erweitert und soll möglichst
+            umfassend die Geschichte des Ford Capri Werksturbo in der Presse
+            festhalten.
+
+        </p>
+
+
+        <p>
+
+            Sie besitzen weitere Presseberichte oder seltene Veröffentlichungen?
+            Dann freuen wir uns über Ihre Unterstützung, damit wir diese Sammlung
+            gemeinsam vervollständigen können.
+
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PRESSEBERICHT-TABELLE -->
+    <!-- ========================= -->
+
+    <section class="table-container">
+
+        <table id="dokumente-tabelle">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Bericht
+                    </th>
+
+                    <th>
+                        Kategorie
+                    </th>
+
+                    <th>
+                        Beschreibung
+                    </th>
+
+                    <th>
+                        Vorschau
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <!-- Hier erscheinen später automatisch die Dokumente -->
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <h3>
+                Ford Capri III Werksturbo Register
+            </h3>
+
+
+            <div class="footer-nav">
+
+                <a href="impressum.html">
+                    Impressum
+                </a>
+
+                <a href="datenschutz.html">
+                    Datenschutz
+                </a>
+
+                <a href="kontakt.html">
+                    Kontakt
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © 2026 Werksturbo Register
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ========================= -->
+    <!-- SCRIPTS -->
+    <!-- ========================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <script src="../js/presseberichte.js"></script>
+
+
+    <!-- =========================================================
+         MOBILE MENU JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        (function () {
+
+            const header =
+                document.querySelector("header");
+
+            const toggle =
+                document.getElementById("mobileMenuToggle");
+
+            const nav =
+                document.getElementById("mainNavigation");
+
+
+            if (!header || !toggle || !nav) {
+                return;
+            }
+
+
+            /* Menü schließen */
+
+            function closeMenu() {
+
+                header.classList.remove("nav-open");
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                toggle.setAttribute(
+                    "aria-label",
+                    "Menü öffnen"
+                );
+
+            }
+
+
+            /* Hamburger anklicken */
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+                    const open =
+                        header.classList.toggle("nav-open");
+
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open ? "true" : "false"
+                    );
+
+
+                    toggle.setAttribute(
+                        "aria-label",
+                        open
+                            ? "Menü schließen"
+                            : "Menü öffnen"
+                    );
+
+                }
+            );
+
+
+            /* Menü schließen,
+               wenn ein Link angeklickt wird */
+
+            nav.querySelectorAll("a").forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
+
+                }
+            );
+
+
+            /* Menü schließen,
+               wenn außerhalb geklickt wird */
+
+            document.addEventListener(
+                "click",
+                function (event) {
+
+                    if (!header.contains(event.target)) {
+
+                        closeMenu();
+
+                    }
+
+                }
+            );
+
+
+            /* Bei Wechsel auf Desktop
+               Menü automatisch schließen */
+
+            window.addEventListener(
+                "resize",
+                function () {
+
+                    if (window.innerWidth > 900) {
+
+                        closeMenu();
+
+                    }
+
+                }
+            );
+
+        })();
+
+    </script>
+
 
 </body>
 
