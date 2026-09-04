@@ -14,333 +14,841 @@
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/style.css">
 
+
+    <!-- =========================================================
+         MOBILE NAVIGATION
+         Bis 900px bleibt die Navigation auch im Querformat mobil.
+         ========================================================= -->
+
+    <style>
+
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+
+        @media (max-width: 900px) {
+
+            header {
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                min-height: 74px !important;
+                height: auto !important;
+                padding: 8px 14px !important;
+                box-sizing: border-box !important;
+            }
+
+
+            header .logo {
+                flex: 0 1 auto !important;
+                min-width: 0 !important;
+                margin: 0 auto !important;
+                text-align: center !important;
+            }
+
+
+            header .logo img {
+                display: block !important;
+                width: auto !important;
+                max-width: min(72vw, 300px) !important;
+                max-height: 58px !important;
+                margin: 0 !important;
+            }
+
+
+            /* =====================================================
+               HAMBURGER
+               ===================================================== */
+
+            .mobile-menu-toggle {
+                position: absolute !important;
+
+                left: 14px !important;
+                top: 50% !important;
+
+                transform: translateY(-50%) !important;
+
+                width: 48px !important;
+                height: 48px !important;
+
+                margin: 0 !important;
+                padding: 9px 8px !important;
+
+                display: flex !important;
+
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+
+                gap: 5px !important;
+
+                border: 1px solid rgba(255,255,255,.35) !important;
+                border-radius: 8px !important;
+
+                background: rgba(255,255,255,.10) !important;
+                color: inherit !important;
+
+                cursor: pointer !important;
+
+                box-sizing: border-box !important;
+
+                z-index: 10001 !important;
+            }
+
+
+            .mobile-menu-toggle span {
+                display: block !important;
+
+                width: 25px !important;
+                height: 3px !important;
+
+                border-radius: 3px !important;
+
+                background: currentColor !important;
+            }
+
+
+            /* =====================================================
+               MOBILE NAVIGATION
+               ===================================================== */
+
+            header nav {
+                display: none !important;
+
+                position: absolute !important;
+
+                z-index: 10000 !important;
+
+                top: calc(100% - 1px) !important;
+
+                left: 10px !important;
+                right: 10px !important;
+
+                width: auto !important;
+                height: auto !important;
+
+                max-height: calc(100vh - 90px) !important;
+
+                overflow-y: auto !important;
+
+                margin: 0 !important;
+                padding: 6px 0 !important;
+
+                border-radius: 0 0 10px 10px !important;
+
+                box-sizing: border-box !important;
+
+                background: #0b4f78 !important;
+
+                box-shadow: 0 8px 20px rgba(0,0,0,.28) !important;
+            }
+
+
+            header.nav-open nav {
+                display: flex !important;
+
+                flex-direction: column !important;
+            }
+
+
+            /* =====================================================
+               NAVIGATION LINKS
+               Die Wissensdatenbank verwendet hier direkte
+               <a>-Elemente statt einer <ul>-Struktur.
+               ===================================================== */
+
+            header nav a {
+                display: block !important;
+
+                width: 100% !important;
+
+                min-height: 45px !important;
+
+                padding: 11px 18px !important;
+
+                box-sizing: border-box !important;
+
+                text-align: left !important;
+
+                font-size: 17px !important;
+                line-height: 1.3 !important;
+
+                white-space: normal !important;
+
+                border-radius: 0 !important;
+            }
+
+
+            /* Aktive Seite */
+
+            header nav a.active {
+                background: rgba(255,255,255,.16) !important;
+            }
+
+        }
+
+
+        /* =========================================================
+           SEHR KLEINE SMARTPHONES
+           ========================================================= */
+
+        @media (max-width: 420px) {
+
+            header {
+                min-height: 66px !important;
+                padding: 6px 10px !important;
+            }
+
+
+            header .logo img {
+                max-width: 68vw !important;
+                max-height: 52px !important;
+            }
+
+
+            .mobile-menu-toggle {
+                left: 10px !important;
+
+                width: 44px !important;
+                height: 44px !important;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body class="knowledge-page">
 
-<header>
 
-    <div class="logo">
-        <a href="../index.html">
-            <img src="../images/logo-werksturbo.png"
-                 alt="Werksturbo Register">
-        </a>
-    </div>
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
 
-    <nav>
-
-        <a href="../index.html">Startseite</a>
-        <a href="../register.html">Register</a>
-        <a href="pressefotos.html">Pressefotos</a>
-        <a href="dokumente.html">Dokumente</a>
-        <a href="presseberichte.html">Presseberichte</a>
-        <a href="wissensdatenbank.html">Wissensdatenbank</a>
-        <a href="kontakt.html">Kontakt</a>
-
-    </nav>
-
-</header>
-
-<script>
-
-console.log("Wissen DB Version 23:16 Uhr");
-
-</script> 
-
-    
-<!-- ==========================================================
-     Lightbox
-========================================================== -->
-
-<div id="lightbox">
-
-    <span id="closeLightbox">&times;</span>
-
-    <!-- Ladespinner -->
-    <div id="lightboxLoader"></div>
-
-    <button id="prevImage" class="lightboxNav">&#10094;</button>
-
-    <!-- Großes Bild -->
-    <img id="lightboxImage" alt="Fahrzeugfoto">
+    <header>
 
 
-    <button id="nextImage" class="lightboxNav">&#10095;</button>
+        <div class="logo">
 
-    <!-- Fahrzeuginformationen -->
-    <div id="lightboxInfo">
+            <a href="../index.html">
 
-        <div><strong>Lnr:</strong> <span id="lbLnr"></span></div>
+                <img src="../images/logo-werksturbo.png"
+                     alt="Werksturbo Register">
 
-        <div><strong>Chassis:</strong> <span id="lbChassis"></span></div>
+            </a>
 
-        <div><strong>Land:</strong> <span id="lbLand"></span></div>
-
-        <div><strong>Status:</strong> <span id="lbStatus"></span></div>
-
-        <div><strong>Bild:</strong> <span id="lbCounter"></span></div>
-
-    </div>
-
-    <!-- Werkzeugleiste -->
-    <div class="lightboxToolbar">
-
-        <a
-            id="downloadImage"
-            target="_blank"
-            download>
-
-            Download
-
-        </a>
-
-    </div>
-
-</div>
-
-
-<!-- ==========================================
- Anzahl gebauter Fahrzeuge
-=========================================== -->
-
-<section class="page-header">
-
-    <div class="card card-wide">
-
-        <div class="knowledge-content">
-
-            <h3>Anzahl gebauter Ford Capri Werksturbo</h3>
-
-            <p>
-            Die tatsächliche Produktionszahl des Ford Capri Werksturbo ist bis heute nicht eindeutig belegt. 
-            In vielen Veröffentlichungen wird von rund 200 Fahrzeugen gesprochen, eine offizielle Bestätigung von Ford existiert jedoch nicht. 
-            Im Werksturbo Register konnten bislang 122 unterschiedliche Fahrzeuge eindeutig dokumentiert werden. 
-            Diese Zahl wächst durch neue Erkenntnisse kontinuierlich weiter.
-            </p>
         </div>
+
+
+        <!-- =========================
+             MOBILE HAMBURGER
+             ========================= -->
+
+        <button
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            type="button"
+            aria-label="Menü öffnen"
+            aria-expanded="false"
+            aria-controls="mainNavigation">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- =========================
+             HAUPTNAVIGATION
+             ========================= -->
+
+        <nav id="mainNavigation">
+
+            <a href="../index.html">
+                Startseite
+            </a>
+
+            <a href="../register.html">
+                Register
+            </a>
+
+            <a href="pressefotos.html">
+                Pressefotos
+            </a>
+
+            <a href="dokumente.html">
+                Dokumente
+            </a>
+
+            <a href="presseberichte.html">
+                Presseberichte
+            </a>
+
+            <a class="active" href="wissensdatenbank.html">
+                Wissensdatenbank
+            </a>
+
+            <a href="kontakt.html">
+                Kontakt
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- VERSION / TEST -->
+    <!-- ========================= -->
+
+    <script>
+
+        console.log("Wissen DB Version 23:16 Uhr");
+
+    </script>
+
+
+    <!-- ==========================================================
+         LIGHTBOX
+         ========================================================== -->
+
+    <div id="lightbox">
+
+        <span id="closeLightbox">
+            &times;
+        </span>
+
+
+        <!-- Ladespinner -->
+
+        <div id="lightboxLoader"></div>
+
+
+        <button id="prevImage" class="lightboxNav">
+            &#10094;
+        </button>
+
+
+        <!-- Großes Bild -->
+
+        <img id="lightboxImage"
+             alt="Fahrzeugfoto">
+
+
+        <button id="nextImage" class="lightboxNav">
+            &#10095;
+        </button>
+
+
+        <!-- Fahrzeuginformationen -->
+
+        <div id="lightboxInfo">
+
+            <div>
+                <strong>Lnr:</strong>
+                <span id="lbLnr"></span>
+            </div>
+
+            <div>
+                <strong>Chassis:</strong>
+                <span id="lbChassis"></span>
+            </div>
+
+            <div>
+                <strong>Land:</strong>
+                <span id="lbLand"></span>
+            </div>
+
+            <div>
+                <strong>Status:</strong>
+                <span id="lbStatus"></span>
+            </div>
+
+            <div>
+                <strong>Bild:</strong>
+                <span id="lbCounter"></span>
+            </div>
+
+        </div>
+
+
+        <!-- Werkzeugleiste -->
+
+        <div class="lightboxToolbar">
+
+            <a
+                id="downloadImage"
+                target="_blank"
+                download>
+
+                Download
+
+            </a>
+
+        </div>
+
     </div>
 
-</section>
 
-    
-<!-- ==========================================
-    Nummer auf dem Kardantunnel
-=========================================== -->
+    <!-- ==========================================
+         ANZAHL GEBAUTER FAHRZEUGE
+         ========================================== -->
 
-<section class="page-section">
+    <section class="page-header">
 
-<div class="card card-wide">
+        <div class="card card-wide">
 
-    <div class="knowledge-layout">
+            <div class="knowledge-content">
 
-        <a href="#"
-           class="knowledge-image"
-           onclick="openKnowledgeGallery('kardantunnel',0,'Nummer auf dem Kardantunnel'); return false;">
+                <h3>
+                    Anzahl gebauter Ford Capri Werksturbo
+                </h3>
 
-            <img src="../images/wissensdb/nr_kardantunnel_gross.jpg"
-                 alt="Handschriftliche Nr. auf Kardantunnel">
 
-        </a>
+                <p>
 
-        <div class="knowledge-content">
+                    Die tatsächliche Produktionszahl des Ford Capri Werksturbo
+                    ist bis heute nicht eindeutig belegt.
+                    In vielen Veröffentlichungen wird von rund 200 Fahrzeugen
+                    gesprochen, eine offizielle Bestätigung von Ford existiert
+                    jedoch nicht.
+                    Im Werksturbo Register konnten bislang 122 unterschiedliche
+                    Fahrzeuge eindeutig dokumentiert werden.
+                    Diese Zahl wächst durch neue Erkenntnisse kontinuierlich weiter.
 
-                    <h3>Nummer auf dem Kardantunnel</h3>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         NUMMER AUF DEM KARDANTUNNEL
+         ========================================== -->
+
+    <section class="page-section">
+
+        <div class="card card-wide">
+
+            <div class="knowledge-layout">
+
+
+                <a href="#"
+                   class="knowledge-image"
+                   onclick="openKnowledgeGallery('kardantunnel',0,'Nummer auf dem Kardantunnel'); return false;">
+
+                    <img
+                        src="../images/wissensdb/nr_kardantunnel_gross.jpg"
+                        alt="Handschriftliche Nr. auf Kardantunnel">
+
+                </a>
+
+
+                <div class="knowledge-content">
+
+                    <h3>
+                        Nummer auf dem Kardantunnel
+                    </h3>
+
 
                     <p>
-                             Nach heutigem Kenntnisstand wurden die Werksturbo-Fahrzeuge offiziell nicht fortlaufend nummeriert. Dennoch finden sich auf vielen Fahrzeugen Zahlenkombinationen auf dem Kardantunnel, 
-                            die auf ein internes Kennzeichnungssystem hindeuten könnten. Besonders bei später produzierten Fahrzeugen treten diese Nummern regelmäßig auf. 
-                            Welche Bedeutung sie tatsächlich haben, ist bislang nicht abschließend geklärt. 
-                    </p>    
-                          
-                    <p>
-                            Hier am Beispiel:  077 - 232  
+
+                        Nach heutigem Kenntnisstand wurden die Werksturbo-Fahrzeuge
+                        offiziell nicht fortlaufend nummeriert.
+                        Dennoch finden sich auf vielen Fahrzeugen Zahlenkombinationen
+                        auf dem Kardantunnel, die auf ein internes Kennzeichnungssystem
+                        hindeuten könnten.
+                        Besonders bei später produzierten Fahrzeugen treten diese
+                        Nummern regelmäßig auf.
+                        Welche Bedeutung sie tatsächlich haben, ist bislang nicht
+                        abschließend geklärt.
+
                     </p>
 
+
                     <p>
-                            Ein weiteres gefundenes  Beispiel wäre 091 - 246 
+
+                        Hier am Beispiel: 077 - 232
+
+                    </p>
+
+
+                    <p>
+
+                        Ein weiteres gefundenes Beispiel wäre 091 - 246
+
                     </p>
 
                 </div>
 
-    </div>
-    </div>
-
-</section>
-
-
-<!-- ==========================================
-     Karosseriefarbe bei Erstauslieferung
-=========================================== -->
-
-<section class="page-section">
-
-    <div class="card card-wide">
-
-        <div class="knowledge-layout">
-
-           <a href="#"
-                    class="knowledge-image"
-                    onclick="openKnowledgeGallery('karosseriefarbe',0,'Karosseriefarbe bei Erstauslieferung'); return false;">
-               
-                    <img src="../images/wissensdb/karosserie_farbe_weiss.jpg"
-                     alt="Karosseriefarbe">
-
-          </a>
-
-            <div class="knowledge-content">
-
-                <h3>Karosseriefarbe bei Erstauslieferung</h3>
-
-                <p>
-                    Der Ford Capri Werksturbo wurde ab Werk in vier bekannten Lackfarben ausgeliefert. In der Szene gibt es darüber hinaus Hinweise, 
-                    dass mindestens ein Fahrzeug auch in Grau ausgeliefert worden sein könnte. Hier findest Du eine Übersicht aller bekannten Farben sowie deren 
-                    Zuordnung anhand der Farbplaketten. Zur Vervollständigung der Dokumentation fehlen derzeit noch Fotos eines roten und eines grünen Werksturbo. 
-                    Wenn Du solche Aufnahmen besitzt, würde ich mich sehr freuen, wenn Du sie für das Register zur Verfügung stellen würdest.
-                </p>
-
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ==========================================
-     Motorcode PYN
-=========================================== -->
+    <!-- ==========================================
+         KAROSSERIEFARBE BEI ERSTAUSLIEFERUNG
+         ========================================== -->
 
-<section class="page-section">
+    <section class="page-section">
 
-    <div class="card card-wide">
-
-        <div class="knowledge-layout">
-
-            <a href="#"
-               class="knowledge-image"
-               onclick="openKnowledgeGallery('motorcode',0,'Motorcode PYN'); return false;">
-
-                <img src="../images/wissensdb/motorcode.jpg"
-                 alt="Motorcode PYN">
-
-            </a>
-
-            <div class="knowledge-content">
-
-                <h3>Motorcode PYN</h3>
-
-                <p>
-                    Der Motorcode PYN ist in Fahrtrichtung links vorne oberhalb der
-                    Motorseriennummer eingeschlagen. Bei Werksauslieferung entsprach
-                    die Motornummer der Fahrgestellnummer.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==========================================
-     Marc Surer
-=========================================== -->
-
-<section class="page-section">
-
-    <div class="card card-wide">
+        <div class="card card-wide">
 
             <div class="knowledge-layout">
 
-            <div class="knowledge-content">
 
-<h3>Gesucht: Der rote Werksturbo von Marc Surer</h3>
+                <a href="#"
+                   class="knowledge-image"
+                   onclick="openKnowledgeGallery('karosseriefarbe',0,'Karosseriefarbe bei Erstauslieferung'); return false;">
 
-<p>
-  Nach meinen bisherigen Informationen soll der ehemalige Schweizer
-  Formel-1-Rennfahrer <strong>Marc Surer</strong> einmal einen
-  <strong>roten Ford Capri Werksturbo</strong> besessen haben.
-</p>
+                    <img
+                        src="../images/wissensdb/karosserie_farbe_weiss.jpg"
+                        alt="Karosseriefarbe">
 
-<p>
-  Wo befindet sich dieses Fahrzeug heute? Ist der Capri noch erhalten
-  und vielleicht sogar noch im Besitz eines Lesers oder eines
-  Werksturbo-Sammlers?
-</p>
+                </a>
 
-<p>
-  <strong>
-    Wer kennt die Geschichte dieses Fahrzeugs, hat Fotos, Unterlagen
-    oder Informationen zu seiner früheren oder heutigen Identität?
-  </strong>
-  Auch kleinste Hinweise können bei der Suche nach dem Auto weiterhelfen.
-</p>
 
-<p>
-  Wenn Sie etwas über diesen roten Werksturbo wissen oder das Fahrzeug
-  möglicherweise selbst besitzen, würde ich mich sehr über eine
-  Nachricht freuen.
-</p>
+                <div class="knowledge-content">
 
-<p>
-  <em>
-    Hinweis: Die Information über den Besitz durch Marc Surer konnte von
-    mir bislang noch nicht eindeutig belegt werden und soll mit diesem
-    Aufruf weiter recherchiert werden.
-  </em>
-</p>
+                    <h3>
+                        Karosseriefarbe bei Erstauslieferung
+                    </h3>
+
+
+                    <p>
+
+                        Der Ford Capri Werksturbo wurde ab Werk in vier bekannten
+                        Lackfarben ausgeliefert.
+                        In der Szene gibt es darüber hinaus Hinweise, dass mindestens
+                        ein Fahrzeug auch in Grau ausgeliefert worden sein könnte.
+                        Hier findest Du eine Übersicht aller bekannten Farben sowie
+                        deren Zuordnung anhand der Farbplaketten.
+                        Zur Vervollständigung der Dokumentation fehlen derzeit noch
+                        Fotos eines roten und eines grünen Werksturbo.
+                        Wenn Du solche Aufnahmen besitzt, würde ich mich sehr freuen,
+                        wenn Du sie für das Register zur Verfügung stellen würdest.
+
+                    </p>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- ==========================================
+         MOTORCODE PYN
+         ========================================== -->
+
+    <section class="page-section">
+
+        <div class="card card-wide">
+
+            <div class="knowledge-layout">
 
 
+                <a href="#"
+                   class="knowledge-image"
+                   onclick="openKnowledgeGallery('motorcode',0,'Motorcode PYN'); return false;">
+
+                    <img
+                        src="../images/wissensdb/motorcode.jpg"
+                        alt="Motorcode PYN">
+
+                </a>
 
 
+                <div class="knowledge-content">
 
-    
-<!-- ==========================================
-     footer
-=========================================== -->
+                    <h3>
+                        Motorcode PYN
+                    </h3>
 
 
+                    <p>
 
-<footer>
+                        Der Motorcode PYN ist in Fahrtrichtung links vorne oberhalb
+                        der Motorseriennummer eingeschlagen.
+                        Bei Werksauslieferung entsprach die Motornummer der
+                        Fahrgestellnummer.
 
-    <div class="footer-content">
+                    </p>
 
-        <h3>Ford Capri III Werksturbo Register</h3>
+                </div>
 
-        <div class="footer-nav">
-
-            <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html">Datenschutz</a>
-            <a href="kontakt.html">Kontakt</a>
+            </div>
 
         </div>
 
-        <div class="footer-bottom">
+    </section>
 
-            © 2026 Werksturbo Register
+
+    <!-- ==========================================
+         MARC SURER
+         ========================================== -->
+
+    <section class="page-section">
+
+        <div class="card card-wide">
+
+            <div class="knowledge-layout">
+
+
+                <div class="knowledge-content">
+
+                    <h3>
+                        Gesucht: Der rote Werksturbo von Marc Surer
+                    </h3>
+
+
+                    <p>
+
+                        Nach meinen bisherigen Informationen soll der ehemalige
+                        Schweizer Formel-1-Rennfahrer
+                        <strong>Marc Surer</strong> einmal einen
+                        <strong>roten Ford Capri Werksturbo</strong> besessen haben.
+
+                    </p>
+
+
+                    <p>
+
+                        Wo befindet sich dieses Fahrzeug heute?
+                        Ist der Capri noch erhalten und vielleicht sogar noch im
+                        Besitz eines Lesers oder eines Werksturbo-Sammlers?
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Wer kennt die Geschichte dieses Fahrzeugs, hat Fotos,
+                            Unterlagen oder Informationen zu seiner früheren oder
+                            heutigen Identität?
+                        </strong>
+
+                        Auch kleinste Hinweise können bei der Suche nach dem Auto
+                        weiterhelfen.
+
+                    </p>
+
+
+                    <p>
+
+                        Wenn Sie etwas über diesen roten Werksturbo wissen oder das
+                        Fahrzeug möglicherweise selbst besitzen, würde ich mich
+                        sehr über eine Nachricht freuen.
+
+                    </p>
+
+
+                    <p>
+
+                        <em>
+
+                            Hinweis: Die Information über den Besitz durch Marc Surer
+                            konnte von mir bislang noch nicht eindeutig belegt werden
+                            und soll mit diesem Aufruf weiter recherchiert werden.
+
+                        </em>
+
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</footer>
 
-<script src="../js/lightbox.js"></script>
-<script src="../js/knowledge-gallery.js"></script>
-    
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <h3>
+                Ford Capri III Werksturbo Register
+            </h3>
+
+
+            <div class="footer-nav">
+
+                <a href="impressum.html">
+                    Impressum
+                </a>
+
+                <a href="datenschutz.html">
+                    Datenschutz
+                </a>
+
+                <a href="kontakt.html">
+                    Kontakt
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                © 2026 Werksturbo Register
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ========================= -->
+    <!-- SCRIPTS -->
+    <!-- ========================= -->
+
+    <script src="../js/lightbox.js"></script>
+
+    <script src="../js/knowledge-gallery.js"></script>
+
+
+    <!-- =========================================================
+         MOBILE MENU JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        (function () {
+
+            const header =
+                document.querySelector("header");
+
+            const toggle =
+                document.getElementById("mobileMenuToggle");
+
+            const nav =
+                document.getElementById("mainNavigation");
+
+
+            if (!header || !toggle || !nav) {
+                return;
+            }
+
+
+            /* Menü schließen */
+
+            function closeMenu() {
+
+                header.classList.remove("nav-open");
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                toggle.setAttribute(
+                    "aria-label",
+                    "Menü öffnen"
+                );
+
+            }
+
+
+            /* Hamburger anklicken */
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+                    const open =
+                        header.classList.toggle("nav-open");
+
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open ? "true" : "false"
+                    );
+
+
+                    toggle.setAttribute(
+                        "aria-label",
+                        open
+                            ? "Menü schließen"
+                            : "Menü öffnen"
+                    );
+
+                }
+            );
+
+
+            /* Menü schließen,
+               wenn ein Link angeklickt wird */
+
+            nav.querySelectorAll("a").forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
+
+                }
+            );
+
+
+            /* Menü schließen,
+               wenn außerhalb geklickt wird */
+
+            document.addEventListener(
+                "click",
+                function (event) {
+
+                    if (!header.contains(event.target)) {
+
+                        closeMenu();
+
+                    }
+
+                }
+            );
+
+
+            /* Bei Wechsel auf Desktop
+               Menü automatisch schließen */
+
+            window.addEventListener(
+                "resize",
+                function () {
+
+                    if (window.innerWidth > 900) {
+
+                        closeMenu();
+
+                    }
+
+                }
+            );
+
+        })();
+
+    </script>
+
+
 </body>
 
 </html>
