@@ -46,6 +46,15 @@ const COLUMNS = {
 
 };
 
+
+// Erste private Spalte
+// Ab dieser Spalte werden alle folgenden Spalten
+// nicht mehr in der öffentlichen Tabelle angezeigt.
+
+const FIRST_HIDDEN_COLUMN = "Vorbesitzer";
+
+
+
 /******************************************************************
  * Globale Anwendung
  ******************************************************************/
@@ -515,15 +524,28 @@ function buildColumns() {
     // Restliche Spalten
     // ---------------------------------------------------------
 
-    APP.headers.forEach(header => {
+// ---------------------------------------------------------
+// Restliche Spalten
+// ---------------------------------------------------------
 
-        if (header === APP.photoColumn) {
-            return;
-        }
+const firstHiddenIndex = APP.headers.findIndex(
+    h => h.trim().toLowerCase() === FIRST_HIDDEN_COLUMN.toLowerCase()
+);
 
-        const h = header.trim().toLowerCase();
+APP.headers.forEach((header, index) => {
 
-        let width = 140;
+    // Ab "Vorbesitzer" keine weiteren Spalten anzeigen
+    if (firstHiddenIndex >= 0 && index >= firstHiddenIndex) {
+        return;
+    }
+
+    if (header === APP.photoColumn) {
+        return;
+    }
+
+    const h = header.trim().toLowerCase();
+
+    let width = 140;
 
         switch (h) {
 
