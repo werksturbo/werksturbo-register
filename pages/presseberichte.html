@@ -238,6 +238,84 @@
 
         }
 
+/* =========================================================
+   PRESSEBERICHTE – TABELLENLAYOUT DESKTOP
+   Vorschau nach links, Beschreibung deutlich breiter
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    #dokumente-tabelle {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    #dokumente-tabelle thead tr,
+    #dokumente-tabelle tbody tr {
+        display: grid;
+        grid-template-columns: 18% 20% 17% 45%;
+    }
+
+    #dokumente-tabelle th,
+    #dokumente-tabelle td {
+        width: auto !important;
+        box-sizing: border-box;
+    }
+
+    /* ---------------------------------------------------------
+       Optische Reihenfolge:
+       1 = Vorschau
+       2 = Bericht
+       3 = Kategorie
+       4 = Beschreibung
+       --------------------------------------------------------- */
+
+    /* Vorschau */
+    #dokumente-tabelle th:nth-child(4),
+    #dokumente-tabelle td:nth-child(4) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    /* Bericht */
+    #dokumente-tabelle th:nth-child(1),
+    #dokumente-tabelle td:nth-child(1) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    /* Kategorie */
+    #dokumente-tabelle th:nth-child(2),
+    #dokumente-tabelle td:nth-child(2) {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    /* Beschreibung */
+    #dokumente-tabelle th:nth-child(3),
+    #dokumente-tabelle td:nth-child(3) {
+        grid-column: 4;
+        grid-row: 1;
+    }
+
+    /* Vorschaubilder sauber zentrieren */
+    #dokumente-tabelle td:nth-child(4) {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #dokumente-tabelle td:nth-child(4) img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+
+
+        
     </style>
 
 </head>
