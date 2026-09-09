@@ -1,4 +1,4 @@
- /* Lightbox Navigation/******************************************************************
+/* Lightbox Navigation/******************************************************************
  *
  * CAPRI REGISTER
  * Version 4.4(letzte Löschungen)
@@ -28,7 +28,7 @@ const CONFIG = {
 
 /******************************************************************
  * Spalten-Konfiguration
- ******************************************************************/
+ *****************************************************************/
 
 const COLUMNS = {
 
@@ -524,28 +524,24 @@ function buildColumns() {
     // Restliche Spalten
     // ---------------------------------------------------------
 
-// ---------------------------------------------------------
-// Restliche Spalten
-// ---------------------------------------------------------
+    const firstHiddenIndex = APP.headers.findIndex(
+        h => h.trim().toLowerCase() === FIRST_HIDDEN_COLUMN.toLowerCase()
+    );
 
-const firstHiddenIndex = APP.headers.findIndex(
-    h => h.trim().toLowerCase() === FIRST_HIDDEN_COLUMN.toLowerCase()
-);
+    APP.headers.forEach((header, index) => {
 
-APP.headers.forEach((header, index) => {
+        // Ab "Vorbesitzer" keine weiteren Spalten anzeigen
+        if (firstHiddenIndex >= 0 && index >= firstHiddenIndex) {
+            return;
+        }
 
-    // Ab "Vorbesitzer" keine weiteren Spalten anzeigen
-    if (firstHiddenIndex >= 0 && index >= firstHiddenIndex) {
-        return;
-    }
+        if (header === APP.photoColumn) {
+            return;
+        }
 
-    if (header === APP.photoColumn) {
-        return;
-    }
+        const h = header.trim().toLowerCase();
 
-    const h = header.trim().toLowerCase();
-
-    let width = 140;
+        let width = 140;
 
         switch (h) {
 
@@ -583,17 +579,17 @@ APP.headers.forEach((header, index) => {
 
         }
 
-columns.push({
+        columns.push({
 
-           title: header,
+            title: header,
 
-           field: header,
+            field: header,
 
-           width: width,
+            width: width,
 
-           headerSort: true,
+            headerSort: true,
 
-           sorter:
+            sorter:
                 h === "lnr"
                 ? "number"
                 : undefined,
@@ -604,13 +600,19 @@ columns.push({
 
             formatter:
 
-                header.trim().toLowerCase() === COLUMNS.status.toLowerCase()
+                h === "anmerkungen"
+                    ? notesFormatter
+
+                : header.trim().toLowerCase() === COLUMNS.status.toLowerCase()
                     ? statusFormatter
 
                 : header.trim().toLowerCase() === COLUMNS.owner.toLowerCase()
                     ? ownerFormatter
 
-                : undefined
+                : undefined,
+
+            variableHeight:
+                h === "anmerkungen"
 
         });
 
@@ -619,6 +621,28 @@ columns.push({
     return columns;
 
 }
+
+
+/******************************************************************
+ * Anmerkungen-Formatter
+ * Ermöglicht Zeilenumbruch bei längeren Texten.
+ ******************************************************************/
+
+function notesFormatter(cell){
+
+    const value = cell.getValue() || "";
+
+    const div = document.createElement("div");
+
+    div.className = "notes-cell";
+
+    div.textContent = value;
+
+    return div;
+
+}
+
+
 /******************************************************************
  * Eigentümer-Formatter
  ******************************************************************/
@@ -642,6 +666,11 @@ function ownerFormatter(cell){
 
 }
 
+
+/******************************************************************
+ * Status-Formatter
+ ******************************************************************/
+
 function statusFormatter(cell) {
 
     const value = cell.getValue() || "";
@@ -664,6 +693,7 @@ function statusFormatter(cell) {
             ${value}
         </span>
     `;
+
 }
 
 
@@ -688,9 +718,9 @@ function buildTable() {
 
         columns: buildColumns(),
 
-       initialSort: [
-      { column: "Lnr", dir: "asc" }
-      ],
+        initialSort: [
+            { column: "Lnr", dir: "asc" }
+        ],
 
         layout: "fitDataTable",
 
@@ -769,6 +799,7 @@ function buildTable() {
     });
 
 }
+
 
 /******************************************************************
  * Galerie für die Werksturbo-Lightbox aufbauen
@@ -855,6 +886,7 @@ function photoFormatter(cell) {
 
 }
 
+
 /******************************************************************
  * Thumbnail-Link erzeugen
  ******************************************************************/
@@ -884,7 +916,3 @@ function getThumbnailLink(url){
     return url;
 
 }
-
-
-
-
