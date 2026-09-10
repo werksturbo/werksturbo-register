@@ -6,12 +6,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNGK21YQH9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <title>Capri Club Westerholt | Wir leben die Legende</title>
+  gtag('config', 'G-PNGK21YQH9');
+</script>
 
-    <meta name="description" content="Capri Club Westerholt – Informationen, Fahrzeuge, Treffen, Bilder, Rückblicke und Geschichte des Clubs.">
+    <title>Werksturbo Register | Offizielle Datenbank Ford Capri Werksturbo</title>
 
-    <meta name="keywords" content="Capri Club Westerholt, CCW, Ford Capri, Capri Treffen, Capri Club">
+    <meta name="description"
+        content="Die offizielle Datenbank des Ford Capri Werksturbo. Fahrzeugregister, Pressefotos, Dokumente, Presseberichte und Wissensdatenbank.">
+
+    <meta name="keywords"
+        content="Ford Capri Werksturbo, Werksturbo Register, Capri Register, Ford Capri Turbo">
 
     <link rel="stylesheet" href="css/home.css">
 
@@ -165,7 +176,7 @@
 
                 box-sizing: border-box !important;
 
-                background: #05019B !important;
+                background: #0b4f78 !important;
 
                 box-shadow: 0 8px 20px rgba(0,0,0,.28) !important;
             }
@@ -263,125 +274,6 @@
 
         }
 
-
-        /* =========================================================
-           CCW NAVIGATION – Dropdown-Menüs
-           ========================================================= */
-
-        header nav ul {
-            align-items: center;
-        }
-
-        header nav li {
-            position: relative;
-        }
-
-        header nav li.has-submenu {
-            display: flex;
-            align-items: stretch;
-        }
-
-        .submenu-toggle {
-            appearance: none;
-            border: 0;
-            margin: 0;
-            padding: 12px 14px;
-            background: transparent;
-            color: white;
-            font: inherit;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 1.2;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .submenu-toggle .arrow {
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 12px;
-            transition: transform .18s ease;
-        }
-
-        .has-submenu.submenu-open .submenu-toggle .arrow {
-            transform: rotate(180deg);
-        }
-
-        header nav ul.submenu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            z-index: 10002;
-            min-width: 220px;
-            margin: 0;
-            padding: 6px 0;
-            list-style: none;
-            background: #05019B;
-            box-shadow: 0 8px 20px rgba(0,0,0,.28);
-        }
-
-        .has-submenu.submenu-open > ul.submenu {
-            display: block;
-        }
-
-        header nav ul.submenu li {
-            display: block;
-            width: 100%;
-        }
-
-        header nav ul.submenu a {
-            display: block;
-            width: 100%;
-            min-height: auto;
-            padding: 10px 16px;
-            box-sizing: border-box;
-            text-align: left;
-            white-space: normal;
-            border-radius: 0;
-        }
-
-        /* Leere Dropdowns bleiben zunächst unsichtbar – sie dienen als
-           Platzhalter, bis wir die echten Unterseiten übernehmen. */
-        header nav ul.submenu:empty {
-            display: none !important;
-        }
-
-        @media (max-width: 900px) {
-            header nav ul {
-                align-items: stretch;
-            }
-
-            header nav li.has-submenu {
-                display: block;
-            }
-
-            .submenu-toggle {
-                display: block;
-                width: 100%;
-                min-height: 45px;
-                padding: 11px 18px;
-                box-sizing: border-box;
-                text-align: left;
-                font-size: 17px;
-                line-height: 1.3;
-                white-space: normal;
-            }
-
-            header nav ul.submenu {
-                position: static;
-                min-width: 0;
-                padding: 0;
-                box-shadow: none;
-                background: rgba(0,0,0,.12);
-            }
-
-            header nav ul.submenu a {
-                padding: 10px 18px 10px 34px;
-                font-size: 16px;
-            }
-        }
-
     </style>
 
 </head>
@@ -401,8 +293,8 @@
 
             <a href="index.html">
 
-                <img src="images/Logo_CCW.jpg"
-                     alt="Capri Club Westerholt">
+                <img src="images/logo-werksturbo.png"
+                     alt="Werksturbo Register">
 
             </a>
 
@@ -427,222 +319,270 @@
 
         </button>
 
-            <!-- ============================================================================================================= -->
-            <!-- HAUPTNAVIGATION                    MENUE     MENUE                                                            -->
-            <!-- ============================================================================================================= -->
-  
 
-        <nav id="mainNavigation" aria-label="Hauptnavigation">
-    <ul>
+        <!-- =========================
+             HAUPTNAVIGATION
+             ========================= -->
 
-        <li>
-            <a class="active" href="index.html">Home</a>
-        </li>
+        <nav id="mainNavigation">
 
-        <li class="has-submenu">
-            <button class="submenu-toggle" type="button"
-                    aria-expanded="false" aria-controls="submenu-club">
-                Der Club <span class="arrow">▾</span>
-            </button>
-            <ul class="submenu" id="submenu-club">
-                <!-- Unterseiten des Clubs werden im nächsten Schritt ergänzt -->
-            </ul>
-        </li>
+            <ul>
 
-        <li>
-            <a href="pages/club-update.html">Club-Update</a>
-        </li>
-
-        <li>
-            <a href="pages/fahrzeuge.html">Die Fahrzeuge</a>
-        </li>
-
-        <li class="has-submenu">
-            <button class="submenu-toggle" type="button"
-                    aria-expanded="false" aria-controls="submenu-schrauberbude">
-                Schrauberbude <span class="arrow">▾</span>
-            </button>
-            <ul class="submenu" id="submenu-schrauberbude">
-                <!-- Unterseiten der Schrauberbude werden im nächsten Schritt ergänzt -->
-            </ul>
-        </li>
-
-        <li class="has-submenu">
-            <button class="submenu-toggle" type="button"
-                    aria-expanded="false" aria-controls="submenu-jahre">
-                Jahresrückblicke <span class="arrow">▾</span>
-            </button>
-            <ul class="submenu" id="submenu-jahre">
-                <!-- Jahresrückblicke werden im nächsten Schritt ergänzt -->
-            </ul>
-        </li>
-
-        <li class="has-submenu">
-            <button class="submenu-toggle" type="button"
-                    aria-expanded="false" aria-controls="submenu-fotoalbum">
-                Fotoalbum <span class="arrow">▾</span>
-            </button>
-            <ul class="submenu" id="submenu-fotoalbum">
-                <!-- Fotoalben werden im nächsten Schritt ergänzt -->
-            </ul>
-        </li>
-
-        <li class="has-submenu">
-            <button class="submenu-toggle" type="button"
-                    aria-expanded="false" aria-controls="submenu-literatur">
-                Capri Literatur <span class="arrow">▾</span>
-            </button>
-            <ul class="submenu" id="submenu-literatur">
                 <li>
-                    <a href="pages/werbung.html">Werbung</a>
+                    <a class="active" href="index.html">
+                        Startseite
+                    </a>
                 </li>
+
+
                 <li>
-                    <a href="https://www.capri-club-westerholt.de/literatur">Testberichte</a>
+                    <a href="register.html">
+                        Register
+                    </a>
                 </li>
+
+
                 <li>
-                    <a href="https://www.capri-club-westerholt.de/literatur">Poster</a>
+                    <a href="pages/pressefotos.html">
+                        Pressefotos
+                    </a>
                 </li>
+
+
                 <li>
-                    <a href="https://www.capri-club-westerholt.de/literatur">CCW Clubzeitung</a>
+                    <a href="pages/dokumente.html">
+                        Dokumente
+                    </a>
                 </li>
+
+
+                <li>
+                    <a href="pages/presseberichte.html">
+                        Presseberichte
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="pages/wissensdatenbank.html">
+                        Wissensdatenbank
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="pages/kontakt.html">
+                        Kontakt
+                    </a>
+                </li>
+
             </ul>
-        </li>
 
-        <li>
-            <a href="pages/links.html">Links</a>
-        </li>
-
-        <li>
-            <a href="pages/members-only.html">Members only</a>
-        </li>
-
-        <li>
-            <a href="pages/kontakt.html">Kontakt</a>
-        </li>
-
-    </ul>
-</nav>
+        </nav>
 
     </header>
 
 
-    <!-- ============================================================================================================= -->
-    <!-- CCW STARTSEITE – GRUNDGERÜST -->
-    <!-- ============================================================================================================= -->
+    <!-- ========================= -->
+    <!-- HERO -->
+    <!-- ========================= -->
 
-<main>
+    <section class="hero">
+
+        <div class="hero-overlay">
+
+            <h1>
+
+                Ford Capri Werksturbo
+
+            </h1>
 
 
-    <!-- ============================================================================================================= -->
-    <!-- Bild des Monats                                                                                               -->
-    <!-- ============================================================================================================= -->
+            <h2>
 
-    
-<section class="bild-des-monats">
+                Das digitale Archiv des seltenen Capri-Sondermodelles – Fahrzeuge, Dokumente, Presseberichte und Geschichte an einem Ort.
 
-    <div class="container">
-
-        <div class="bild-des-monats-inhalt">
-
-            <div class="bild-des-monats-bild">
-                <img src="bild_des_monats/bild_des_monats.jpg"
-                     alt="Bild des Monats">
-            </div>
-
-            <div class="bild-des-monats-text">
-
-                <h3>Erneut mit Pokal nach Hause</h3>
-
-                <p>
-                    Der weiße Capri von Janina war zum zweiten Mal bei einem
-                    Ford Capri Treffen dabei – und auch diesmal kam er nicht
-                    ohne Pokal nach Hause.
-                </p>
-
-                <p>
-                    Eine schöne Auszeichnung und ein schönes Beispiel dafür, 
-                    dass unsere Leidenschaft Generationen verbindet.
-                </p>
-
-                <p>
-                    <b>
-                        <i>
-                    Capri mehr als ein Auto
-                        </i>
-                    </b>    
-                </p>
-
-            </div>
+            </h2>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-    <!-- ============================================================================================================= -->
-    <!-- Willkommen                                                                                                    -->
-    <!-- ============================================================================================================= -->
+    <!-- ========================= -->
+    <!-- WILLKOMMEN -->
+    <!-- ========================= -->
+
+    <section class="welcome">
+
+        <div class="container">
+
+            <h2>
+                Willkommen im offiziellen Werksturbo Register.
+            </h2>
 
 
-    
-<section class="welcome">
-    <div class="container">
+            <p>
 
-        <h2>Willkommen beim Capri Club Westerholt</h2>
+                Der Ford Capri III Werksturbo wurde lediglich in den Jahren
+                1981 bis 1982 in geringer Stückzahl produziert und zählt heute
+                zu den seltensten Sondermodellen des Ford Capri.
 
-        <p>
-                <B>
-                    Schön, dass Du hier bist! 
-                </B>  
-            
-                Der Capri Club Westerholt ist eine Gemeinschaft von Enthusiasten, 
-                die die Faszination für den Ford Capri verbindet und die Begeisterung für dieses besondere 
-                Fahrzeug gemeinsam lebt.
-        </p>
-
-    </div>
-</section>
+            </p>
 
 
-    <!-- ============================================================================================================= -->
-    <!-- Karten                                                                                                        -->
-    <!-- ============================================================================================================= -->
+            <p>
 
-    
-    <section class="cards ccw-cards">
+                Ziel dieses Registers ist es, möglichst alle bekannten Fahrzeuge,
+                historische Dokumente sowie zeitgenössische Informationen dauerhaft
+                zu dokumentieren und der Öffentlichkeit zugänglich zu machen.
 
-        <a class="card-link" href="pages/club-update.html">
-            <div class="card">
-                <h3>Club-Update</h3>
-                <p>Neuigkeiten und aktuelle Informationen aus dem CCW.</p>
-                <div class="more">Weiterlesen →</div>
-            </div>
-        </a>
+            </p>
 
-        <a class="card-link" href="pages/fahrzeuge.html">
-            <div class="card">
-                <h3>Die Fahrzeuge</h3>
-                <p>Unsere Capris und die Fahrzeuge unserer Clubmitglieder.</p>
-                <div class="more">Mehr erfahren →</div>
-            </div>
-        </a>
 
-        <a class="card-link" href="pages/treffen.html">
-            <div class="card">
-                <h3>Capri Treffen</h3>
-                <p>Treffen, Termine und gemeinsame Veranstaltungen.</p>
-                <div class="more">Zu den Treffen →</div>
-            </div>
-        </a>
+            <p>
+
+                Sollten Sie Informationen, Bilder oder Dokumente besitzen,
+                freue ich mich über jede Kontaktaufnahme.
+
+            </p>
+
+        </div>
 
     </section>
 
-</main>
 
-<!-- ========================= -->
-<!-- FOOTER -->
+    <!-- ========================= -->
+    <!-- INFO-KARTEN -->
+    <!-- ========================= -->
+
+    <section class="cards">
+
+
+        <a class="card-link" href="register.html">
+
+            <div class="card">
+
+                <img src="images/cards/register.jpg"
+                     alt="vier Werksturbos">
+
+
+                <h3>
+                    Fahrzeugregister
+                </h3>
+
+
+                <p>
+
+                    Alle bekannten Werksturbo-Fahrzeuge
+                    mit Bildern, Produktionsdaten
+                    und Historie.
+
+                </p>
+
+
+                <p>
+
+                    Du besitzt Informationen oder Fotos? Dann werde Teil dieser einzigartigen Dokumentation.
+
+                </p>
+
+
+                <div class="more">
+
+                    Zum Register →
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <a class="card-link" href="pages/pressefotos.html">
+
+            <div class="card">
+
+                <img src="images/cards/pressefoto.jpg"
+                     alt="Originales Pressefoto Ford Capri Werksturbo">
+
+
+                <h3>
+                    Turbo-Capri für die Straße
+                </h3>
+
+
+                <p>
+
+                    Hier findest Du originale Pressefotos und Pressetexte
+                    aus den Jahren 1981 und 1982.
+
+                </p>
+
+
+                <p>
+
+                    Besitzt Du originale Pressefotos? Hilf mit, die Sammlung zu vervollständigen.
+
+                </p>
+
+
+                <div class="more">
+
+                    Zur Pressesammlung →
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <a class="card-link" href="pages/dokumente.html">
+
+            <div class="card">
+
+                <img src="images/cards/werkstattinfo.jpg"
+                     alt="Titelseite Werkstattinfo">
+
+
+                <h2>
+                    Technische Dokumentation
+                </h2>
+
+
+                <p>
+
+                    Hier befinden sich originale technische Unterlagen,
+                    Ersatzteilkataloge und Montageanleitungen
+                    rund um den Ford Capri Werksturbo.
+
+                </p>
+
+
+                <p>
+
+                    Hast Du weitere Unterlagen? Ich freue mich über jede Ergänzung.
+
+                </p>
+
+
+                <div class="more">
+
+                    Zu den Dokumenten →
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
     <!-- ========================= -->
 
     <footer>
@@ -650,7 +590,7 @@
         <div class="footer-content">
 
             <h3>
-                Capri Club Westerholt
+                Ford Capri III Werksturbo Register
             </h3>
 
 
@@ -673,7 +613,7 @@
 
             <div class="footer-bottom">
 
-                © 2026 Capri Club Westerholt
+                © 2026 Werksturbo Register
 
             </div>
 
@@ -683,169 +623,124 @@
 
 
     <!-- =========================================================
-         CCW MENU JAVASCRIPT
-         Mobile Menü + Dropdown-Submenüs
+         MOBILE MENU JAVASCRIPT
          ========================================================= -->
+
     <script>
+
         (function () {
 
-            const header = document.querySelector("header");
-            const toggle = document.getElementById("mobileMenuToggle");
-            const nav = document.getElementById("mainNavigation");
+            const header =
+                document.querySelector("header");
+
+            const toggle =
+                document.getElementById("mobileMenuToggle");
+
+            const nav =
+                document.getElementById("mainNavigation");
+
 
             if (!header || !toggle || !nav) {
                 return;
             }
 
-            /* ==========================================
-               MOBILES MENÜ
-               ========================================== */
 
-            function closeMobileMenu() {
+            /* Menü schließen */
+
+            function closeMenu() {
+
                 header.classList.remove("nav-open");
-
-                toggle.setAttribute("aria-expanded", "false");
-                toggle.setAttribute("aria-label", "Menü öffnen");
-            }
-
-            toggle.addEventListener("click", function (event) {
-                event.stopPropagation();
-
-                const open = header.classList.toggle("nav-open");
 
                 toggle.setAttribute(
                     "aria-expanded",
-                    open ? "true" : "false"
+                    "false"
                 );
 
                 toggle.setAttribute(
                     "aria-label",
-                    open ? "Menü schließen" : "Menü öffnen"
+                    "Menü öffnen"
                 );
-            });
 
-
-            /* ==========================================
-               DROPDOWN-SUBMENÜS
-               ========================================== */
-
-            const submenuItems =
-                nav.querySelectorAll(".has-submenu");
-
-            function closeAllSubmenus(except) {
-                submenuItems.forEach(function (item) {
-
-                    if (item !== except) {
-                        item.classList.remove("submenu-open");
-
-                        const button =
-                            item.querySelector(".submenu-toggle");
-
-                        if (button) {
-                            button.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-                        }
-                    }
-                });
             }
 
-            submenuItems.forEach(function (item) {
 
-                const button =
-                    item.querySelector(".submenu-toggle");
+            /* Hamburger anklicken */
 
-                const submenu =
-                    item.querySelector(".submenu");
+            toggle.addEventListener(
+                "click",
+                function () {
 
-                if (!button || !submenu) {
-                    return;
+                    const open =
+                        header.classList.toggle("nav-open");
+
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open ? "true" : "false"
+                    );
+
+
+                    toggle.setAttribute(
+                        "aria-label",
+                        open
+                            ? "Menü schließen"
+                            : "Menü öffnen"
+                    );
+
                 }
+            );
 
-                button.addEventListener("click", function (event) {
 
-                    event.preventDefault();
-                    event.stopPropagation();
+            /* Menü schließen,
+               wenn ein Link angeklickt wird */
 
-                    const isOpen =
-                        item.classList.contains("submenu-open");
+            nav.querySelectorAll("a").forEach(
+                function (link) {
 
-                    closeAllSubmenus(item);
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
 
-                    if (isOpen) {
-                        item.classList.remove("submenu-open");
-                        button.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-                    } else {
-                        item.classList.add("submenu-open");
-                        button.setAttribute(
-                            "aria-expanded",
-                            "true"
-                        );
+                }
+            );
+
+
+            /* Menü schließen,
+               wenn außerhalb geklickt wird */
+
+            document.addEventListener(
+                "click",
+                function (event) {
+
+                    if (!header.contains(event.target)) {
+
+                        closeMenu();
+
                     }
-                });
 
-            });
-
-
-            /* ==========================================
-               LINKS
-               ========================================== */
-
-            nav.querySelectorAll("a").forEach(function (link) {
-
-                link.addEventListener("click", function () {
-                    closeAllSubmenus();
-                    closeMobileMenu();
-                });
-
-            });
-
-
-            /* ==========================================
-               KLICK AUSSERHALB
-               ========================================== */
-
-            document.addEventListener("click", function (event) {
-
-                if (!header.contains(event.target)) {
-                    closeAllSubmenus();
-                    closeMobileMenu();
                 }
+            );
 
-            });
 
+            /* Bei Wechsel auf Desktop
+               Menü automatisch schließen */
 
-            /* ==========================================
-               ESCAPE
-               ========================================== */
+            window.addEventListener(
+                "resize",
+                function () {
 
-            document.addEventListener("keydown", function (event) {
+                    if (window.innerWidth > 900) {
 
-                if (event.key === "Escape") {
-                    closeAllSubmenus();
-                    closeMobileMenu();
+                        closeMenu();
+
+                    }
+
                 }
-
-            });
-
-
-            /* ==========================================
-               BEIM WECHSEL AUF DESKTOP
-               ========================================== */
-
-            window.addEventListener("resize", function () {
-
-                if (window.innerWidth > 900) {
-                    closeMobileMenu();
-                }
-
-            });
+            );
 
         })();
+
     </script>
 
 
