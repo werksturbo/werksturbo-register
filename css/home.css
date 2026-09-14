@@ -50,9 +50,9 @@ header{
     justify-content:space-between;
     align-items:center;
 
-    padding:8px 50px;
+    padding:0 50px;
 
-    min-height:75px;
+    min-height:65px;
 
     position:sticky;
     top:0;
